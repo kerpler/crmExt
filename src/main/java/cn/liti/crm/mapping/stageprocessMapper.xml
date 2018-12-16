@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.stageprocessMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.stageprocess">
+    <result column="STAGEPROCESSID" jdbcType="VARCHAR" property="stageprocessid" />
+    <result column="STAGEPROCESSNAME" jdbcType="VARCHAR" property="stageprocessname" />
+    <result column="CODE" jdbcType="DECIMAL" property="code" />
+    <result column="DAYS" jdbcType="DECIMAL" property="days" />
+  </resultMap>
+  <insert id="addStage" parameterType="cn.liti.crm.model.auto.stageprocess">
+    <selectKey keyProperty="id" resultType="String" order="BEFORE">
+        select sys_guid() from dual
+    </selectKey>
+    insert into STAGEPROCESS (STAGEPROCESSID, STAGEPROCESSNAME,CODE, DAYS)
+    values (#{id,jdbcType=VARCHAR}, #{stagename,jdbcType=VARCHAR},#{code,jdbcType=INTEGER}, #{days,jdbcType=INTEGER})
+  </insert>
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.stageprocess">
+    insert into STAGEPROCESS (STAGEPROCESSID, STAGEPROCESSNAME, 
+      CODE, DAYS)
+    values (#{stageprocessid,jdbcType=VARCHAR}, #{stageprocessname,jdbcType=VARCHAR}, 
+      #{code,jdbcType=DECIMAL}, #{days,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.stageprocess">
+    insert into STAGEPROCESS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stageprocessid != null">
+        STAGEPROCESSID,
+      </if>
+      <if test="stageprocessname != null">
+        STAGEPROCESSNAME,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="days != null">
+        DAYS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stageprocessid != null">
+        #{stageprocessid,jdbcType=VARCHAR},
+      </if>
+      <if test="stageprocessname != null">
+        #{stageprocessname,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=DECIMAL},
+      </if>
+      <if test="days != null">
+        #{days,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

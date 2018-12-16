@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.InConstructionMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.InConstruction">
+    <result column="CONSTRUCTIONID" jdbcType="VARCHAR" property="constructionid" />
+    <result column="CONSTRUCTIONSTATE" jdbcType="VARCHAR" property="constructionstate" />
+    <result column="CUSTOMERSNO" jdbcType="VARCHAR" property="customersno" />
+    <result column="CUSTOMERSNAME" jdbcType="VARCHAR" property="customersname" />
+    <result column="FOREMAN" jdbcType="VARCHAR" property="foreman" />
+    <result column="TEAMER" jdbcType="VARCHAR" property="teamer" />
+    <result column="SUPERVISION" jdbcType="VARCHAR" property="supervision" />
+    <result column="ONCEDAY" jdbcType="VARCHAR" property="onceday" />
+    <result column="SCENEDAY" jdbcType="VARCHAR" property="sceneday" />
+    <result column="WORKDAY" jdbcType="VARCHAR" property="workday" />
+    <result column="REALWORKDAY" jdbcType="VARCHAR" property="realworkday" />
+    <result column="STARTDAY" jdbcType="VARCHAR" property="startday" />
+    <result column="FINISHDAY" jdbcType="VARCHAR" property="finishday" />
+    <result column="TIMEOUTDAY" jdbcType="VARCHAR" property="timeoutday" />
+    <result column="SEALDAY" jdbcType="DATE" property="sealday" />
+    <result column="UNLOCKDAY" jdbcType="VARCHAR" property="unlockday" />
+    <result column="REALFINISHDAY" jdbcType="VARCHAR" property="realfinishday" />
+    <result column="YELLOWNOTE" jdbcType="VARCHAR" property="yellownote" />
+    <result column="OICONSTRUCTIONDAY" jdbcType="VARCHAR" property="oiconstructionday" />
+    <result column="OIPARTDAY" jdbcType="VARCHAR" property="oipartday" />
+    <result column="PLANLATEX" jdbcType="VARCHAR" property="planlatex" />
+    <result column="PLANLATEXS" jdbcType="VARCHAR" property="planlatexs" />
+    <result column="REALLATEX" jdbcType="VARCHAR" property="reallatex" />
+    <result column="SENDDAY" jdbcType="VARCHAR" property="sendday" />
+    <result column="PACKAGERULERDAY" jdbcType="VARCHAR" property="packagerulerday" />
+    <result column="ONELETTERDAY" jdbcType="VARCHAR" property="oneletterday" />
+    <result column="EWATERDAY" jdbcType="VARCHAR" property="ewaterday" />
+    <result column="WATERPROOFDAY" jdbcType="VARCHAR" property="waterproofday" />
+    <result column="TILERQUERYDAY" jdbcType="VARCHAR" property="tilerqueryday" />
+    <result column="TILERGAPDAY" jdbcType="VARCHAR" property="tilergapday" />
+    <result column="REPEATRULERDAY" jdbcType="VARCHAR" property="repeatrulerday" />
+    <result column="MIDFORMDAY" jdbcType="VARCHAR" property="midformday" />
+    <result column="CREATEDBY" jdbcType="VARCHAR" property="createdby" />
+    <result column="CREATEDWHEN" jdbcType="DATE" property="createdwhen" />
+    <result column="VERSIONNO" jdbcType="DECIMAL" property="versionno" />
+    <result column="UPDATEDBY" jdbcType="VARCHAR" property="updatedby" />
+    <result column="UPDATEDWHEN" jdbcType="DATE" property="updatedwhen" />
+    <result column="REVISION" jdbcType="VARCHAR" property="revision" />
+    <result column="DELETED" jdbcType="DECIMAL" property="deleted" />
+    <result column="MIDTIME" jdbcType="VARCHAR" property="midtime" />
+    <result column="FOREMANFN" jdbcType="VARCHAR" property="foremanfn" />
+    <result column="TEAMERFN" jdbcType="VARCHAR" property="teamerfn" />
+    <result column="SUPERVISIONFN" jdbcType="VARCHAR" property="supervisionfn" />
+    <result column="BASEMATERIAL" jdbcType="DATE" property="basematerial" />
+    <result column="AMOUNT" jdbcType="DECIMAL" property="amount" />
+    <result column="ISVIP" jdbcType="VARCHAR" property="isvip" />
+    <result column="HOLEPITCH" jdbcType="VARCHAR" property="holepitch" />
+    <result column="FILEPATH" jdbcType="VARCHAR" property="filepath" />
+    <result column="FILEPATH2" jdbcType="VARCHAR" property="filepath2" />
+    <result column="ISMA" jdbcType="VARCHAR" property="isma" />
+    <result column="CUSTOMERSID" jdbcType="VARCHAR" property="customersid" />
+    <result column="TEL" jdbcType="VARCHAR" property="tel" />
+    <result column="CUSNO" jdbcType="VARCHAR" property="cusno" />
+    <result column="COMMUNITY" jdbcType="VARCHAR" property="community" />
+    <result column="CUSTOMERSTEL" jdbcType="VARCHAR" property="customerstel" />
+    <result column="DESIGNERNAME" jdbcType="VARCHAR" property="designername" />
+    <result column="GETHOUSEDAY" jdbcType="VARCHAR" property="gethouseday" />
+  </resultMap>
+  <select id="findConstruction" parameterType="cn.liti.crm.model.auto.InConstruction" resultType="cn.liti.crm.model.auto.InConstruction">
+    select * from crm_construction_view where rownum  &lt;=40
+  </select>
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.InConstruction">
+    insert into CRM_CONSTRUCTION_VIEW (CONSTRUCTIONID, CONSTRUCTIONSTATE, 
+      CUSTOMERSNO, CUSTOMERSNAME, FOREMAN, 
+      TEAMER, SUPERVISION, ONCEDAY, 
+      SCENEDAY, WORKDAY, REALWORKDAY, 
+      STARTDAY, FINISHDAY, TIMEOUTDAY, 
+      SEALDAY, UNLOCKDAY, REALFINISHDAY, 
+      YELLOWNOTE, OICONSTRUCTIONDAY, OIPARTDAY, 
+      PLANLATEX, PLANLATEXS, REALLATEX, 
+      SENDDAY, PACKAGERULERDAY, ONELETTERDAY, 
+      EWATERDAY, WATERPROOFDAY, TILERQUERYDAY, 
+      TILERGAPDAY, REPEATRULERDAY, MIDFORMDAY, 
+      CREATEDBY, CREATEDWHEN, VERSIONNO, 
+      UPDATEDBY, UPDATEDWHEN, REVISION, 
+      DELETED, MIDTIME, FOREMANFN, 
+      TEAMERFN, SUPERVISIONFN, BASEMATERIAL, 
+      AMOUNT, ISVIP, HOLEPITCH, 
+      FILEPATH, FILEPATH2, ISMA, 
+      CUSTOMERSID, TEL, CUSNO, 
+      COMMUNITY, CUSTOMERSTEL, DESIGNERNAME, 
+      GETHOUSEDAY)
+    values (#{constructionid,jdbcType=VARCHAR}, #{constructionstate,jdbcType=VARCHAR}, 
+      #{customersno,jdbcType=VARCHAR}, #{customersname,jdbcType=VARCHAR}, #{foreman,jdbcType=VARCHAR}, 
+      #{teamer,jdbcType=VARCHAR}, #{supervision,jdbcType=VARCHAR}, #{onceday,jdbcType=VARCHAR}, 
+      #{sceneday,jdbcType=VARCHAR}, #{workday,jdbcType=VARCHAR}, #{realworkday,jdbcType=VARCHAR}, 
+      #{startday,jdbcType=VARCHAR}, #{finishday,jdbcType=VARCHAR}, #{timeoutday,jdbcType=VARCHAR}, 
+      #{sealday,jdbcType=DATE}, #{unlockday,jdbcType=VARCHAR}, #{realfinishday,jdbcType=VARCHAR}, 
+      #{yellownote,jdbcType=VARCHAR}, #{oiconstructionday,jdbcType=VARCHAR}, #{oipartday,jdbcType=VARCHAR}, 
+      #{planlatex,jdbcType=VARCHAR}, #{planlatexs,jdbcType=VARCHAR}, #{reallatex,jdbcType=VARCHAR}, 
+      #{sendday,jdbcType=VARCHAR}, #{packagerulerday,jdbcType=VARCHAR}, #{oneletterday,jdbcType=VARCHAR}, 
+      #{ewaterday,jdbcType=VARCHAR}, #{waterproofday,jdbcType=VARCHAR}, #{tilerqueryday,jdbcType=VARCHAR}, 
+      #{tilergapday,jdbcType=VARCHAR}, #{repeatrulerday,jdbcType=VARCHAR}, #{midformday,jdbcType=VARCHAR}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdwhen,jdbcType=DATE}, #{versionno,jdbcType=DECIMAL}, 
+      #{updatedby,jdbcType=VARCHAR}, #{updatedwhen,jdbcType=DATE}, #{revision,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=DECIMAL}, #{midtime,jdbcType=VARCHAR}, #{foremanfn,jdbcType=VARCHAR}, 
+      #{teamerfn,jdbcType=VARCHAR}, #{supervisionfn,jdbcType=VARCHAR}, #{basematerial,jdbcType=DATE}, 
+      #{amount,jdbcType=DECIMAL}, #{isvip,jdbcType=VARCHAR}, #{holepitch,jdbcType=VARCHAR}, 
+      #{filepath,jdbcType=VARCHAR}, #{filepath2,jdbcType=VARCHAR}, #{isma,jdbcType=VARCHAR}, 
+      #{customersid,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{cusno,jdbcType=VARCHAR}, 
+      #{community,jdbcType=VARCHAR}, #{customerstel,jdbcType=VARCHAR}, #{designername,jdbcType=VARCHAR}, 
+      #{gethouseday,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.InConstruction">
+    insert into CRM_CONSTRUCTION_VIEW
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="constructionid != null">
+        CONSTRUCTIONID,
+      </if>
+      <if test="constructionstate != null">
+        CONSTRUCTIONSTATE,
+      </if>
+      <if test="customersno != null">
+        CUSTOMERSNO,
+      </if>
+      <if test="customersname != null">
+        CUSTOMERSNAME,
+      </if>
+      <if test="foreman != null">
+        FOREMAN,
+      </if>
+      <if test="teamer != null">
+        TEAMER,
+      </if>
+      <if test="supervision != null">
+        SUPERVISION,
+      </if>
+      <if test="onceday != null">
+        ONCEDAY,
+      </if>
+      <if test="sceneday != null">
+        SCENEDAY,
+      </if>
+      <if test="workday != null">
+        WORKDAY,
+      </if>
+      <if test="realworkday != null">
+        REALWORKDAY,
+      </if>
+      <if test="startday != null">
+        STARTDAY,
+      </if>
+      <if test="finishday != null">
+        FINISHDAY,
+      </if>
+      <if test="timeoutday != null">
+        TIMEOUTDAY,
+      </if>
+      <if test="sealday != null">
+        SEALDAY,
+      </if>
+      <if test="unlockday != null">
+        UNLOCKDAY,
+      </if>
+      <if test="realfinishday != null">
+        REALFINISHDAY,
+      </if>
+      <if test="yellownote != null">
+        YELLOWNOTE,
+      </if>
+      <if test="oiconstructionday != null">
+        OICONSTRUCTIONDAY,
+      </if>
+      <if test="oipartday != null">
+        OIPARTDAY,
+      </if>
+      <if test="planlatex != null">
+        PLANLATEX,
+      </if>
+      <if test="planlatexs != null">
+        PLANLATEXS,
+      </if>
+      <if test="reallatex != null">
+        REALLATEX,
+      </if>
+      <if test="sendday != null">
+        SENDDAY,
+      </if>
+      <if test="packagerulerday != null">
+        PACKAGERULERDAY,
+      </if>
+      <if test="oneletterday != null">
+        ONELETTERDAY,
+      </if>
+      <if test="ewaterday != null">
+        EWATERDAY,
+      </if>
+      <if test="waterproofday != null">
+        WATERPROOFDAY,
+      </if>
+      <if test="tilerqueryday != null">
+        TILERQUERYDAY,
+      </if>
+      <if test="tilergapday != null">
+        TILERGAPDAY,
+      </if>
+      <if test="repeatrulerday != null">
+        REPEATRULERDAY,
+      </if>
+      <if test="midformday != null">
+        MIDFORMDAY,
+      </if>
+      <if test="createdby != null">
+        CREATEDBY,
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN,
+      </if>
+      <if test="versionno != null">
+        VERSIONNO,
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY,
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN,
+      </if>
+      <if test="revision != null">
+        REVISION,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="midtime != null">
+        MIDTIME,
+      </if>
+      <if test="foremanfn != null">
+        FOREMANFN,
+      </if>
+      <if test="teamerfn != null">
+        TEAMERFN,
+      </if>
+      <if test="supervisionfn != null">
+        SUPERVISIONFN,
+      </if>
+      <if test="basematerial != null">
+        BASEMATERIAL,
+      </if>
+      <if test="amount != null">
+        AMOUNT,
+      </if>
+      <if test="isvip != null">
+        ISVIP,
+      </if>
+      <if test="holepitch != null">
+        HOLEPITCH,
+      </if>
+      <if test="filepath != null">
+        FILEPATH,
+      </if>
+      <if test="filepath2 != null">
+        FILEPATH2,
+      </if>
+      <if test="isma != null">
+        ISMA,
+      </if>
+      <if test="customersid != null">
+        CUSTOMERSID,
+      </if>
+      <if test="tel != null">
+        TEL,
+      </if>
+      <if test="cusno != null">
+        CUSNO,
+      </if>
+      <if test="community != null">
+        COMMUNITY,
+      </if>
+      <if test="customerstel != null">
+        CUSTOMERSTEL,
+      </if>
+      <if test="designername != null">
+        DESIGNERNAME,
+      </if>
+      <if test="gethouseday != null">
+        GETHOUSEDAY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="constructionid != null">
+        #{constructionid,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionstate != null">
+        #{constructionstate,jdbcType=VARCHAR},
+      </if>
+      <if test="customersno != null">
+        #{customersno,jdbcType=VARCHAR},
+      </if>
+      <if test="customersname != null">
+        #{customersname,jdbcType=VARCHAR},
+      </if>
+      <if test="foreman != null">
+        #{foreman,jdbcType=VARCHAR},
+      </if>
+      <if test="teamer != null">
+        #{teamer,jdbcType=VARCHAR},
+      </if>
+      <if test="supervision != null">
+        #{supervision,jdbcType=VARCHAR},
+      </if>
+      <if test="onceday != null">
+        #{onceday,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneday != null">
+        #{sceneday,jdbcType=VARCHAR},
+      </if>
+      <if test="workday != null">
+        #{workday,jdbcType=VARCHAR},
+      </if>
+      <if test="realworkday != null">
+        #{realworkday,jdbcType=VARCHAR},
+      </if>
+      <if test="startday != null">
+        #{startday,jdbcType=VARCHAR},
+      </if>
+      <if test="finishday != null">
+        #{finishday,jdbcType=VARCHAR},
+      </if>
+      <if test="timeoutday != null">
+        #{timeoutday,jdbcType=VARCHAR},
+      </if>
+      <if test="sealday != null">
+        #{sealday,jdbcType=DATE},
+      </if>
+      <if test="unlockday != null">
+        #{unlockday,jdbcType=VARCHAR},
+      </if>
+      <if test="realfinishday != null">
+        #{realfinishday,jdbcType=VARCHAR},
+      </if>
+      <if test="yellownote != null">
+        #{yellownote,jdbcType=VARCHAR},
+      </if>
+      <if test="oiconstructionday != null">
+        #{oiconstructionday,jdbcType=VARCHAR},
+      </if>
+      <if test="oipartday != null">
+        #{oipartday,jdbcType=VARCHAR},
+      </if>
+      <if test="planlatex != null">
+        #{planlatex,jdbcType=VARCHAR},
+      </if>
+      <if test="planlatexs != null">
+        #{planlatexs,jdbcType=VARCHAR},
+      </if>
+      <if test="reallatex != null">
+        #{reallatex,jdbcType=VARCHAR},
+      </if>
+      <if test="sendday != null">
+        #{sendday,jdbcType=VARCHAR},
+      </if>
+      <if test="packagerulerday != null">
+        #{packagerulerday,jdbcType=VARCHAR},
+      </if>
+      <if test="oneletterday != null">
+        #{oneletterday,jdbcType=VARCHAR},
+      </if>
+      <if test="ewaterday != null">
+        #{ewaterday,jdbcType=VARCHAR},
+      </if>
+      <if test="waterproofday != null">
+        #{waterproofday,jdbcType=VARCHAR},
+      </if>
+      <if test="tilerqueryday != null">
+        #{tilerqueryday,jdbcType=VARCHAR},
+      </if>
+      <if test="tilergapday != null">
+        #{tilergapday,jdbcType=VARCHAR},
+      </if>
+      <if test="repeatrulerday != null">
+        #{repeatrulerday,jdbcType=VARCHAR},
+      </if>
+      <if test="midformday != null">
+        #{midformday,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdwhen != null">
+        #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="revision != null">
+        #{revision,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="midtime != null">
+        #{midtime,jdbcType=VARCHAR},
+      </if>
+      <if test="foremanfn != null">
+        #{foremanfn,jdbcType=VARCHAR},
+      </if>
+      <if test="teamerfn != null">
+        #{teamerfn,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisionfn != null">
+        #{supervisionfn,jdbcType=VARCHAR},
+      </if>
+      <if test="basematerial != null">
+        #{basematerial,jdbcType=DATE},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="isvip != null">
+        #{isvip,jdbcType=VARCHAR},
+      </if>
+      <if test="holepitch != null">
+        #{holepitch,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null">
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath2 != null">
+        #{filepath2,jdbcType=VARCHAR},
+      </if>
+      <if test="isma != null">
+        #{isma,jdbcType=VARCHAR},
+      </if>
+      <if test="customersid != null">
+        #{customersid,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="cusno != null">
+        #{cusno,jdbcType=VARCHAR},
+      </if>
+      <if test="community != null">
+        #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="customerstel != null">
+        #{customerstel,jdbcType=VARCHAR},
+      </if>
+      <if test="designername != null">
+        #{designername,jdbcType=VARCHAR},
+      </if>
+      <if test="gethouseday != null">
+        #{gethouseday,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

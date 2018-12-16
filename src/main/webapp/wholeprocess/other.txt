@@ -1,0 +1,74 @@
+<div class="container">
+    <!-- <ul class="nav nav-pills nav-justified step step-arrow">
+        <li>
+            <a>step1</a>
+        </li>
+        <li>
+            <a>step2</a>
+        </li>
+        <li>
+            <a>step3</a>
+        </li>
+        <li>
+            <a>step4</a>
+        </li>
+        <li>
+            <a>step5</a>
+        </li>
+    </ul>
+    <ul class="nav nav-pills nav-justified step step-square" data-step="2">
+        <li>
+            <a>step1</a>
+        </li>
+        <li>
+            <a>step2</a>
+        </li>
+        <li>
+            <a>step3</a>
+        </li>
+        <li>
+            <a>step4</a>
+        </li>
+        <li>
+            <a>step5</a>
+        </li>
+    </ul>
+    <ul class="nav nav-pills nav-justified step step-round" data-step="3">
+        <li>
+            <a>step1</a>
+        </li>
+        <li>
+            <a>step2</a>
+        </li>
+        <li>
+            <a>step3</a>
+        </li>
+        <li>
+            <a>step4</a>
+        </li>
+        <li>
+            <a>step5</a>
+        </li>
+    </ul> -->
+    <ul class="nav nav-pills nav-justified step step-progress" data-step="3">
+        <li>
+            <a>step1<span class="caret"></span></a>
+        </li>
+        <li>
+            <a>step2<span class="caret"></span></a>
+        </li>
+        <li>
+            <a>step3<span class="caret"></span></a>
+        </li>
+        <li>
+            <a>step4<span class="caret"></span></a>
+        </li>
+        <li>
+            <a>step5<span class="caret"></span></a>
+        </li>
+        <li>
+            <a>step5<span class="caret"></span></a>
+        </li>
+
+    </ul>
+</div>

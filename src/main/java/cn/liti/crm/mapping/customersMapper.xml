@@ -1,0 +1,1582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.customersMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.customers">
+    <id column="CUSTOMERSID" jdbcType="VARCHAR" property="customersid" />
+    <result column="CUSTOMERSNO" jdbcType="VARCHAR" property="customersno" />
+    <result column="CUSTOMERSNAME" jdbcType="VARCHAR" property="customersname" />
+    <result column="CUSTOMERROOT" jdbcType="DECIMAL" property="customerroot" />
+    <result column="CUSTOMERSFROM" jdbcType="VARCHAR" property="customersfrom" />
+    <result column="CUSTOMERSTYPE" jdbcType="VARCHAR" property="customerstype" />
+    <result column="CUSTOMERSBIRTHDAY" jdbcType="DATE" property="customersbirthday" />
+    <result column="CUSTOMERSTEL" jdbcType="VARCHAR" property="customerstel" />
+    <result column="CUSTOMERSTEL2" jdbcType="VARCHAR" property="customerstel2" />
+    <result column="CUSTOMERSEMAIL" jdbcType="VARCHAR" property="customersemail" />
+    <result column="WEDDINGDAY" jdbcType="DATE" property="weddingday" />
+    <result column="COMMUNITY" jdbcType="VARCHAR" property="community" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="HOUSESIZE" jdbcType="DECIMAL" property="housesize" />
+    <result column="INTRODUCER" jdbcType="VARCHAR" property="introducer" />
+    <result column="HOUSETYPE" jdbcType="VARCHAR" property="housetype" />
+    <result column="GETHOUSEDAY" jdbcType="DATE" property="gethouseday" />
+    <result column="PREDECORATEDAY" jdbcType="DATE" property="predecorateday" />
+    <result column="DECORATEBUDGET" jdbcType="VARCHAR" property="decoratebudget" />
+    <result column="ASKDAY" jdbcType="DATE" property="askday" />
+    <result column="LIVINGNUM" jdbcType="VARCHAR" property="livingnum" />
+    <result column="INTEREST" jdbcType="VARCHAR" property="interest" />
+    <result column="TONE" jdbcType="VARCHAR" property="tone" />
+    <result column="TONECOLOUR" jdbcType="VARCHAR" property="tonecolour" />
+    <result column="ISEXPERIENCE" jdbcType="DECIMAL" property="isexperience" />
+    <result column="DECOMPANY" jdbcType="VARCHAR" property="decompany" />
+    <result column="ISEXCHANGED" jdbcType="DECIMAL" property="isexchanged" />
+    <result column="FAMILYMEMBER" jdbcType="VARCHAR" property="familymember" />
+    <result column="FAMILYMEMBEROTHER" jdbcType="VARCHAR" property="familymemberother" />
+    <result column="POLICIER" jdbcType="VARCHAR" property="policier" />
+    <result column="POLICIEROTHER" jdbcType="VARCHAR" property="policierother" />
+    <result column="POLICIERJOB" jdbcType="VARCHAR" property="policierjob" />
+    <result column="HOUSEUSER" jdbcType="VARCHAR" property="houseuser" />
+    <result column="HOUSEUSEROTHER" jdbcType="VARCHAR" property="houseuserother" />
+    <result column="HOUSEUSERJOB" jdbcType="VARCHAR" property="houseuserjob" />
+    <result column="USEFOR" jdbcType="VARCHAR" property="usefor" />
+    <result column="USEFOROTHER" jdbcType="VARCHAR" property="useforother" />
+    <result column="ISCARS" jdbcType="DECIMAL" property="iscars" />
+    <result column="CARBRAND" jdbcType="VARCHAR" property="carbrand" />
+    <result column="ISHOUSEMAP" jdbcType="DECIMAL" property="ishousemap" />
+    <result column="DECORATESTYLE" jdbcType="VARCHAR" property="decoratestyle" />
+    <result column="FIRSTDECORATE" jdbcType="DECIMAL" property="firstdecorate" />
+    <result column="HOUSEUSERDESC" jdbcType="VARCHAR" property="houseuserdesc" />
+    <result column="HOUSEUSERFEAR" jdbcType="VARCHAR" property="houseuserfear" />
+    <result column="POLICIERFEAR" jdbcType="VARCHAR" property="policierfear" />
+    <result column="HOUSEFUN" jdbcType="VARCHAR" property="housefun" />
+    <result column="NOTES" jdbcType="VARCHAR" property="notes" />
+    <result column="CUSTOMERSTATE" jdbcType="VARCHAR" property="customerstate" />
+    <result column="SUBSCRIPTION" jdbcType="VARCHAR" property="subscription" />
+    <result column="CUSTOMPURPOSE" jdbcType="VARCHAR" property="custompurpose" />
+    <result column="DEPTID" jdbcType="VARCHAR" property="deptid" />
+    <result column="DESIGNERID" jdbcType="VARCHAR" property="designerid" />
+    <result column="SUBSCRIPTIONAMOUNT" jdbcType="DECIMAL" property="subscriptionamount" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
+    <result column="SUBSCRIPTIONDAY" jdbcType="DATE" property="subscriptionday" />
+    <result column="ACTIVITY" jdbcType="VARCHAR" property="activity" />
+    <result column="MEASUREDAY" jdbcType="DATE" property="measureday" />
+    <result column="BUDGETDAY" jdbcType="DATE" property="budgetday" />
+    <result column="EFFECTGRDAY" jdbcType="DATE" property="effectgrday" />
+    <result column="PRESIGNDAY" jdbcType="DATE" property="presignday" />
+    <result column="GIFTSTYLE" jdbcType="VARCHAR" property="giftstyle" />
+    <result column="GIFTPRICE" jdbcType="DECIMAL" property="giftprice" />
+    <result column="GIFTNOTE" jdbcType="VARCHAR" property="giftnote" />
+    <result column="CREATEDBY" jdbcType="VARCHAR" property="createdby" />
+    <result column="CREATEDWHEN" jdbcType="DATE" property="createdwhen" />
+    <result column="VERSIONNO" jdbcType="DECIMAL" property="versionno" />
+    <result column="UPDATEDBY" jdbcType="VARCHAR" property="updatedby" />
+    <result column="UPDATEDWHEN" jdbcType="DATE" property="updatedwhen" />
+    <result column="DELETED" jdbcType="DECIMAL" property="deleted" />
+    <result column="SOURCETYPE" jdbcType="VARCHAR" property="sourcetype" />
+    <result column="CONTRACTNO" jdbcType="VARCHAR" property="contractno" />
+    <result column="DESIGNERNAME" jdbcType="VARCHAR" property="designername" />
+    <result column="IDREADY" jdbcType="VARCHAR" property="idready" />
+    <result column="UPEFDAY" jdbcType="DATE" property="upefday" />
+    <result column="CONTRACTNODATE" jdbcType="DATE" property="contractnodate" />
+    <result column="UNSUBSCRIBEDATE" jdbcType="DATE" property="unsubscribedate" />
+    <result column="RETURNREASON" jdbcType="VARCHAR" property="returnreason" />
+    <result column="RUNAWAYDAY" jdbcType="DATE" property="runawayday" />
+    <result column="ACTIVITYADR" jdbcType="VARCHAR" property="activityadr" />
+    <result column="ARRIVENUM" jdbcType="DECIMAL" property="arrivenum" />
+    <result column="FRONTNOTE" jdbcType="VARCHAR" property="frontnote" />
+    <result column="ISGIFT" jdbcType="VARCHAR" property="isgift" />
+    <result column="GIFTDAY" jdbcType="DATE" property="giftday" />
+    <result column="GIFTASKDAY" jdbcType="DATE" property="giftaskday" />
+    <result column="GIFTSENDER" jdbcType="VARCHAR" property="giftsender" />
+    <result column="SIGNAMOUNT" jdbcType="DECIMAL" property="signamount" />
+    <result column="CUSTOMERSNO2" jdbcType="VARCHAR" property="customersno2" />
+    <result column="ASDBY" jdbcType="VARCHAR" property="asdby" />
+    <result column="DECORATIONTYPE" jdbcType="VARCHAR" property="decorationtype" />
+    <result column="COMMUNICATION" jdbcType="VARCHAR" property="communication" />
+    <result column="INTRODUCERTEL" jdbcType="VARCHAR" property="introducertel" />
+    <result column="INTRODUCERCOMMUNICATY" jdbcType="VARCHAR" property="introducercommunicaty" />
+    <result column="INTRODUCERUSERNAME" jdbcType="VARCHAR" property="introducerusername" />
+    <result column="INTRODUCER2" jdbcType="VARCHAR" property="introducer2" />
+    <result column="INTRODUCERDEPTNAME" jdbcType="VARCHAR" property="introducerdeptname" />
+    <result column="INTRODUCERDEPTID" jdbcType="VARCHAR" property="introducerdeptid" />
+    <result column="INTRODUCERTYPE" jdbcType="VARCHAR" property="introducertype" />
+    <result column="TEMPTYPE" jdbcType="VARCHAR" property="temptype" />
+    <result column="INTRODUCERCENTER" jdbcType="VARCHAR" property="introducercenter" />
+    <result column="INTRODUCERNOTE" jdbcType="VARCHAR" property="introducernote" />
+    <result column="ISMONEYFORIT" jdbcType="VARCHAR" property="ismoneyforit" />
+    <result column="CARDNO" jdbcType="VARCHAR" property="cardno" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="ISDHDJ" jdbcType="VARCHAR" property="isdhdj" />
+    <result column="CUSTOMERSTYLE" jdbcType="VARCHAR" property="customerstyle" />
+    <result column="UNCONTRACTNODATE" jdbcType="DATE" property="uncontractnodate" />
+    <result column="LEVELFIRID" jdbcType="DECIMAL" property="levelfirid" />
+    <result column="LEVELSECID" jdbcType="DECIMAL" property="levelsecid" />
+    <result column="LEVELTHIID" jdbcType="DECIMAL" property="levelthiid" />
+    <result column="UPDATESTATE" jdbcType="DATE" property="updatestate" />
+    <result column="CUSTOMERSECNAME" jdbcType="VARCHAR" property="customersecname" />
+    <result column="CUSTOMERSECTEL" jdbcType="VARCHAR" property="customersectel" />
+    <result column="CUSTOMERSECTEL2" jdbcType="VARCHAR" property="customersectel2" />
+    <result column="CUSTOMERSFIXEDTEL" jdbcType="VARCHAR" property="customersfixedtel" />
+    <result column="HOUSENO" jdbcType="VARCHAR" property="houseno" />
+    <result column="PRFORSALE" jdbcType="VARCHAR" property="prforsale" />
+    <result column="IMVOUNT" jdbcType="DECIMAL" property="imvount" />
+    <result column="OWNERSHIP" jdbcType="DECIMAL" property="ownership" />
+    <result column="UPOSHIPSON" jdbcType="VARCHAR" property="uposhipson" />
+    <result column="UPOSHIPDATE" jdbcType="DATE" property="uposhipdate" />
+    <result column="OWNERSHIPNOTE" jdbcType="VARCHAR" property="ownershipnote" />
+    <result column="UPINTRODUCTIONDATE" jdbcType="DATE" property="upintroductiondate" />
+    <result column="OWNERSHIPTYPE" jdbcType="DECIMAL" property="ownershiptype" />
+    <result column="COMPLETEDAY" jdbcType="DATE" property="completeday" />
+    <result column="RVISITPERSON" jdbcType="DECIMAL" property="rvisitperson" />
+    <result column="ALLOTDESIGNER" jdbcType="VARCHAR" property="allotdesigner" />
+    <result column="ALLOTBEGINDATE" jdbcType="DATE" property="allotbegindate" />
+    <result column="ALLOTENDDATE" jdbcType="DATE" property="allotenddate" />
+    <result column="CUSTOMERRANK" jdbcType="DECIMAL" property="customerrank" />
+    <result column="STARTDAY" jdbcType="DATE" property="startday" />
+    <result column="ALLOTID" jdbcType="VARCHAR" property="allotid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CUSTOMERSID, CUSTOMERSNO, CUSTOMERSNAME, CUSTOMERROOT, CUSTOMERSFROM, CUSTOMERSTYPE, 
+    CUSTOMERSBIRTHDAY, CUSTOMERSTEL, CUSTOMERSTEL2, CUSTOMERSEMAIL, WEDDINGDAY, COMMUNITY, 
+    ADDRESS, HOUSESIZE, INTRODUCER, HOUSETYPE, GETHOUSEDAY, PREDECORATEDAY, DECORATEBUDGET, 
+    ASKDAY, LIVINGNUM, INTEREST, TONE, TONECOLOUR, ISEXPERIENCE, DECOMPANY, ISEXCHANGED, 
+    FAMILYMEMBER, FAMILYMEMBEROTHER, POLICIER, POLICIEROTHER, POLICIERJOB, HOUSEUSER, 
+    HOUSEUSEROTHER, HOUSEUSERJOB, USEFOR, USEFOROTHER, ISCARS, CARBRAND, ISHOUSEMAP, 
+    DECORATESTYLE, FIRSTDECORATE, HOUSEUSERDESC, HOUSEUSERFEAR, POLICIERFEAR, HOUSEFUN, 
+    NOTES, CUSTOMERSTATE, SUBSCRIPTION, CUSTOMPURPOSE, DEPTID, DESIGNERID, SUBSCRIPTIONAMOUNT, 
+    CURRENCY, SUBSCRIPTIONDAY, ACTIVITY, MEASUREDAY, BUDGETDAY, EFFECTGRDAY, PRESIGNDAY, 
+    GIFTSTYLE, GIFTPRICE, GIFTNOTE, CREATEDBY, CREATEDWHEN, VERSIONNO, UPDATEDBY, UPDATEDWHEN, 
+    DELETED, SOURCETYPE, CONTRACTNO, DESIGNERNAME, IDREADY, UPEFDAY, CONTRACTNODATE, 
+    UNSUBSCRIBEDATE, RETURNREASON, RUNAWAYDAY, ACTIVITYADR, ARRIVENUM, FRONTNOTE, ISGIFT, 
+    GIFTDAY, GIFTASKDAY, GIFTSENDER, SIGNAMOUNT, CUSTOMERSNO2, ASDBY, DECORATIONTYPE, 
+    COMMUNICATION, INTRODUCERTEL, INTRODUCERCOMMUNICATY, INTRODUCERUSERNAME, INTRODUCER2, 
+    INTRODUCERDEPTNAME, INTRODUCERDEPTID, INTRODUCERTYPE, TEMPTYPE, INTRODUCERCENTER, 
+    INTRODUCERNOTE, ISMONEYFORIT, CARDNO, FLAG, ISDHDJ, CUSTOMERSTYLE, UNCONTRACTNODATE, 
+    LEVELFIRID, LEVELSECID, LEVELTHIID, UPDATESTATE, CUSTOMERSECNAME, CUSTOMERSECTEL, 
+    CUSTOMERSECTEL2, CUSTOMERSFIXEDTEL, HOUSENO, PRFORSALE, IMVOUNT, OWNERSHIP, UPOSHIPSON, 
+    UPOSHIPDATE, OWNERSHIPNOTE, UPINTRODUCTIONDATE, OWNERSHIPTYPE, COMPLETEDAY, RVISITPERSON, 
+    ALLOTDESIGNER, ALLOTBEGINDATE, ALLOTENDDATE, CUSTOMERRANK, STARTDAY, ALLOTID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CRM_CUSTOMERS
+    where CUSTOMERSID = #{customersid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CRM_CUSTOMERS
+    where CUSTOMERSID = #{customersid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.customers">
+    insert into CRM_CUSTOMERS (CUSTOMERSID, CUSTOMERSNO, CUSTOMERSNAME, 
+      CUSTOMERROOT, CUSTOMERSFROM, CUSTOMERSTYPE, 
+      CUSTOMERSBIRTHDAY, CUSTOMERSTEL, CUSTOMERSTEL2, 
+      CUSTOMERSEMAIL, WEDDINGDAY, COMMUNITY, 
+      ADDRESS, HOUSESIZE, INTRODUCER, 
+      HOUSETYPE, GETHOUSEDAY, PREDECORATEDAY, 
+      DECORATEBUDGET, ASKDAY, LIVINGNUM, 
+      INTEREST, TONE, TONECOLOUR, 
+      ISEXPERIENCE, DECOMPANY, ISEXCHANGED, 
+      FAMILYMEMBER, FAMILYMEMBEROTHER, POLICIER, 
+      POLICIEROTHER, POLICIERJOB, HOUSEUSER, 
+      HOUSEUSEROTHER, HOUSEUSERJOB, USEFOR, 
+      USEFOROTHER, ISCARS, CARBRAND, 
+      ISHOUSEMAP, DECORATESTYLE, FIRSTDECORATE, 
+      HOUSEUSERDESC, HOUSEUSERFEAR, POLICIERFEAR, 
+      HOUSEFUN, NOTES, CUSTOMERSTATE, 
+      SUBSCRIPTION, CUSTOMPURPOSE, DEPTID, 
+      DESIGNERID, SUBSCRIPTIONAMOUNT, CURRENCY, 
+      SUBSCRIPTIONDAY, ACTIVITY, MEASUREDAY, 
+      BUDGETDAY, EFFECTGRDAY, PRESIGNDAY, 
+      GIFTSTYLE, GIFTPRICE, GIFTNOTE, 
+      CREATEDBY, CREATEDWHEN, VERSIONNO, 
+      UPDATEDBY, UPDATEDWHEN, DELETED, 
+      SOURCETYPE, CONTRACTNO, DESIGNERNAME, 
+      IDREADY, UPEFDAY, CONTRACTNODATE, 
+      UNSUBSCRIBEDATE, RETURNREASON, RUNAWAYDAY, 
+      ACTIVITYADR, ARRIVENUM, FRONTNOTE, 
+      ISGIFT, GIFTDAY, GIFTASKDAY, 
+      GIFTSENDER, SIGNAMOUNT, CUSTOMERSNO2, 
+      ASDBY, DECORATIONTYPE, COMMUNICATION, 
+      INTRODUCERTEL, INTRODUCERCOMMUNICATY, INTRODUCERUSERNAME, 
+      INTRODUCER2, INTRODUCERDEPTNAME, INTRODUCERDEPTID, 
+      INTRODUCERTYPE, TEMPTYPE, INTRODUCERCENTER, 
+      INTRODUCERNOTE, ISMONEYFORIT, CARDNO, 
+      FLAG, ISDHDJ, CUSTOMERSTYLE, 
+      UNCONTRACTNODATE, LEVELFIRID, LEVELSECID, 
+      LEVELTHIID, UPDATESTATE, CUSTOMERSECNAME, 
+      CUSTOMERSECTEL, CUSTOMERSECTEL2, CUSTOMERSFIXEDTEL, 
+      HOUSENO, PRFORSALE, IMVOUNT, 
+      OWNERSHIP, UPOSHIPSON, UPOSHIPDATE, 
+      OWNERSHIPNOTE, UPINTRODUCTIONDATE, OWNERSHIPTYPE, 
+      COMPLETEDAY, RVISITPERSON, ALLOTDESIGNER, 
+      ALLOTBEGINDATE, ALLOTENDDATE, CUSTOMERRANK, 
+      STARTDAY, ALLOTID)
+    values (#{customersid,jdbcType=VARCHAR}, #{customersno,jdbcType=VARCHAR}, #{customersname,jdbcType=VARCHAR}, 
+      #{customerroot,jdbcType=DECIMAL}, #{customersfrom,jdbcType=VARCHAR}, #{customerstype,jdbcType=VARCHAR}, 
+      #{customersbirthday,jdbcType=DATE}, #{customerstel,jdbcType=VARCHAR}, #{customerstel2,jdbcType=VARCHAR}, 
+      #{customersemail,jdbcType=VARCHAR}, #{weddingday,jdbcType=DATE}, #{community,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{housesize,jdbcType=DECIMAL}, #{introducer,jdbcType=VARCHAR}, 
+      #{housetype,jdbcType=VARCHAR}, #{gethouseday,jdbcType=DATE}, #{predecorateday,jdbcType=DATE}, 
+      #{decoratebudget,jdbcType=VARCHAR}, #{askday,jdbcType=DATE}, #{livingnum,jdbcType=VARCHAR}, 
+      #{interest,jdbcType=VARCHAR}, #{tone,jdbcType=VARCHAR}, #{tonecolour,jdbcType=VARCHAR}, 
+      #{isexperience,jdbcType=DECIMAL}, #{decompany,jdbcType=VARCHAR}, #{isexchanged,jdbcType=DECIMAL}, 
+      #{familymember,jdbcType=VARCHAR}, #{familymemberother,jdbcType=VARCHAR}, #{policier,jdbcType=VARCHAR}, 
+      #{policierother,jdbcType=VARCHAR}, #{policierjob,jdbcType=VARCHAR}, #{houseuser,jdbcType=VARCHAR}, 
+      #{houseuserother,jdbcType=VARCHAR}, #{houseuserjob,jdbcType=VARCHAR}, #{usefor,jdbcType=VARCHAR}, 
+      #{useforother,jdbcType=VARCHAR}, #{iscars,jdbcType=DECIMAL}, #{carbrand,jdbcType=VARCHAR}, 
+      #{ishousemap,jdbcType=DECIMAL}, #{decoratestyle,jdbcType=VARCHAR}, #{firstdecorate,jdbcType=DECIMAL}, 
+      #{houseuserdesc,jdbcType=VARCHAR}, #{houseuserfear,jdbcType=VARCHAR}, #{policierfear,jdbcType=VARCHAR}, 
+      #{housefun,jdbcType=VARCHAR}, #{notes,jdbcType=VARCHAR}, #{customerstate,jdbcType=VARCHAR}, 
+      #{subscription,jdbcType=VARCHAR}, #{custompurpose,jdbcType=VARCHAR}, #{deptid,jdbcType=VARCHAR}, 
+      #{designerid,jdbcType=VARCHAR}, #{subscriptionamount,jdbcType=DECIMAL}, #{currency,jdbcType=VARCHAR}, 
+      #{subscriptionday,jdbcType=DATE}, #{activity,jdbcType=VARCHAR}, #{measureday,jdbcType=DATE}, 
+      #{budgetday,jdbcType=DATE}, #{effectgrday,jdbcType=DATE}, #{presignday,jdbcType=DATE}, 
+      #{giftstyle,jdbcType=VARCHAR}, #{giftprice,jdbcType=DECIMAL}, #{giftnote,jdbcType=VARCHAR}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdwhen,jdbcType=DATE}, #{versionno,jdbcType=DECIMAL}, 
+      #{updatedby,jdbcType=VARCHAR}, #{updatedwhen,jdbcType=DATE}, #{deleted,jdbcType=DECIMAL}, 
+      #{sourcetype,jdbcType=VARCHAR}, #{contractno,jdbcType=VARCHAR}, #{designername,jdbcType=VARCHAR}, 
+      #{idready,jdbcType=VARCHAR}, #{upefday,jdbcType=DATE}, #{contractnodate,jdbcType=DATE}, 
+      #{unsubscribedate,jdbcType=DATE}, #{returnreason,jdbcType=VARCHAR}, #{runawayday,jdbcType=DATE}, 
+      #{activityadr,jdbcType=VARCHAR}, #{arrivenum,jdbcType=DECIMAL}, #{frontnote,jdbcType=VARCHAR}, 
+      #{isgift,jdbcType=VARCHAR}, #{giftday,jdbcType=DATE}, #{giftaskday,jdbcType=DATE}, 
+      #{giftsender,jdbcType=VARCHAR}, #{signamount,jdbcType=DECIMAL}, #{customersno2,jdbcType=VARCHAR}, 
+      #{asdby,jdbcType=VARCHAR}, #{decorationtype,jdbcType=VARCHAR}, #{communication,jdbcType=VARCHAR}, 
+      #{introducertel,jdbcType=VARCHAR}, #{introducercommunicaty,jdbcType=VARCHAR}, #{introducerusername,jdbcType=VARCHAR}, 
+      #{introducer2,jdbcType=VARCHAR}, #{introducerdeptname,jdbcType=VARCHAR}, #{introducerdeptid,jdbcType=VARCHAR}, 
+      #{introducertype,jdbcType=VARCHAR}, #{temptype,jdbcType=VARCHAR}, #{introducercenter,jdbcType=VARCHAR}, 
+      #{introducernote,jdbcType=VARCHAR}, #{ismoneyforit,jdbcType=VARCHAR}, #{cardno,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR}, #{isdhdj,jdbcType=VARCHAR}, #{customerstyle,jdbcType=VARCHAR}, 
+      #{uncontractnodate,jdbcType=DATE}, #{levelfirid,jdbcType=DECIMAL}, #{levelsecid,jdbcType=DECIMAL}, 
+      #{levelthiid,jdbcType=DECIMAL}, #{updatestate,jdbcType=DATE}, #{customersecname,jdbcType=VARCHAR}, 
+      #{customersectel,jdbcType=VARCHAR}, #{customersectel2,jdbcType=VARCHAR}, #{customersfixedtel,jdbcType=VARCHAR}, 
+      #{houseno,jdbcType=VARCHAR}, #{prforsale,jdbcType=VARCHAR}, #{imvount,jdbcType=DECIMAL}, 
+      #{ownership,jdbcType=DECIMAL}, #{uposhipson,jdbcType=VARCHAR}, #{uposhipdate,jdbcType=DATE}, 
+      #{ownershipnote,jdbcType=VARCHAR}, #{upintroductiondate,jdbcType=DATE}, #{ownershiptype,jdbcType=DECIMAL}, 
+      #{completeday,jdbcType=DATE}, #{rvisitperson,jdbcType=DECIMAL}, #{allotdesigner,jdbcType=VARCHAR}, 
+      #{allotbegindate,jdbcType=DATE}, #{allotenddate,jdbcType=DATE}, #{customerrank,jdbcType=DECIMAL}, 
+      #{startday,jdbcType=DATE}, #{allotid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.customers">
+    insert into CRM_CUSTOMERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customersid != null">
+        CUSTOMERSID,
+      </if>
+      <if test="customersno != null">
+        CUSTOMERSNO,
+      </if>
+      <if test="customersname != null">
+        CUSTOMERSNAME,
+      </if>
+      <if test="customerroot != null">
+        CUSTOMERROOT,
+      </if>
+      <if test="customersfrom != null">
+        CUSTOMERSFROM,
+      </if>
+      <if test="customerstype != null">
+        CUSTOMERSTYPE,
+      </if>
+      <if test="customersbirthday != null">
+        CUSTOMERSBIRTHDAY,
+      </if>
+      <if test="customerstel != null">
+        CUSTOMERSTEL,
+      </if>
+      <if test="customerstel2 != null">
+        CUSTOMERSTEL2,
+      </if>
+      <if test="customersemail != null">
+        CUSTOMERSEMAIL,
+      </if>
+      <if test="weddingday != null">
+        WEDDINGDAY,
+      </if>
+      <if test="community != null">
+        COMMUNITY,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="housesize != null">
+        HOUSESIZE,
+      </if>
+      <if test="introducer != null">
+        INTRODUCER,
+      </if>
+      <if test="housetype != null">
+        HOUSETYPE,
+      </if>
+      <if test="gethouseday != null">
+        GETHOUSEDAY,
+      </if>
+      <if test="predecorateday != null">
+        PREDECORATEDAY,
+      </if>
+      <if test="decoratebudget != null">
+        DECORATEBUDGET,
+      </if>
+      <if test="askday != null">
+        ASKDAY,
+      </if>
+      <if test="livingnum != null">
+        LIVINGNUM,
+      </if>
+      <if test="interest != null">
+        INTEREST,
+      </if>
+      <if test="tone != null">
+        TONE,
+      </if>
+      <if test="tonecolour != null">
+        TONECOLOUR,
+      </if>
+      <if test="isexperience != null">
+        ISEXPERIENCE,
+      </if>
+      <if test="decompany != null">
+        DECOMPANY,
+      </if>
+      <if test="isexchanged != null">
+        ISEXCHANGED,
+      </if>
+      <if test="familymember != null">
+        FAMILYMEMBER,
+      </if>
+      <if test="familymemberother != null">
+        FAMILYMEMBEROTHER,
+      </if>
+      <if test="policier != null">
+        POLICIER,
+      </if>
+      <if test="policierother != null">
+        POLICIEROTHER,
+      </if>
+      <if test="policierjob != null">
+        POLICIERJOB,
+      </if>
+      <if test="houseuser != null">
+        HOUSEUSER,
+      </if>
+      <if test="houseuserother != null">
+        HOUSEUSEROTHER,
+      </if>
+      <if test="houseuserjob != null">
+        HOUSEUSERJOB,
+      </if>
+      <if test="usefor != null">
+        USEFOR,
+      </if>
+      <if test="useforother != null">
+        USEFOROTHER,
+      </if>
+      <if test="iscars != null">
+        ISCARS,
+      </if>
+      <if test="carbrand != null">
+        CARBRAND,
+      </if>
+      <if test="ishousemap != null">
+        ISHOUSEMAP,
+      </if>
+      <if test="decoratestyle != null">
+        DECORATESTYLE,
+      </if>
+      <if test="firstdecorate != null">
+        FIRSTDECORATE,
+      </if>
+      <if test="houseuserdesc != null">
+        HOUSEUSERDESC,
+      </if>
+      <if test="houseuserfear != null">
+        HOUSEUSERFEAR,
+      </if>
+      <if test="policierfear != null">
+        POLICIERFEAR,
+      </if>
+      <if test="housefun != null">
+        HOUSEFUN,
+      </if>
+      <if test="notes != null">
+        NOTES,
+      </if>
+      <if test="customerstate != null">
+        CUSTOMERSTATE,
+      </if>
+      <if test="subscription != null">
+        SUBSCRIPTION,
+      </if>
+      <if test="custompurpose != null">
+        CUSTOMPURPOSE,
+      </if>
+      <if test="deptid != null">
+        DEPTID,
+      </if>
+      <if test="designerid != null">
+        DESIGNERID,
+      </if>
+      <if test="subscriptionamount != null">
+        SUBSCRIPTIONAMOUNT,
+      </if>
+      <if test="currency != null">
+        CURRENCY,
+      </if>
+      <if test="subscriptionday != null">
+        SUBSCRIPTIONDAY,
+      </if>
+      <if test="activity != null">
+        ACTIVITY,
+      </if>
+      <if test="measureday != null">
+        MEASUREDAY,
+      </if>
+      <if test="budgetday != null">
+        BUDGETDAY,
+      </if>
+      <if test="effectgrday != null">
+        EFFECTGRDAY,
+      </if>
+      <if test="presignday != null">
+        PRESIGNDAY,
+      </if>
+      <if test="giftstyle != null">
+        GIFTSTYLE,
+      </if>
+      <if test="giftprice != null">
+        GIFTPRICE,
+      </if>
+      <if test="giftnote != null">
+        GIFTNOTE,
+      </if>
+      <if test="createdby != null">
+        CREATEDBY,
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN,
+      </if>
+      <if test="versionno != null">
+        VERSIONNO,
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY,
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="sourcetype != null">
+        SOURCETYPE,
+      </if>
+      <if test="contractno != null">
+        CONTRACTNO,
+      </if>
+      <if test="designername != null">
+        DESIGNERNAME,
+      </if>
+      <if test="idready != null">
+        IDREADY,
+      </if>
+      <if test="upefday != null">
+        UPEFDAY,
+      </if>
+      <if test="contractnodate != null">
+        CONTRACTNODATE,
+      </if>
+      <if test="unsubscribedate != null">
+        UNSUBSCRIBEDATE,
+      </if>
+      <if test="returnreason != null">
+        RETURNREASON,
+      </if>
+      <if test="runawayday != null">
+        RUNAWAYDAY,
+      </if>
+      <if test="activityadr != null">
+        ACTIVITYADR,
+      </if>
+      <if test="arrivenum != null">
+        ARRIVENUM,
+      </if>
+      <if test="frontnote != null">
+        FRONTNOTE,
+      </if>
+      <if test="isgift != null">
+        ISGIFT,
+      </if>
+      <if test="giftday != null">
+        GIFTDAY,
+      </if>
+      <if test="giftaskday != null">
+        GIFTASKDAY,
+      </if>
+      <if test="giftsender != null">
+        GIFTSENDER,
+      </if>
+      <if test="signamount != null">
+        SIGNAMOUNT,
+      </if>
+      <if test="customersno2 != null">
+        CUSTOMERSNO2,
+      </if>
+      <if test="asdby != null">
+        ASDBY,
+      </if>
+      <if test="decorationtype != null">
+        DECORATIONTYPE,
+      </if>
+      <if test="communication != null">
+        COMMUNICATION,
+      </if>
+      <if test="introducertel != null">
+        INTRODUCERTEL,
+      </if>
+      <if test="introducercommunicaty != null">
+        INTRODUCERCOMMUNICATY,
+      </if>
+      <if test="introducerusername != null">
+        INTRODUCERUSERNAME,
+      </if>
+      <if test="introducer2 != null">
+        INTRODUCER2,
+      </if>
+      <if test="introducerdeptname != null">
+        INTRODUCERDEPTNAME,
+      </if>
+      <if test="introducerdeptid != null">
+        INTRODUCERDEPTID,
+      </if>
+      <if test="introducertype != null">
+        INTRODUCERTYPE,
+      </if>
+      <if test="temptype != null">
+        TEMPTYPE,
+      </if>
+      <if test="introducercenter != null">
+        INTRODUCERCENTER,
+      </if>
+      <if test="introducernote != null">
+        INTRODUCERNOTE,
+      </if>
+      <if test="ismoneyforit != null">
+        ISMONEYFORIT,
+      </if>
+      <if test="cardno != null">
+        CARDNO,
+      </if>
+      <if test="flag != null">
+        FLAG,
+      </if>
+      <if test="isdhdj != null">
+        ISDHDJ,
+      </if>
+      <if test="customerstyle != null">
+        CUSTOMERSTYLE,
+      </if>
+      <if test="uncontractnodate != null">
+        UNCONTRACTNODATE,
+      </if>
+      <if test="levelfirid != null">
+        LEVELFIRID,
+      </if>
+      <if test="levelsecid != null">
+        LEVELSECID,
+      </if>
+      <if test="levelthiid != null">
+        LEVELTHIID,
+      </if>
+      <if test="updatestate != null">
+        UPDATESTATE,
+      </if>
+      <if test="customersecname != null">
+        CUSTOMERSECNAME,
+      </if>
+      <if test="customersectel != null">
+        CUSTOMERSECTEL,
+      </if>
+      <if test="customersectel2 != null">
+        CUSTOMERSECTEL2,
+      </if>
+      <if test="customersfixedtel != null">
+        CUSTOMERSFIXEDTEL,
+      </if>
+      <if test="houseno != null">
+        HOUSENO,
+      </if>
+      <if test="prforsale != null">
+        PRFORSALE,
+      </if>
+      <if test="imvount != null">
+        IMVOUNT,
+      </if>
+      <if test="ownership != null">
+        OWNERSHIP,
+      </if>
+      <if test="uposhipson != null">
+        UPOSHIPSON,
+      </if>
+      <if test="uposhipdate != null">
+        UPOSHIPDATE,
+      </if>
+      <if test="ownershipnote != null">
+        OWNERSHIPNOTE,
+      </if>
+      <if test="upintroductiondate != null">
+        UPINTRODUCTIONDATE,
+      </if>
+      <if test="ownershiptype != null">
+        OWNERSHIPTYPE,
+      </if>
+      <if test="completeday != null">
+        COMPLETEDAY,
+      </if>
+      <if test="rvisitperson != null">
+        RVISITPERSON,
+      </if>
+      <if test="allotdesigner != null">
+        ALLOTDESIGNER,
+      </if>
+      <if test="allotbegindate != null">
+        ALLOTBEGINDATE,
+      </if>
+      <if test="allotenddate != null">
+        ALLOTENDDATE,
+      </if>
+      <if test="customerrank != null">
+        CUSTOMERRANK,
+      </if>
+      <if test="startday != null">
+        STARTDAY,
+      </if>
+      <if test="allotid != null">
+        ALLOTID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customersid != null">
+        #{customersid,jdbcType=VARCHAR},
+      </if>
+      <if test="customersno != null">
+        #{customersno,jdbcType=VARCHAR},
+      </if>
+      <if test="customersname != null">
+        #{customersname,jdbcType=VARCHAR},
+      </if>
+      <if test="customerroot != null">
+        #{customerroot,jdbcType=DECIMAL},
+      </if>
+      <if test="customersfrom != null">
+        #{customersfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="customerstype != null">
+        #{customerstype,jdbcType=VARCHAR},
+      </if>
+      <if test="customersbirthday != null">
+        #{customersbirthday,jdbcType=DATE},
+      </if>
+      <if test="customerstel != null">
+        #{customerstel,jdbcType=VARCHAR},
+      </if>
+      <if test="customerstel2 != null">
+        #{customerstel2,jdbcType=VARCHAR},
+      </if>
+      <if test="customersemail != null">
+        #{customersemail,jdbcType=VARCHAR},
+      </if>
+      <if test="weddingday != null">
+        #{weddingday,jdbcType=DATE},
+      </if>
+      <if test="community != null">
+        #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="housesize != null">
+        #{housesize,jdbcType=DECIMAL},
+      </if>
+      <if test="introducer != null">
+        #{introducer,jdbcType=VARCHAR},
+      </if>
+      <if test="housetype != null">
+        #{housetype,jdbcType=VARCHAR},
+      </if>
+      <if test="gethouseday != null">
+        #{gethouseday,jdbcType=DATE},
+      </if>
+      <if test="predecorateday != null">
+        #{predecorateday,jdbcType=DATE},
+      </if>
+      <if test="decoratebudget != null">
+        #{decoratebudget,jdbcType=VARCHAR},
+      </if>
+      <if test="askday != null">
+        #{askday,jdbcType=DATE},
+      </if>
+      <if test="livingnum != null">
+        #{livingnum,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="tone != null">
+        #{tone,jdbcType=VARCHAR},
+      </if>
+      <if test="tonecolour != null">
+        #{tonecolour,jdbcType=VARCHAR},
+      </if>
+      <if test="isexperience != null">
+        #{isexperience,jdbcType=DECIMAL},
+      </if>
+      <if test="decompany != null">
+        #{decompany,jdbcType=VARCHAR},
+      </if>
+      <if test="isexchanged != null">
+        #{isexchanged,jdbcType=DECIMAL},
+      </if>
+      <if test="familymember != null">
+        #{familymember,jdbcType=VARCHAR},
+      </if>
+      <if test="familymemberother != null">
+        #{familymemberother,jdbcType=VARCHAR},
+      </if>
+      <if test="policier != null">
+        #{policier,jdbcType=VARCHAR},
+      </if>
+      <if test="policierother != null">
+        #{policierother,jdbcType=VARCHAR},
+      </if>
+      <if test="policierjob != null">
+        #{policierjob,jdbcType=VARCHAR},
+      </if>
+      <if test="houseuser != null">
+        #{houseuser,jdbcType=VARCHAR},
+      </if>
+      <if test="houseuserother != null">
+        #{houseuserother,jdbcType=VARCHAR},
+      </if>
+      <if test="houseuserjob != null">
+        #{houseuserjob,jdbcType=VARCHAR},
+      </if>
+      <if test="usefor != null">
+        #{usefor,jdbcType=VARCHAR},
+      </if>
+      <if test="useforother != null">
+        #{useforother,jdbcType=VARCHAR},
+      </if>
+      <if test="iscars != null">
+        #{iscars,jdbcType=DECIMAL},
+      </if>
+      <if test="carbrand != null">
+        #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="ishousemap != null">
+        #{ishousemap,jdbcType=DECIMAL},
+      </if>
+      <if test="decoratestyle != null">
+        #{decoratestyle,jdbcType=VARCHAR},
+      </if>
+      <if test="firstdecorate != null">
+        #{firstdecorate,jdbcType=DECIMAL},
+      </if>
+      <if test="houseuserdesc != null">
+        #{houseuserdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="houseuserfear != null">
+        #{houseuserfear,jdbcType=VARCHAR},
+      </if>
+      <if test="policierfear != null">
+        #{policierfear,jdbcType=VARCHAR},
+      </if>
+      <if test="housefun != null">
+        #{housefun,jdbcType=VARCHAR},
+      </if>
+      <if test="notes != null">
+        #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="customerstate != null">
+        #{customerstate,jdbcType=VARCHAR},
+      </if>
+      <if test="subscription != null">
+        #{subscription,jdbcType=VARCHAR},
+      </if>
+      <if test="custompurpose != null">
+        #{custompurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="deptid != null">
+        #{deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="designerid != null">
+        #{designerid,jdbcType=VARCHAR},
+      </if>
+      <if test="subscriptionamount != null">
+        #{subscriptionamount,jdbcType=DECIMAL},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="subscriptionday != null">
+        #{subscriptionday,jdbcType=DATE},
+      </if>
+      <if test="activity != null">
+        #{activity,jdbcType=VARCHAR},
+      </if>
+      <if test="measureday != null">
+        #{measureday,jdbcType=DATE},
+      </if>
+      <if test="budgetday != null">
+        #{budgetday,jdbcType=DATE},
+      </if>
+      <if test="effectgrday != null">
+        #{effectgrday,jdbcType=DATE},
+      </if>
+      <if test="presignday != null">
+        #{presignday,jdbcType=DATE},
+      </if>
+      <if test="giftstyle != null">
+        #{giftstyle,jdbcType=VARCHAR},
+      </if>
+      <if test="giftprice != null">
+        #{giftprice,jdbcType=DECIMAL},
+      </if>
+      <if test="giftnote != null">
+        #{giftnote,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdwhen != null">
+        #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="sourcetype != null">
+        #{sourcetype,jdbcType=VARCHAR},
+      </if>
+      <if test="contractno != null">
+        #{contractno,jdbcType=VARCHAR},
+      </if>
+      <if test="designername != null">
+        #{designername,jdbcType=VARCHAR},
+      </if>
+      <if test="idready != null">
+        #{idready,jdbcType=VARCHAR},
+      </if>
+      <if test="upefday != null">
+        #{upefday,jdbcType=DATE},
+      </if>
+      <if test="contractnodate != null">
+        #{contractnodate,jdbcType=DATE},
+      </if>
+      <if test="unsubscribedate != null">
+        #{unsubscribedate,jdbcType=DATE},
+      </if>
+      <if test="returnreason != null">
+        #{returnreason,jdbcType=VARCHAR},
+      </if>
+      <if test="runawayday != null">
+        #{runawayday,jdbcType=DATE},
+      </if>
+      <if test="activityadr != null">
+        #{activityadr,jdbcType=VARCHAR},
+      </if>
+      <if test="arrivenum != null">
+        #{arrivenum,jdbcType=DECIMAL},
+      </if>
+      <if test="frontnote != null">
+        #{frontnote,jdbcType=VARCHAR},
+      </if>
+      <if test="isgift != null">
+        #{isgift,jdbcType=VARCHAR},
+      </if>
+      <if test="giftday != null">
+        #{giftday,jdbcType=DATE},
+      </if>
+      <if test="giftaskday != null">
+        #{giftaskday,jdbcType=DATE},
+      </if>
+      <if test="giftsender != null">
+        #{giftsender,jdbcType=VARCHAR},
+      </if>
+      <if test="signamount != null">
+        #{signamount,jdbcType=DECIMAL},
+      </if>
+      <if test="customersno2 != null">
+        #{customersno2,jdbcType=VARCHAR},
+      </if>
+      <if test="asdby != null">
+        #{asdby,jdbcType=VARCHAR},
+      </if>
+      <if test="decorationtype != null">
+        #{decorationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="communication != null">
+        #{communication,jdbcType=VARCHAR},
+      </if>
+      <if test="introducertel != null">
+        #{introducertel,jdbcType=VARCHAR},
+      </if>
+      <if test="introducercommunicaty != null">
+        #{introducercommunicaty,jdbcType=VARCHAR},
+      </if>
+      <if test="introducerusername != null">
+        #{introducerusername,jdbcType=VARCHAR},
+      </if>
+      <if test="introducer2 != null">
+        #{introducer2,jdbcType=VARCHAR},
+      </if>
+      <if test="introducerdeptname != null">
+        #{introducerdeptname,jdbcType=VARCHAR},
+      </if>
+      <if test="introducerdeptid != null">
+        #{introducerdeptid,jdbcType=VARCHAR},
+      </if>
+      <if test="introducertype != null">
+        #{introducertype,jdbcType=VARCHAR},
+      </if>
+      <if test="temptype != null">
+        #{temptype,jdbcType=VARCHAR},
+      </if>
+      <if test="introducercenter != null">
+        #{introducercenter,jdbcType=VARCHAR},
+      </if>
+      <if test="introducernote != null">
+        #{introducernote,jdbcType=VARCHAR},
+      </if>
+      <if test="ismoneyforit != null">
+        #{ismoneyforit,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno != null">
+        #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="isdhdj != null">
+        #{isdhdj,jdbcType=VARCHAR},
+      </if>
+      <if test="customerstyle != null">
+        #{customerstyle,jdbcType=VARCHAR},
+      </if>
+      <if test="uncontractnodate != null">
+        #{uncontractnodate,jdbcType=DATE},
+      </if>
+      <if test="levelfirid != null">
+        #{levelfirid,jdbcType=DECIMAL},
+      </if>
+      <if test="levelsecid != null">
+        #{levelsecid,jdbcType=DECIMAL},
+      </if>
+      <if test="levelthiid != null">
+        #{levelthiid,jdbcType=DECIMAL},
+      </if>
+      <if test="updatestate != null">
+        #{updatestate,jdbcType=DATE},
+      </if>
+      <if test="customersecname != null">
+        #{customersecname,jdbcType=VARCHAR},
+      </if>
+      <if test="customersectel != null">
+        #{customersectel,jdbcType=VARCHAR},
+      </if>
+      <if test="customersectel2 != null">
+        #{customersectel2,jdbcType=VARCHAR},
+      </if>
+      <if test="customersfixedtel != null">
+        #{customersfixedtel,jdbcType=VARCHAR},
+      </if>
+      <if test="houseno != null">
+        #{houseno,jdbcType=VARCHAR},
+      </if>
+      <if test="prforsale != null">
+        #{prforsale,jdbcType=VARCHAR},
+      </if>
+      <if test="imvount != null">
+        #{imvount,jdbcType=DECIMAL},
+      </if>
+      <if test="ownership != null">
+        #{ownership,jdbcType=DECIMAL},
+      </if>
+      <if test="uposhipson != null">
+        #{uposhipson,jdbcType=VARCHAR},
+      </if>
+      <if test="uposhipdate != null">
+        #{uposhipdate,jdbcType=DATE},
+      </if>
+      <if test="ownershipnote != null">
+        #{ownershipnote,jdbcType=VARCHAR},
+      </if>
+      <if test="upintroductiondate != null">
+        #{upintroductiondate,jdbcType=DATE},
+      </if>
+      <if test="ownershiptype != null">
+        #{ownershiptype,jdbcType=DECIMAL},
+      </if>
+      <if test="completeday != null">
+        #{completeday,jdbcType=DATE},
+      </if>
+      <if test="rvisitperson != null">
+        #{rvisitperson,jdbcType=DECIMAL},
+      </if>
+      <if test="allotdesigner != null">
+        #{allotdesigner,jdbcType=VARCHAR},
+      </if>
+      <if test="allotbegindate != null">
+        #{allotbegindate,jdbcType=DATE},
+      </if>
+      <if test="allotenddate != null">
+        #{allotenddate,jdbcType=DATE},
+      </if>
+      <if test="customerrank != null">
+        #{customerrank,jdbcType=DECIMAL},
+      </if>
+      <if test="startday != null">
+        #{startday,jdbcType=DATE},
+      </if>
+      <if test="allotid != null">
+        #{allotid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liti.crm.model.auto.customers">
+    update CRM_CUSTOMERS
+    <set>
+      <if test="customersno != null">
+        CUSTOMERSNO = #{customersno,jdbcType=VARCHAR},
+      </if>
+      <if test="customersname != null">
+        CUSTOMERSNAME = #{customersname,jdbcType=VARCHAR},
+      </if>
+      <if test="customerroot != null">
+        CUSTOMERROOT = #{customerroot,jdbcType=DECIMAL},
+      </if>
+      <if test="customersfrom != null">
+        CUSTOMERSFROM = #{customersfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="customerstype != null">
+        CUSTOMERSTYPE = #{customerstype,jdbcType=VARCHAR},
+      </if>
+      <if test="customersbirthday != null">
+        CUSTOMERSBIRTHDAY = #{customersbirthday,jdbcType=DATE},
+      </if>
+      <if test="customerstel != null">
+        CUSTOMERSTEL = #{customerstel,jdbcType=VARCHAR},
+      </if>
+      <if test="customerstel2 != null">
+        CUSTOMERSTEL2 = #{customerstel2,jdbcType=VARCHAR},
+      </if>
+      <if test="customersemail != null">
+        CUSTOMERSEMAIL = #{customersemail,jdbcType=VARCHAR},
+      </if>
+      <if test="weddingday != null">
+        WEDDINGDAY = #{weddingday,jdbcType=DATE},
+      </if>
+      <if test="community != null">
+        COMMUNITY = #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="housesize != null">
+        HOUSESIZE = #{housesize,jdbcType=DECIMAL},
+      </if>
+      <if test="introducer != null">
+        INTRODUCER = #{introducer,jdbcType=VARCHAR},
+      </if>
+      <if test="housetype != null">
+        HOUSETYPE = #{housetype,jdbcType=VARCHAR},
+      </if>
+      <if test="gethouseday != null">
+        GETHOUSEDAY = #{gethouseday,jdbcType=DATE},
+      </if>
+      <if test="predecorateday != null">
+        PREDECORATEDAY = #{predecorateday,jdbcType=DATE},
+      </if>
+      <if test="decoratebudget != null">
+        DECORATEBUDGET = #{decoratebudget,jdbcType=VARCHAR},
+      </if>
+      <if test="askday != null">
+        ASKDAY = #{askday,jdbcType=DATE},
+      </if>
+      <if test="livingnum != null">
+        LIVINGNUM = #{livingnum,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        INTEREST = #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="tone != null">
+        TONE = #{tone,jdbcType=VARCHAR},
+      </if>
+      <if test="tonecolour != null">
+        TONECOLOUR = #{tonecolour,jdbcType=VARCHAR},
+      </if>
+      <if test="isexperience != null">
+        ISEXPERIENCE = #{isexperience,jdbcType=DECIMAL},
+      </if>
+      <if test="decompany != null">
+        DECOMPANY = #{decompany,jdbcType=VARCHAR},
+      </if>
+      <if test="isexchanged != null">
+        ISEXCHANGED = #{isexchanged,jdbcType=DECIMAL},
+      </if>
+      <if test="familymember != null">
+        FAMILYMEMBER = #{familymember,jdbcType=VARCHAR},
+      </if>
+      <if test="familymemberother != null">
+        FAMILYMEMBEROTHER = #{familymemberother,jdbcType=VARCHAR},
+      </if>
+      <if test="policier != null">
+        POLICIER = #{policier,jdbcType=VARCHAR},
+      </if>
+      <if test="policierother != null">
+        POLICIEROTHER = #{policierother,jdbcType=VARCHAR},
+      </if>
+      <if test="policierjob != null">
+        POLICIERJOB = #{policierjob,jdbcType=VARCHAR},
+      </if>
+      <if test="houseuser != null">
+        HOUSEUSER = #{houseuser,jdbcType=VARCHAR},
+      </if>
+      <if test="houseuserother != null">
+        HOUSEUSEROTHER = #{houseuserother,jdbcType=VARCHAR},
+      </if>
+      <if test="houseuserjob != null">
+        HOUSEUSERJOB = #{houseuserjob,jdbcType=VARCHAR},
+      </if>
+      <if test="usefor != null">
+        USEFOR = #{usefor,jdbcType=VARCHAR},
+      </if>
+      <if test="useforother != null">
+        USEFOROTHER = #{useforother,jdbcType=VARCHAR},
+      </if>
+      <if test="iscars != null">
+        ISCARS = #{iscars,jdbcType=DECIMAL},
+      </if>
+      <if test="carbrand != null">
+        CARBRAND = #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="ishousemap != null">
+        ISHOUSEMAP = #{ishousemap,jdbcType=DECIMAL},
+      </if>
+      <if test="decoratestyle != null">
+        DECORATESTYLE = #{decoratestyle,jdbcType=VARCHAR},
+      </if>
+      <if test="firstdecorate != null">
+        FIRSTDECORATE = #{firstdecorate,jdbcType=DECIMAL},
+      </if>
+      <if test="houseuserdesc != null">
+        HOUSEUSERDESC = #{houseuserdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="houseuserfear != null">
+        HOUSEUSERFEAR = #{houseuserfear,jdbcType=VARCHAR},
+      </if>
+      <if test="policierfear != null">
+        POLICIERFEAR = #{policierfear,jdbcType=VARCHAR},
+      </if>
+      <if test="housefun != null">
+        HOUSEFUN = #{housefun,jdbcType=VARCHAR},
+      </if>
+      <if test="notes != null">
+        NOTES = #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="customerstate != null">
+        CUSTOMERSTATE = #{customerstate,jdbcType=VARCHAR},
+      </if>
+      <if test="subscription != null">
+        SUBSCRIPTION = #{subscription,jdbcType=VARCHAR},
+      </if>
+      <if test="custompurpose != null">
+        CUSTOMPURPOSE = #{custompurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="deptid != null">
+        DEPTID = #{deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="designerid != null">
+        DESIGNERID = #{designerid,jdbcType=VARCHAR},
+      </if>
+      <if test="subscriptionamount != null">
+        SUBSCRIPTIONAMOUNT = #{subscriptionamount,jdbcType=DECIMAL},
+      </if>
+      <if test="currency != null">
+        CURRENCY = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="subscriptionday != null">
+        SUBSCRIPTIONDAY = #{subscriptionday,jdbcType=DATE},
+      </if>
+      <if test="activity != null">
+        ACTIVITY = #{activity,jdbcType=VARCHAR},
+      </if>
+      <if test="measureday != null">
+        MEASUREDAY = #{measureday,jdbcType=DATE},
+      </if>
+      <if test="budgetday != null">
+        BUDGETDAY = #{budgetday,jdbcType=DATE},
+      </if>
+      <if test="effectgrday != null">
+        EFFECTGRDAY = #{effectgrday,jdbcType=DATE},
+      </if>
+      <if test="presignday != null">
+        PRESIGNDAY = #{presignday,jdbcType=DATE},
+      </if>
+      <if test="giftstyle != null">
+        GIFTSTYLE = #{giftstyle,jdbcType=VARCHAR},
+      </if>
+      <if test="giftprice != null">
+        GIFTPRICE = #{giftprice,jdbcType=DECIMAL},
+      </if>
+      <if test="giftnote != null">
+        GIFTNOTE = #{giftnote,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN = #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        VERSIONNO = #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY = #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN = #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        DELETED = #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="sourcetype != null">
+        SOURCETYPE = #{sourcetype,jdbcType=VARCHAR},
+      </if>
+      <if test="contractno != null">
+        CONTRACTNO = #{contractno,jdbcType=VARCHAR},
+      </if>
+      <if test="designername != null">
+        DESIGNERNAME = #{designername,jdbcType=VARCHAR},
+      </if>
+      <if test="idready != null">
+        IDREADY = #{idready,jdbcType=VARCHAR},
+      </if>
+      <if test="upefday != null">
+        UPEFDAY = #{upefday,jdbcType=DATE},
+      </if>
+      <if test="contractnodate != null">
+        CONTRACTNODATE = #{contractnodate,jdbcType=DATE},
+      </if>
+      <if test="unsubscribedate != null">
+        UNSUBSCRIBEDATE = #{unsubscribedate,jdbcType=DATE},
+      </if>
+      <if test="returnreason != null">
+        RETURNREASON = #{returnreason,jdbcType=VARCHAR},
+      </if>
+      <if test="runawayday != null">
+        RUNAWAYDAY = #{runawayday,jdbcType=DATE},
+      </if>
+      <if test="activityadr != null">
+        ACTIVITYADR = #{activityadr,jdbcType=VARCHAR},
+      </if>
+      <if test="arrivenum != null">
+        ARRIVENUM = #{arrivenum,jdbcType=DECIMAL},
+      </if>
+      <if test="frontnote != null">
+        FRONTNOTE = #{frontnote,jdbcType=VARCHAR},
+      </if>
+      <if test="isgift != null">
+        ISGIFT = #{isgift,jdbcType=VARCHAR},
+      </if>
+      <if test="giftday != null">
+        GIFTDAY = #{giftday,jdbcType=DATE},
+      </if>
+      <if test="giftaskday != null">
+        GIFTASKDAY = #{giftaskday,jdbcType=DATE},
+      </if>
+      <if test="giftsender != null">
+        GIFTSENDER = #{giftsender,jdbcType=VARCHAR},
+      </if>
+      <if test="signamount != null">
+        SIGNAMOUNT = #{signamount,jdbcType=DECIMAL},
+      </if>
+      <if test="customersno2 != null">
+        CUSTOMERSNO2 = #{customersno2,jdbcType=VARCHAR},
+      </if>
+      <if test="asdby != null">
+        ASDBY = #{asdby,jdbcType=VARCHAR},
+      </if>
+      <if test="decorationtype != null">
+        DECORATIONTYPE = #{decorationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="communication != null">
+        COMMUNICATION = #{communication,jdbcType=VARCHAR},
+      </if>
+      <if test="introducertel != null">
+        INTRODUCERTEL = #{introducertel,jdbcType=VARCHAR},
+      </if>
+      <if test="introducercommunicaty != null">
+        INTRODUCERCOMMUNICATY = #{introducercommunicaty,jdbcType=VARCHAR},
+      </if>
+      <if test="introducerusername != null">
+        INTRODUCERUSERNAME = #{introducerusername,jdbcType=VARCHAR},
+      </if>
+      <if test="introducer2 != null">
+        INTRODUCER2 = #{introducer2,jdbcType=VARCHAR},
+      </if>
+      <if test="introducerdeptname != null">
+        INTRODUCERDEPTNAME = #{introducerdeptname,jdbcType=VARCHAR},
+      </if>
+      <if test="introducerdeptid != null">
+        INTRODUCERDEPTID = #{introducerdeptid,jdbcType=VARCHAR},
+      </if>
+      <if test="introducertype != null">
+        INTRODUCERTYPE = #{introducertype,jdbcType=VARCHAR},
+      </if>
+      <if test="temptype != null">
+        TEMPTYPE = #{temptype,jdbcType=VARCHAR},
+      </if>
+      <if test="introducercenter != null">
+        INTRODUCERCENTER = #{introducercenter,jdbcType=VARCHAR},
+      </if>
+      <if test="introducernote != null">
+        INTRODUCERNOTE = #{introducernote,jdbcType=VARCHAR},
+      </if>
+      <if test="ismoneyforit != null">
+        ISMONEYFORIT = #{ismoneyforit,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno != null">
+        CARDNO = #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        FLAG = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="isdhdj != null">
+        ISDHDJ = #{isdhdj,jdbcType=VARCHAR},
+      </if>
+      <if test="customerstyle != null">
+        CUSTOMERSTYLE = #{customerstyle,jdbcType=VARCHAR},
+      </if>
+      <if test="uncontractnodate != null">
+        UNCONTRACTNODATE = #{uncontractnodate,jdbcType=DATE},
+      </if>
+      <if test="levelfirid != null">
+        LEVELFIRID = #{levelfirid,jdbcType=DECIMAL},
+      </if>
+      <if test="levelsecid != null">
+        LEVELSECID = #{levelsecid,jdbcType=DECIMAL},
+      </if>
+      <if test="levelthiid != null">
+        LEVELTHIID = #{levelthiid,jdbcType=DECIMAL},
+      </if>
+      <if test="updatestate != null">
+        UPDATESTATE = #{updatestate,jdbcType=DATE},
+      </if>
+      <if test="customersecname != null">
+        CUSTOMERSECNAME = #{customersecname,jdbcType=VARCHAR},
+      </if>
+      <if test="customersectel != null">
+        CUSTOMERSECTEL = #{customersectel,jdbcType=VARCHAR},
+      </if>
+      <if test="customersectel2 != null">
+        CUSTOMERSECTEL2 = #{customersectel2,jdbcType=VARCHAR},
+      </if>
+      <if test="customersfixedtel != null">
+        CUSTOMERSFIXEDTEL = #{customersfixedtel,jdbcType=VARCHAR},
+      </if>
+      <if test="houseno != null">
+        HOUSENO = #{houseno,jdbcType=VARCHAR},
+      </if>
+      <if test="prforsale != null">
+        PRFORSALE = #{prforsale,jdbcType=VARCHAR},
+      </if>
+      <if test="imvount != null">
+        IMVOUNT = #{imvount,jdbcType=DECIMAL},
+      </if>
+      <if test="ownership != null">
+        OWNERSHIP = #{ownership,jdbcType=DECIMAL},
+      </if>
+      <if test="uposhipson != null">
+        UPOSHIPSON = #{uposhipson,jdbcType=VARCHAR},
+      </if>
+      <if test="uposhipdate != null">
+        UPOSHIPDATE = #{uposhipdate,jdbcType=DATE},
+      </if>
+      <if test="ownershipnote != null">
+        OWNERSHIPNOTE = #{ownershipnote,jdbcType=VARCHAR},
+      </if>
+      <if test="upintroductiondate != null">
+        UPINTRODUCTIONDATE = #{upintroductiondate,jdbcType=DATE},
+      </if>
+      <if test="ownershiptype != null">
+        OWNERSHIPTYPE = #{ownershiptype,jdbcType=DECIMAL},
+      </if>
+      <if test="completeday != null">
+        COMPLETEDAY = #{completeday,jdbcType=DATE},
+      </if>
+      <if test="rvisitperson != null">
+        RVISITPERSON = #{rvisitperson,jdbcType=DECIMAL},
+      </if>
+      <if test="allotdesigner != null">
+        ALLOTDESIGNER = #{allotdesigner,jdbcType=VARCHAR},
+      </if>
+      <if test="allotbegindate != null">
+        ALLOTBEGINDATE = #{allotbegindate,jdbcType=DATE},
+      </if>
+      <if test="allotenddate != null">
+        ALLOTENDDATE = #{allotenddate,jdbcType=DATE},
+      </if>
+      <if test="customerrank != null">
+        CUSTOMERRANK = #{customerrank,jdbcType=DECIMAL},
+      </if>
+      <if test="startday != null">
+        STARTDAY = #{startday,jdbcType=DATE},
+      </if>
+      <if test="allotid != null">
+        ALLOTID = #{allotid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CUSTOMERSID = #{customersid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liti.crm.model.auto.customers">
+    update CRM_CUSTOMERS
+    set CUSTOMERSNO = #{customersno,jdbcType=VARCHAR},
+      CUSTOMERSNAME = #{customersname,jdbcType=VARCHAR},
+      CUSTOMERROOT = #{customerroot,jdbcType=DECIMAL},
+      CUSTOMERSFROM = #{customersfrom,jdbcType=VARCHAR},
+      CUSTOMERSTYPE = #{customerstype,jdbcType=VARCHAR},
+      CUSTOMERSBIRTHDAY = #{customersbirthday,jdbcType=DATE},
+      CUSTOMERSTEL = #{customerstel,jdbcType=VARCHAR},
+      CUSTOMERSTEL2 = #{customerstel2,jdbcType=VARCHAR},
+      CUSTOMERSEMAIL = #{customersemail,jdbcType=VARCHAR},
+      WEDDINGDAY = #{weddingday,jdbcType=DATE},
+      COMMUNITY = #{community,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      HOUSESIZE = #{housesize,jdbcType=DECIMAL},
+      INTRODUCER = #{introducer,jdbcType=VARCHAR},
+      HOUSETYPE = #{housetype,jdbcType=VARCHAR},
+      GETHOUSEDAY = #{gethouseday,jdbcType=DATE},
+      PREDECORATEDAY = #{predecorateday,jdbcType=DATE},
+      DECORATEBUDGET = #{decoratebudget,jdbcType=VARCHAR},
+      ASKDAY = #{askday,jdbcType=DATE},
+      LIVINGNUM = #{livingnum,jdbcType=VARCHAR},
+      INTEREST = #{interest,jdbcType=VARCHAR},
+      TONE = #{tone,jdbcType=VARCHAR},
+      TONECOLOUR = #{tonecolour,jdbcType=VARCHAR},
+      ISEXPERIENCE = #{isexperience,jdbcType=DECIMAL},
+      DECOMPANY = #{decompany,jdbcType=VARCHAR},
+      ISEXCHANGED = #{isexchanged,jdbcType=DECIMAL},
+      FAMILYMEMBER = #{familymember,jdbcType=VARCHAR},
+      FAMILYMEMBEROTHER = #{familymemberother,jdbcType=VARCHAR},
+      POLICIER = #{policier,jdbcType=VARCHAR},
+      POLICIEROTHER = #{policierother,jdbcType=VARCHAR},
+      POLICIERJOB = #{policierjob,jdbcType=VARCHAR},
+      HOUSEUSER = #{houseuser,jdbcType=VARCHAR},
+      HOUSEUSEROTHER = #{houseuserother,jdbcType=VARCHAR},
+      HOUSEUSERJOB = #{houseuserjob,jdbcType=VARCHAR},
+      USEFOR = #{usefor,jdbcType=VARCHAR},
+      USEFOROTHER = #{useforother,jdbcType=VARCHAR},
+      ISCARS = #{iscars,jdbcType=DECIMAL},
+      CARBRAND = #{carbrand,jdbcType=VARCHAR},
+      ISHOUSEMAP = #{ishousemap,jdbcType=DECIMAL},
+      DECORATESTYLE = #{decoratestyle,jdbcType=VARCHAR},
+      FIRSTDECORATE = #{firstdecorate,jdbcType=DECIMAL},
+      HOUSEUSERDESC = #{houseuserdesc,jdbcType=VARCHAR},
+      HOUSEUSERFEAR = #{houseuserfear,jdbcType=VARCHAR},
+      POLICIERFEAR = #{policierfear,jdbcType=VARCHAR},
+      HOUSEFUN = #{housefun,jdbcType=VARCHAR},
+      NOTES = #{notes,jdbcType=VARCHAR},
+      CUSTOMERSTATE = #{customerstate,jdbcType=VARCHAR},
+      SUBSCRIPTION = #{subscription,jdbcType=VARCHAR},
+      CUSTOMPURPOSE = #{custompurpose,jdbcType=VARCHAR},
+      DEPTID = #{deptid,jdbcType=VARCHAR},
+      DESIGNERID = #{designerid,jdbcType=VARCHAR},
+      SUBSCRIPTIONAMOUNT = #{subscriptionamount,jdbcType=DECIMAL},
+      CURRENCY = #{currency,jdbcType=VARCHAR},
+      SUBSCRIPTIONDAY = #{subscriptionday,jdbcType=DATE},
+      ACTIVITY = #{activity,jdbcType=VARCHAR},
+      MEASUREDAY = #{measureday,jdbcType=DATE},
+      BUDGETDAY = #{budgetday,jdbcType=DATE},
+      EFFECTGRDAY = #{effectgrday,jdbcType=DATE},
+      PRESIGNDAY = #{presignday,jdbcType=DATE},
+      GIFTSTYLE = #{giftstyle,jdbcType=VARCHAR},
+      GIFTPRICE = #{giftprice,jdbcType=DECIMAL},
+      GIFTNOTE = #{giftnote,jdbcType=VARCHAR},
+      CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      CREATEDWHEN = #{createdwhen,jdbcType=DATE},
+      VERSIONNO = #{versionno,jdbcType=DECIMAL},
+      UPDATEDBY = #{updatedby,jdbcType=VARCHAR},
+      UPDATEDWHEN = #{updatedwhen,jdbcType=DATE},
+      DELETED = #{deleted,jdbcType=DECIMAL},
+      SOURCETYPE = #{sourcetype,jdbcType=VARCHAR},
+      CONTRACTNO = #{contractno,jdbcType=VARCHAR},
+      DESIGNERNAME = #{designername,jdbcType=VARCHAR},
+      IDREADY = #{idready,jdbcType=VARCHAR},
+      UPEFDAY = #{upefday,jdbcType=DATE},
+      CONTRACTNODATE = #{contractnodate,jdbcType=DATE},
+      UNSUBSCRIBEDATE = #{unsubscribedate,jdbcType=DATE},
+      RETURNREASON = #{returnreason,jdbcType=VARCHAR},
+      RUNAWAYDAY = #{runawayday,jdbcType=DATE},
+      ACTIVITYADR = #{activityadr,jdbcType=VARCHAR},
+      ARRIVENUM = #{arrivenum,jdbcType=DECIMAL},
+      FRONTNOTE = #{frontnote,jdbcType=VARCHAR},
+      ISGIFT = #{isgift,jdbcType=VARCHAR},
+      GIFTDAY = #{giftday,jdbcType=DATE},
+      GIFTASKDAY = #{giftaskday,jdbcType=DATE},
+      GIFTSENDER = #{giftsender,jdbcType=VARCHAR},
+      SIGNAMOUNT = #{signamount,jdbcType=DECIMAL},
+      CUSTOMERSNO2 = #{customersno2,jdbcType=VARCHAR},
+      ASDBY = #{asdby,jdbcType=VARCHAR},
+      DECORATIONTYPE = #{decorationtype,jdbcType=VARCHAR},
+      COMMUNICATION = #{communication,jdbcType=VARCHAR},
+      INTRODUCERTEL = #{introducertel,jdbcType=VARCHAR},
+      INTRODUCERCOMMUNICATY = #{introducercommunicaty,jdbcType=VARCHAR},
+      INTRODUCERUSERNAME = #{introducerusername,jdbcType=VARCHAR},
+      INTRODUCER2 = #{introducer2,jdbcType=VARCHAR},
+      INTRODUCERDEPTNAME = #{introducerdeptname,jdbcType=VARCHAR},
+      INTRODUCERDEPTID = #{introducerdeptid,jdbcType=VARCHAR},
+      INTRODUCERTYPE = #{introducertype,jdbcType=VARCHAR},
+      TEMPTYPE = #{temptype,jdbcType=VARCHAR},
+      INTRODUCERCENTER = #{introducercenter,jdbcType=VARCHAR},
+      INTRODUCERNOTE = #{introducernote,jdbcType=VARCHAR},
+      ISMONEYFORIT = #{ismoneyforit,jdbcType=VARCHAR},
+      CARDNO = #{cardno,jdbcType=VARCHAR},
+      FLAG = #{flag,jdbcType=VARCHAR},
+      ISDHDJ = #{isdhdj,jdbcType=VARCHAR},
+      CUSTOMERSTYLE = #{customerstyle,jdbcType=VARCHAR},
+      UNCONTRACTNODATE = #{uncontractnodate,jdbcType=DATE},
+      LEVELFIRID = #{levelfirid,jdbcType=DECIMAL},
+      LEVELSECID = #{levelsecid,jdbcType=DECIMAL},
+      LEVELTHIID = #{levelthiid,jdbcType=DECIMAL},
+      UPDATESTATE = #{updatestate,jdbcType=DATE},
+      CUSTOMERSECNAME = #{customersecname,jdbcType=VARCHAR},
+      CUSTOMERSECTEL = #{customersectel,jdbcType=VARCHAR},
+      CUSTOMERSECTEL2 = #{customersectel2,jdbcType=VARCHAR},
+      CUSTOMERSFIXEDTEL = #{customersfixedtel,jdbcType=VARCHAR},
+      HOUSENO = #{houseno,jdbcType=VARCHAR},
+      PRFORSALE = #{prforsale,jdbcType=VARCHAR},
+      IMVOUNT = #{imvount,jdbcType=DECIMAL},
+      OWNERSHIP = #{ownership,jdbcType=DECIMAL},
+      UPOSHIPSON = #{uposhipson,jdbcType=VARCHAR},
+      UPOSHIPDATE = #{uposhipdate,jdbcType=DATE},
+      OWNERSHIPNOTE = #{ownershipnote,jdbcType=VARCHAR},
+      UPINTRODUCTIONDATE = #{upintroductiondate,jdbcType=DATE},
+      OWNERSHIPTYPE = #{ownershiptype,jdbcType=DECIMAL},
+      COMPLETEDAY = #{completeday,jdbcType=DATE},
+      RVISITPERSON = #{rvisitperson,jdbcType=DECIMAL},
+      ALLOTDESIGNER = #{allotdesigner,jdbcType=VARCHAR},
+      ALLOTBEGINDATE = #{allotbegindate,jdbcType=DATE},
+      ALLOTENDDATE = #{allotenddate,jdbcType=DATE},
+      CUSTOMERRANK = #{customerrank,jdbcType=DECIMAL},
+      STARTDAY = #{startday,jdbcType=DATE},
+      ALLOTID = #{allotid,jdbcType=VARCHAR}
+    where CUSTOMERSID = #{customersid,jdbcType=VARCHAR}
+  </update>
+</mapper>

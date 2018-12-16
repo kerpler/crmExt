@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.demoMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.demo">
+    <result column="DEMOID" jdbcType="VARCHAR" property="demoid" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+   <select id="findCount" parameterType="cn.liti.crm.model.auto.demo" resultType="Integer">
+    select count(*) from demo t where t.username = #{username,jdbcType=VARCHAR} and password =#{password,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.demo">
+    insert into DEMO (DEMOID, USERNAME, PASSWORD
+      )
+    values (#{demoid,jdbcType=VARCHAR}, #{username1,jdbcType=VARCHAR}, #{password1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.demo">
+    insert into DEMO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="demoid != null">
+        DEMOID,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="demoid != null">
+        #{demoid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
