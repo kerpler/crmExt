@@ -1,2 +1,7 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/litian2106/crmExt.git
 eclipse.preferences.version=1
+encoding//src/main/webapp/error.jsp=UTF-8
 encoding//src/main/webapp/jsp/page1.jsp=UTF-8
+encoding//src/main/webapp/wholeprocess/page1.jsp=UTF-8
