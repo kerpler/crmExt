@@ -92,16 +92,23 @@
 			<div id="sidebar" data-toggle='show'>
 				<ul>
 					<!-- <li data-src='page1.html' class="bg-primary">新建工程<span class="glyphicon glyphicon-pencil" ></span></li> -->
-					<li data-src='page11.jsp' class="bg-primary">在施工程<span class="glyphicon glyphicon-th-list"></span></li>
+					<li data-src='page1.jsp' class="bg-primary">在施工程<span class="glyphicon glyphicon-th-list"></span></li>
+					<li data-src='page2.jsp'>完工工程<span class="glyphicon glyphicon-th-large"></span></li>
 					<li data-src='page3.jsp'>完工工程<span class="glyphicon glyphicon-th-large"></span></li>
 					<li data-src='page4.jsp'>客户信息<span class="glyphicon glyphicon-user"></span></li>
 					<li data-src='page5.jsp'>统计图表<span class="glyphicon glyphicon-signal"></span></li>
 					<li data-src='page6.jsp'>权限管理<span class="glyphicon glyphicon-cog"></span></li>
-					<li data-src='page7.jsp'>详细阶段<span class="glyphicon glyphicon-cog"></span></li>
+					<li data-src='page7.jsp'>page7<span class="glyphicon glyphicon-cog"></span></li>
+					<li data-src='page8.jsp'>page8<span class="glyphicon glyphicon-cog"></span></li>
+					<li data-src='page9.jsp'>page9<span class="glyphicon glyphicon-cog"></span></li>
+					<li data-src='page0.jsp'>page0<span class="glyphicon glyphicon-cog"></span></li>
+					<li data-src='addStage.jsp'>addStage<span class="glyphicon glyphicon-cog"></span></li>
+					<li data-src='addStage1.jsp'>addStage<span class="glyphicon glyphicon-cog"></span></li>
+					<li data-src='projectGant.jsp'>projectGant<span class="glyphicon glyphicon-cog"></span></li>
 				</ul>
 			</div>
 			<div id="main" class="flex-1">
-				<iframe src="page11.jsp"></iframe>
+				<iframe src="page1.jsp"></iframe>
 			</div>
 		</div>
 	</div>
