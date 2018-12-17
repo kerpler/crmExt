@@ -11,6 +11,21 @@ public class stageprocess {
 
     private Integer days;
 
+    
+    public stageprocess(String stageprocessid, String stageprocessname,
+            Integer code, Integer days) {
+        super();
+        this.stageprocessid = stageprocessid;
+        this.stageprocessname = stageprocessname;
+        this.code = code;
+        this.days = days;
+    }
+
+    public stageprocess() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
     public String getStageprocessid() {
         return stageprocessid;
     }
@@ -42,4 +57,12 @@ public class stageprocess {
     public void setDays(Integer days) {
         this.days = days;
     }
+
+    @Override
+    public String toString() {
+        return "stageprocess [stageprocessid=" + stageprocessid
+                + ", stageprocessname=" + stageprocessname + ", code=" + code
+                + ", days=" + days + "]";
+    }
+    
 }

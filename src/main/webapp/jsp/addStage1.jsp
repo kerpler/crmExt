@@ -27,7 +27,7 @@
 <body>
 
 <div class="col-lg-12">
-<h3>用户表</h3>
+<h3>阶段类别基础表</h3>
   <div id="toolbar1" class="btn-group">
         <button type="button" data-name="addButton" id="addButton" class="btn btn-default"> <i class="fa fa-plus">添加</i>
         </button>
@@ -61,21 +61,44 @@
 <script type="text/javascript">
 
         /*数据json*/
-        var json =  [{"Id":"1","UserName":"水利","Userstagename":"SL","Lastlogintime":"2016-01-05"},
-                     {"Id":"2","UserName":"电力","Userstagename":"DL"},
-                     {"Id":"3","UserName":"市政","Userstagename":"CJ"},
-                     {"Id":"4","UserName":"建筑","Userstagename":"JG"},
-                     {"Id":"5","UserName":"交通","Userstagename":"JT"},
-                     {"Id":"6","UserName":"境外","Userstagename":"JW"}];
+        var json =  [{"Id":"1","UserName":"水利","UserStageprocessname":"SL","Lastlogintime":"2016-01-05"},
+                     {"Id":"2","UserName":"电力","UserStageprocessname":"DL"},
+                     {"Id":"3","UserName":"市政","UserStageprocessname":"CJ"},
+                     {"Id":"4","UserName":"建筑","UserStageprocessname":"JG"},
+                     {"Id":"5","UserName":"交通","UserStageprocessname":"JT"},
+                     {"Id":"6","UserName":"境外","UserStageprocessname":"JW"}];
       
   $(document).ready(function() {
+	  //添加
     $("#addButton").click(function() {
         $('#modalTable').modal({
         show:true,
         backdrop:'static'
         });
     })
-
+    //删除
+    $("#deleteButton").click(function() {
+    	var code1="";
+        var selectRow=$('#table0').bootstrapTable('getSelections');
+        if (selectRow.length<=0) {
+          alert("请勾选行！");
+          return false;
+        }
+        var code =$.map(selectRow,function(row){
+        	code1= row.code; 
+        })
+        /* alert(code1); */
+        $.ajax({
+            type:"POST",
+            url:"${pageContext.request.contextPath}/stageController/deleteStage",//servlet文件的名称
+            data:{code:code1},
+            async: false,
+            success:function(data,status){
+              alert("删除成功");
+              location.reload();
+             }
+        });  	
+    })
     //importusers
     $("#importButton").click(function() {
         $('#importusers').modal({
@@ -110,7 +133,7 @@
               <div class="form-group must">
                 <label class="col-sm-3 control-label">名称</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" id="stagename"></div>
+                  <input type="text" class="form-control" id="Stageprocessname"></div>
               </div>
               <div class="form-group must">
                 <label class="col-sm-3 control-label">天数</label>
@@ -132,29 +155,23 @@
     function save(){
       // var radio =$("input[type='radio']:checked").val();        
       var code   = $('#code').val();
-      var stagename   = $('#stagename').val();
+      var Stageprocessname   = $('#Stageprocessname').val();
       var days   = $('#days').val();
-      var Repassword = $('#Repassword').val();
-      var Email      = $('#Email').val();
-      var Department = $('#Department').val();
-      var Secoffice  = $('#Secoffice').val();
-      var Ip         = $('#Ip').val();
-      var Port         = $('#Port').val();
-      // var Status     = $('#Status option:selected').text();
-      var Status     = $('#Status option:selected').val();
-      var Role       = $('#Role').val();
       if (code)
         {  
             $.ajax({
                 type:"post",
-                url:"${pageContext.request.contextPath}/add/addStage",
-                data: {code:code,stagename:stagename,days:days},
+                url:"${pageContext.request.contextPath}/stageController/addStage",
+                data: {code:code,Stageprocessname:Stageprocessname,days:days},
                 success:function(data,status){
-                  alert("添加“"+data+"”成功！(status:"+status+".)");
+                 /*  alert("添加“"+data+"”成功！(status:"+status+".)"); */
+                  alert("添加成功");
+                  location.reload();
+                  /* location.replace(document.referrer); */
                  }
             });  
         } else{
-          alert("用户名等不能为空！");
+          alert("标识！");
         }
         // $(function(){$('#myModal').modal('hide')}); 
           $('#modalTable').modal('hide');
@@ -163,36 +180,61 @@
           // window.location.reload();//刷新页面
     }
   $(function () {
-    $('#table0').bootstrapTable({
-        idField: 'Id',
-       // url: '/admin/user',
-        // striped: "true",
-        columns: [
-          {
-            radio: 'true',
-            width: '10'
-          },
-          {
-            // field: 'Number',
-            title: '序号',
-            formatter:function(value,row,index){
-            return index+1
-            }
-          },{
-            field: 'code',
-            title: '标识',
-            sortable:'true',
-          },{
-            field: 'stagename',
-            title: '名称',
-          },{
-            field: 'days',
-            title: '天数',
-          }
-        ]
-    });
-  });
-
+	  var stage = [];
+	  var datas = [];
+	  window.onload=function (){
+          $.ajax({
+                 url:"${pageContext.request.contextPath}/stageController/findStage",//servlet文件的名称
+                 dataType:"json",
+                 type:"POST",
+                 async: false,
+                 success:function(data){
+                     stage = data;
+                     for (var i = 0, len = stage.length; i < len; i++) {
+                         datas.push({
+                             "id": (i + 1),
+                             "code": stage[i].code,
+                             "Stageprocessname": stage[i].stageprocessname,
+                             "days": stage[i].days,
+                         })
+                         
+                       };
+                       $(function() {
+                           $('#table0').bootstrapTable({
+                               idField: 'Id',
+                              // url: '/admin/user',
+                               // striped: "true",
+                               sortOrder: "asc", 
+                               columns: [
+                                 {
+                                   radio: 'true',
+                                   width: '10'
+                                 },
+                                 {
+                                   // field: 'Number',
+                                   title: '序号',
+                                   formatter:function(value,row,index){
+                                   return index+1
+                                   }
+                                 },{
+                                   field: 'code',
+                                   title: '标识',
+                                   sortable:'true',
+                                 },{
+                                   field: 'Stageprocessname',
+                                   title: '名称',
+                                 },{
+                                   field: 'days',
+                                   title: '天数',
+                                 }
+                               ],
+                           data: datas,
+                       })
+                    })
+                  }
+			})
+	  }
+  })
   function index1(value,row,index){
     return index+1
   }
@@ -210,7 +252,7 @@
          $(".info").removeClass("info");
          $(ele).addClass("info");
          rowid=row.Id;//全局变量
-         rowtitle=row.stagename
+         rowtitle=row.Stageprocessname
          $("#rowtitle").html("用户详情-"+rowtitle);
          $("#details").show();
          $('#table1').bootstrapTable('refresh', {url:'/admin/user/'+row.Id});

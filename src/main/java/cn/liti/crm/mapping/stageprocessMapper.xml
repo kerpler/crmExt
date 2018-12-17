@@ -7,6 +7,9 @@
     <result column="CODE" jdbcType="DECIMAL" property="code" />
     <result column="DAYS" jdbcType="DECIMAL" property="days" />
   </resultMap>
+  <select id="findStage" parameterType="cn.liti.crm.model.auto.stageprocess" resultType="cn.liti.crm.model.auto.stageprocess">
+    select * from STAGEPROCESS order by code asc
+  </select>
   <insert id="addStage" parameterType="cn.liti.crm.model.auto.stageprocess">
     <selectKey keyProperty="id" resultType="String" order="BEFORE">
         select sys_guid() from dual
@@ -14,6 +17,11 @@
     insert into STAGEPROCESS (STAGEPROCESSID, STAGEPROCESSNAME,CODE, DAYS)
     values (#{id,jdbcType=VARCHAR}, #{stagename,jdbcType=VARCHAR},#{code,jdbcType=INTEGER}, #{days,jdbcType=INTEGER})
   </insert>
+  <delete id="deleteStage" parameterType="cn.liti.crm.model.auto.stageprocess">
+    delete from STAGEPROCESS where code = #{code,jdbcType=INTEGER}
+    
+  </delete>
+  
   <insert id="insert" parameterType="cn.liti.crm.model.auto.stageprocess">
     insert into STAGEPROCESS (STAGEPROCESSID, STAGEPROCESSNAME, 
       CODE, DAYS)

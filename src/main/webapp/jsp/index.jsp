@@ -102,13 +102,13 @@
 					<li data-src='page8.jsp'>page8<span class="glyphicon glyphicon-cog"></span></li>
 					<li data-src='page9.jsp'>page9<span class="glyphicon glyphicon-cog"></span></li>
 					<li data-src='page0.jsp'>page0<span class="glyphicon glyphicon-cog"></span></li>
-					<li data-src='addStage.jsp'>addStage<span class="glyphicon glyphicon-cog"></span></li>
+					<!-- <li data-src='addStage.jsp'>addStage<span class="glyphicon glyphicon-cog"></span></li> -->
 					<li data-src='addStage1.jsp'>addStage<span class="glyphicon glyphicon-cog"></span></li>
 					<li data-src='projectGant.jsp'>projectGant<span class="glyphicon glyphicon-cog"></span></li>
 				</ul>
 			</div>
 			<div id="main" class="flex-1">
-				<iframe src="page1.jsp"></iframe>
+				<iframe src="addStage1.jsp"></iframe>
 			</div>
 		</div>
 	</div>
