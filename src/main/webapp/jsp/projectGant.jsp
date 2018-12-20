@@ -1642,7 +1642,7 @@
                     <label>选择项目进度数据文件(Excel)：
                       <input type="file" class="form-control" name="gantsexcel" id="gantsexcel"/> </label>
                     <br/>
-                  </div>
+                  </div> 
                   <!-- <button type="submit" class="btn btn-default">提交</button> -->
                 </form>
               </div>

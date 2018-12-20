@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.RecordMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.Record">
+    <result column="PK" jdbcType="VARCHAR" property="pk" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="COMMITUSERNAME" jdbcType="VARCHAR" property="commitusername" />
+    <result column="CUSTOMER" jdbcType="VARCHAR" property="customer" />
+    <result column="LONGITUDE" jdbcType="DECIMAL" property="longitude" />
+    <result column="LATITUDE" jdbcType="DECIMAL" property="latitude" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="STEP" jdbcType="VARCHAR" property="step" />
+    <result column="NOTE" jdbcType="VARCHAR" property="note" />
+    <result column="SERVERID" jdbcType="VARCHAR" property="serverid" />
+    <result column="TOUSERS" jdbcType="VARCHAR" property="tousers" />
+    <result column="RECORDTIME" jdbcType="DATE" property="recordtime" />
+    <result column="NEXTIME" jdbcType="DATE" property="nextime" />
+    <result column="ISALERT" jdbcType="VARCHAR" property="isalert" />
+    <result column="ISSTANDARD" jdbcType="VARCHAR" property="isstandard" />
+    <result column="REASON0" jdbcType="VARCHAR" property="reason0" />
+    <result column="REASON1" jdbcType="VARCHAR" property="reason1" />
+    <result column="REASON2" jdbcType="VARCHAR" property="reason2" />
+    <result column="REASON3" jdbcType="VARCHAR" property="reason3" />
+    <result column="REASON4" jdbcType="VARCHAR" property="reason4" />
+    <result column="CUSTOMERSNO" jdbcType="VARCHAR" property="customersno" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.Record">
+    insert into CRM_CHECKRECORD (PK, USERID, COMMITUSERNAME, 
+      CUSTOMER, LONGITUDE, LATITUDE, 
+      ADDRESS, STEP, NOTE, 
+      SERVERID, TOUSERS, RECORDTIME, 
+      NEXTIME, ISALERT, ISSTANDARD, 
+      REASON0, REASON1, REASON2, 
+      REASON3, REASON4, CUSTOMERSNO, 
+      TYPE)
+    values (#{pk,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{commitusername,jdbcType=VARCHAR}, 
+      #{customer,jdbcType=VARCHAR}, #{longitude,jdbcType=DECIMAL}, #{latitude,jdbcType=DECIMAL}, 
+      #{address,jdbcType=VARCHAR}, #{step,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{serverid,jdbcType=VARCHAR}, #{tousers,jdbcType=VARCHAR}, #{recordtime,jdbcType=DATE}, 
+      #{nextime,jdbcType=DATE}, #{isalert,jdbcType=VARCHAR}, #{isstandard,jdbcType=VARCHAR}, 
+      #{reason0,jdbcType=VARCHAR}, #{reason1,jdbcType=VARCHAR}, #{reason2,jdbcType=VARCHAR}, 
+      #{reason3,jdbcType=VARCHAR}, #{reason4,jdbcType=VARCHAR}, #{customersno,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.Record">
+    insert into CRM_CHECKRECORD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pk != null">
+        PK,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="commitusername != null">
+        COMMITUSERNAME,
+      </if>
+      <if test="customer != null">
+        CUSTOMER,
+      </if>
+      <if test="longitude != null">
+        LONGITUDE,
+      </if>
+      <if test="latitude != null">
+        LATITUDE,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="step != null">
+        STEP,
+      </if>
+      <if test="note != null">
+        NOTE,
+      </if>
+      <if test="serverid != null">
+        SERVERID,
+      </if>
+      <if test="tousers != null">
+        TOUSERS,
+      </if>
+      <if test="recordtime != null">
+        RECORDTIME,
+      </if>
+      <if test="nextime != null">
+        NEXTIME,
+      </if>
+      <if test="isalert != null">
+        ISALERT,
+      </if>
+      <if test="isstandard != null">
+        ISSTANDARD,
+      </if>
+      <if test="reason0 != null">
+        REASON0,
+      </if>
+      <if test="reason1 != null">
+        REASON1,
+      </if>
+      <if test="reason2 != null">
+        REASON2,
+      </if>
+      <if test="reason3 != null">
+        REASON3,
+      </if>
+      <if test="reason4 != null">
+        REASON4,
+      </if>
+      <if test="customersno != null">
+        CUSTOMERSNO,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pk != null">
+        #{pk,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="commitusername != null">
+        #{commitusername,jdbcType=VARCHAR},
+      </if>
+      <if test="customer != null">
+        #{customer,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="step != null">
+        #{step,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="serverid != null">
+        #{serverid,jdbcType=VARCHAR},
+      </if>
+      <if test="tousers != null">
+        #{tousers,jdbcType=VARCHAR},
+      </if>
+      <if test="recordtime != null">
+        #{recordtime,jdbcType=DATE},
+      </if>
+      <if test="nextime != null">
+        #{nextime,jdbcType=DATE},
+      </if>
+      <if test="isalert != null">
+        #{isalert,jdbcType=VARCHAR},
+      </if>
+      <if test="isstandard != null">
+        #{isstandard,jdbcType=VARCHAR},
+      </if>
+      <if test="reason0 != null">
+        #{reason0,jdbcType=VARCHAR},
+      </if>
+      <if test="reason1 != null">
+        #{reason1,jdbcType=VARCHAR},
+      </if>
+      <if test="reason2 != null">
+        #{reason2,jdbcType=VARCHAR},
+      </if>
+      <if test="reason3 != null">
+        #{reason3,jdbcType=VARCHAR},
+      </if>
+      <if test="reason4 != null">
+        #{reason4,jdbcType=VARCHAR},
+      </if>
+      <if test="customersno != null">
+        #{customersno,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

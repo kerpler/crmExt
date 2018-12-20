@@ -92,23 +92,26 @@
 			<div id="sidebar" data-toggle='show'>
 				<ul>
 					<!-- <li data-src='page1.html' class="bg-primary">新建工程<span class="glyphicon glyphicon-pencil" ></span></li> -->
-					<li data-src='page1.jsp' class="bg-primary">在施工程<span class="glyphicon glyphicon-th-list"></span></li>
-					<li data-src='page2.jsp'>完工工程<span class="glyphicon glyphicon-th-large"></span></li>
-					<li data-src='page3.jsp'>完工工程<span class="glyphicon glyphicon-th-large"></span></li>
+					<!-- <li data-src='page3.jsp'>新建工程<span class="glyphicon glyphicon-th-large"></span></li>
+					<li data-src='page2.jsp'>新建工程<span class="glyphicon glyphicon-th-large"></span></li>
 					<li data-src='page4.jsp'>客户信息<span class="glyphicon glyphicon-user"></span></li>
 					<li data-src='page5.jsp'>统计图表<span class="glyphicon glyphicon-signal"></span></li>
 					<li data-src='page6.jsp'>权限管理<span class="glyphicon glyphicon-cog"></span></li>
 					<li data-src='page7.jsp'>page7<span class="glyphicon glyphicon-cog"></span></li>
-					<li data-src='page8.jsp'>page8<span class="glyphicon glyphicon-cog"></span></li>
 					<li data-src='page9.jsp'>page9<span class="glyphicon glyphicon-cog"></span></li>
-					<li data-src='page0.jsp'>page0<span class="glyphicon glyphicon-cog"></span></li>
+					<li data-src='page0.jsp'>page0<span class="glyphicon glyphicon-cog"></span></li> -->
 					<!-- <li data-src='addStage.jsp'>addStage<span class="glyphicon glyphicon-cog"></span></li> -->
-					<li data-src='addStage1.jsp'>addStage<span class="glyphicon glyphicon-cog"></span></li>
-					<li data-src='projectGant.jsp'>projectGant<span class="glyphicon glyphicon-cog"></span></li>
+					<!-- <li data-src='addStage.jsp'>阶段分类基础表<span class="glyphicon glyphicon-cog"></span></li> -->
+					<!-- <li data-src='stageprocess.jsp'>阶段流程基础表<span class="glyphicon glyphicon-cog"></span></li> -->
+					<li data-src='page1.jsp' class="bg-primary">新建工程<span class="glyphicon glyphicon-th-list"></span></li>
+					<li data-src='page8.jsp'>在施工地<span class="glyphicon glyphicon-cog"></span></li>
+                    <li data-src='page9.jsp'>查看详情<span class="glyphicon glyphicon-cog"></span></li>
+					<li data-src='projectGant.jsp'>查看详情2<span class="glyphicon glyphicon-cog"></span></li>
+					<li data-src='basestage.jsp'>阶段基础表<span class="glyphicon glyphicon-cog"></span></li>
 				</ul>
 			</div>
 			<div id="main" class="flex-1">
-				<iframe src="addStage1.jsp"></iframe>
+				<iframe src="projectGant.jsp"></iframe>
 			</div>
 		</div>
 	</div>

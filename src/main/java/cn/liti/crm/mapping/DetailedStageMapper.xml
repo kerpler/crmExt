@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.DetailedStageMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.DetailedStage">
+    <result column="DETAILEDSTAGEID" jdbcType="VARCHAR" property="detailedstageid" />
+    <result column="DETAILEDPROCESSID" jdbcType="VARCHAR" property="detailedprocessid" />
+    <result column="DETAILEDSTAGENAME" jdbcType="VARCHAR" property="detailedstagename" />
+    <result column="DETAILEDCODE" jdbcType="DECIMAL" property="detailedcode" />
+    <result column="DETAILEDDAYS" jdbcType="DECIMAL" property="detaileddays" />
+  </resultMap>
+  
+  <insert id="addDetailedStage" parameterType="cn.liti.crm.model.auto.DetailedStage">
+  <selectKey keyProperty="id" resultType="String" order="BEFORE">
+        select sys_guid() from dual
+    </selectKey>
+    insert into CRM_BAS_DETAILEDSTAGE (DETAILEDSTAGEID, DETAILEDPROCESSID, 
+      DETAILEDSTAGENAME, DETAILEDCODE, DETAILEDDAYS
+      )
+    values (#{id,jdbcType=VARCHAR}, #{detailedprocessid,jdbcType=VARCHAR}, 
+      #{detailedstagename,jdbcType=VARCHAR}, #{detailedcode,jdbcType=INTEGER}, #{detaileddays,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateDetailedStage" parameterType="cn.liti.crm.model.auto.DetailedStage">
+    update CRM_BAS_DETAILEDSTAGE
+    set DETAILEDSTAGENAME = #{detailedstagename,jdbcType=VARCHAR},
+      DETAILEDDAYS = #{detaileddays,jdbcType=INTEGER}
+    where DETAILEDSTAGEID = #{detailedstageid,jdbcType=VARCHAR}
+  </update>
+  
+  <delete id="delDetailedStage" parameterType="cn.liti.crm.model.auto.DetailedStage">
+    delete from CRM_BAS_DETAILEDSTAGE where DETAILEDSTAGEID = #{detailedstageid,jdbcType=VARCHAR}
+    
+  </delete>
+  
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.DetailedStage">
+    insert into CRM_BAS_DETAILEDSTAGE (DETAILEDSTAGEID, DETAILEDPROCESSID, 
+      DETAILEDSTAGENAME, DETAILEDCODE, DETAILEDDAYS
+      )
+    values (#{detailedstageid,jdbcType=VARCHAR}, #{detailedprocessid,jdbcType=VARCHAR}, 
+      #{detailedstagename,jdbcType=VARCHAR}, #{detailedcode,jdbcType=DECIMAL}, #{detaileddays,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.DetailedStage">
+    insert into CRM_BAS_DETAILEDSTAGE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="detailedstageid != null">
+        DETAILEDSTAGEID,
+      </if>
+      <if test="detailedprocessid != null">
+        DETAILEDPROCESSID,
+      </if>
+      <if test="detailedstagename != null">
+        DETAILEDSTAGENAME,
+      </if>
+      <if test="detailedcode != null">
+        DETAILEDCODE,
+      </if>
+      <if test="detaileddays != null">
+        DETAILEDDAYS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="detailedstageid != null">
+        #{detailedstageid,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedprocessid != null">
+        #{detailedprocessid,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedstagename != null">
+        #{detailedstagename,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedcode != null">
+        #{detailedcode,jdbcType=DECIMAL},
+      </if>
+      <if test="detaileddays != null">
+        #{detaileddays,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

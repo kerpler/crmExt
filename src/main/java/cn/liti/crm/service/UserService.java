@@ -1,11 +1,12 @@
 package cn.liti.crm.service;  
 
-import cn.liti.crm.model.auto.User;
+import java.util.List;
 
-  
+import cn.liti.crm.model.auto.zyUser;
   
 public interface UserService {  
-    public User getUserById(int userId);
 
-    public int findCount(String username, String password);  
+	public List<zyUser> getUserList();
+
+	public void addUser(zyUser zyuser);  
 }

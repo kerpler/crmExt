@@ -8,8 +8,11 @@
     <result column="DAYS" jdbcType="DECIMAL" property="days" />
   </resultMap>
   <select id="findStage" parameterType="cn.liti.crm.model.auto.stageprocess" resultType="cn.liti.crm.model.auto.stageprocess">
-    select * from STAGEPROCESS order by code asc
+    select * from CRM_BAS_STAGEPROCESS
   </select>
+  <select id="findStageById" parameterType="cn.liti.crm.model.auto.DetailedStage" resultType="cn.liti.crm.model.auto.DetailedStage">
+    select * from CRM_BAS_DETAILEDSTAGE t where detailedprocessid = #{id,jdbcType=VARCHAR} 
+  </select> 
   <insert id="addStage" parameterType="cn.liti.crm.model.auto.stageprocess">
     <selectKey keyProperty="id" resultType="String" order="BEFORE">
         select sys_guid() from dual

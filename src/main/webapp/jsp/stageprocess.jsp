@@ -27,11 +27,11 @@
 <body>
 
 <div class="col-lg-12">
-<h3>阶段类别基础表</h3>
+<h3>阶段流程基础表</h3>
   <div id="toolbar1" class="btn-group">
         <button type="button" data-name="addButton" id="addButton" class="btn btn-default"> <i class="fa fa-plus">添加</i>
         </button>
-        <button type="button" data-name="importButton" id="editButton" class="btn btn-default"> <i class="fa fa-plus">编辑</i>
+        <button type="button" data-name="importButton" id="importButton" class="btn btn-default"> <i class="fa fa-plus">导入</i>
         </button>
         <button type="button" data-name="deleteButton" id="deleteButton" class="btn btn-default">
         <i class="fa fa-trash">删除</i>
@@ -69,7 +69,7 @@
                      {"Id":"6","UserName":"境外","UserStageprocessname":"JW"}];
       
   $(document).ready(function() {
-	  //添加
+      //添加
     $("#addButton").click(function() {
         $('#modalTable').modal({
         show:true,
@@ -78,14 +78,14 @@
     })
     //删除
     $("#deleteButton").click(function() {
-    	var code1="";
+        var code1="";
         var selectRow=$('#table0').bootstrapTable('getSelections');
         if (selectRow.length<=0) {
           alert("请勾选行！");
           return false;
         }
         var code =$.map(selectRow,function(row){
-        	code1= row.code; 
+            code1= row.code; 
         })
         /* alert(code1); */
         $.ajax({
@@ -97,18 +97,9 @@
               alert("删除成功");
               location.reload();
              }
-        });  	
+        });     
     })
-    //编辑
-    
-    $("#editButton").click(function() {
-        $('#editmodalTable').modal({
-        show:true,
-        backdrop:'static'
-        });
-    })
-    
-    //importusers editButton
+    //importusers
     $("#importButton").click(function() {
         $('#importusers').modal({
         show:true,
@@ -120,7 +111,7 @@
 
 </script>
 
-<!-- 添加分类 -->
+<!-- 添加用户 -->
 <div class="container">
   <form class="form-horizontal">
     <div class="modal fade" id="modalTable">
@@ -130,7 +121,7 @@
             <button type="button" class="close" data-dismiss="modal">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h3 class="modal-title">添加分类</h3>
+            <h3 class="modal-title">添加阶段流程</h3>
           </div>
           <div class="modal-body">
             <div class="modal-body-content">        
@@ -160,49 +151,6 @@
   </div>
 </form>
 </div>
-
-<!-- 编辑 -->
-<div class="container">
-  <form class="form-horizontal">
-    <div class="modal fade" id="editmodalTable">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h3 class="modal-title">编辑分类</h3>
-          </div>
-          <div class="modal-body">
-            <div class="modal-body-content">        
-              <!-- <div class="form-group must">
-                <label class="col-sm-3 control-label">标识</label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control" id="code"></div>
-              </div> -->
-              <div class="form-group must">
-                <label class="col-sm-3 control-label">名称</label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control" id="editStageprocessname"></div>
-              </div>
-              <div class="form-group must">
-                <label class="col-sm-3 control-label">天数</label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control" id="editdays" maxlength="32" placeholder="至多32个字符"></div>
-              </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" onclick="edit()">保存</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
-</div>
-
-
 <script type="text/javascript">
     function save(){
       // var radio =$("input[type='radio']:checked").val();        
@@ -231,37 +179,10 @@
           // "/category/modifyfrm?cid="+cid
           // window.location.reload();//刷新页面
     }
-    //编辑
-    function edit(){
-    	  var code2="";
-         var selectRow=$('#table0').bootstrapTable('getSelections');
-         if (selectRow.length<=0) {
-           alert("请勾选行！");
-           return false;
-         }
-         var code =$.map(selectRow,function(row){
-             code2= row.code; 
-         })
-	        var Stageprocessname   = $('#editStageprocessname').val();
-	        var days   = $('#editdays').val();
-	        alert(code2);
-	        alert(Stageprocessname);
-	        alert(days); 
-               $.ajax({
-                  type:"post",
-                  url:"${pageContext.request.contextPath}/stageController/editStage",
-                  data: {code:code2,Stageprocessname:Stageprocessname,days:days},
-                  success:function(data,status){
-                    alert("修改成功");
-                    location.reload();
-                   }
-              });  
-            $('#editmodalTable').modal('hide');
-      }
   $(function () {
-	  var stage = [];
-	  var datas = [];
-	  window.onload=function (){
+      var stage = [];
+      var datas = [];
+      window.onload=function (){
           $.ajax({
                  url:"${pageContext.request.contextPath}/stageController/findStage",//servlet文件的名称
                  dataType:"json",
@@ -296,12 +217,17 @@
                                    return index+1
                                    }
                                  },{
+                                     field: 'Stageprocessname',
+                                     title: '阶段名称',
+                                  },
+                                  {
+                                     field: 'Stageprocessname',
+                                     title: '流程名称',
+                                   },
+                                   {
                                    field: 'code',
                                    title: '标识',
                                    sortable:'true',
-                                 },{
-                                   field: 'Stageprocessname',
-                                   title: '名称',
                                  },{
                                    field: 'days',
                                    title: '天数',
@@ -311,8 +237,8 @@
                        })
                     })
                   }
-			})
-	  }
+            })
+      }
   })
   function index1(value,row,index){
     return index+1

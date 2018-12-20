@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.zyUserMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.zyUser">
+    <id column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="USERPWD" jdbcType="VARCHAR" property="userpwd" />
+    <result column="AGE" jdbcType="NUMERIC" property="age" />
+    <result column="CREATEDWHEN" jdbcType="DATE" property="createdwhen" />
+    <result column="VERSIONNO" jdbcType="DECIMAL" property="versionno" />
+    <result column="UPDATEDBY" jdbcType="VARCHAR" property="updatedby" />
+    <result column="UPDATEDWHEN" jdbcType="DATE" property="updatedwhen" />
+    <result column="DELETED" jdbcType="DECIMAL" property="deleted" />
+    <result column="CREATEDBY" jdbcType="VARCHAR" property="createdby" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USERID, USERNAME, USERPWD, AGE, CREATEDWHEN, VERSIONNO, UPDATEDBY, UPDATEDWHEN, DELETED, 
+    CREATEDBY
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CRM_ZY_USER
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CRM_ZY_USER
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.zyUser">
+    insert into CRM_ZY_USER (USERID, USERNAME, USERPWD, 
+      AGE, CREATEDWHEN, VERSIONNO, 
+      UPDATEDBY, UPDATEDWHEN, DELETED, 
+      CREATEDBY)
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR}, 
+      #{age,jdbcType=DECIMAL}, #{createdwhen,jdbcType=DATE}, #{versionno,jdbcType=DECIMAL}, 
+      #{updatedby,jdbcType=VARCHAR}, #{updatedwhen,jdbcType=DATE}, #{deleted,jdbcType=DECIMAL}, 
+      #{createdby,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.zyUser">
+    insert into CRM_ZY_USER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="userpwd != null">
+        USERPWD,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN,
+      </if>
+      <if test="versionno != null">
+        VERSIONNO,
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY,
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="createdby != null">
+        CREATEDBY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=DECIMAL},
+      </if>
+      <if test="createdwhen != null">
+        #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liti.crm.model.auto.zyUser">
+    update CRM_ZY_USER
+    <set>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        USERPWD = #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        AGE = #{age,jdbcType=DECIMAL},
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN = #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        VERSIONNO = #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY = #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN = #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        DELETED = #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liti.crm.model.auto.zyUser">
+    update CRM_ZY_USER
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      USERPWD = #{userpwd,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=DECIMAL},
+      CREATEDWHEN = #{createdwhen,jdbcType=DATE},
+      VERSIONNO = #{versionno,jdbcType=DECIMAL},
+      UPDATEDBY = #{updatedby,jdbcType=VARCHAR},
+      UPDATEDWHEN = #{updatedwhen,jdbcType=DATE},
+      DELETED = #{deleted,jdbcType=DECIMAL},
+      CREATEDBY = #{createdby,jdbcType=VARCHAR}
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="cn.liti.crm.model.auto.zyUser" >
+    select 
+    <include refid="Base_Column_List" />
+    from crm_zy_user
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.liti.crm.model.auto.zyUser" >
+    select 
+    <include refid="Base_Column_List" />
+    from crm_zy_user
+  </select>
+</mapper>
