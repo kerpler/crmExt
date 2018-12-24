@@ -17,22 +17,22 @@
     <selectKey keyProperty="id" resultType="String" order="BEFORE">
         select sys_guid() from dual
     </selectKey>
-    insert into STAGEPROCESS (STAGEPROCESSID, STAGEPROCESSNAME,CODE, DAYS)
-    values (#{id,jdbcType=VARCHAR}, #{stagename,jdbcType=VARCHAR},#{code,jdbcType=INTEGER}, #{days,jdbcType=INTEGER})
+    insert into crm_bas_stageprocess (STAGEPROCESSID, STAGEPROCESSNAME, DAYS)
+    values (#{id,jdbcType=VARCHAR}, #{stagename,jdbcType=VARCHAR}, #{days,jdbcType=INTEGER})
   </insert>
   <delete id="deleteStage" parameterType="cn.liti.crm.model.auto.stageprocess">
-    delete from STAGEPROCESS where code = #{code,jdbcType=INTEGER}
+    delete from crm_bas_stageprocess where code = #{code,jdbcType=INTEGER}
     
   </delete>
   
   <insert id="insert" parameterType="cn.liti.crm.model.auto.stageprocess">
-    insert into STAGEPROCESS (STAGEPROCESSID, STAGEPROCESSNAME, 
+    insert into crm_bas_stageprocess (STAGEPROCESSID, STAGEPROCESSNAME, 
       CODE, DAYS)
     values (#{stageprocessid,jdbcType=VARCHAR}, #{stageprocessname,jdbcType=VARCHAR}, 
       #{code,jdbcType=DECIMAL}, #{days,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.stageprocess">
-    insert into STAGEPROCESS
+    insert into crm_bas_stageprocess
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="stageprocessid != null">
         STAGEPROCESSID,
