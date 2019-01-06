@@ -364,7 +364,8 @@ field：点击列的 field 名称 -->
         data-unique-id="id"
         data-pagination="true"
         data-side-pagination="client"
-        data-click-to-select="true">
+        data-click-to-select="true"
+        >
       <thead>        
       <tr>
         <!-- radiobox data-checkbox="true"-->

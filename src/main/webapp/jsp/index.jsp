@@ -1,147 +1,219 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<!-- 引入标签库 -->
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
+<!-- 后台主页面，其他为子页面-->
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title></title>
-	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" /> -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/bootstrap/css/flex.css" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/bootstrap/css/less.css" />
-	<script src="${pageContext.request.contextPath}/plugins/bootstrap/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="${pageContext.request.contextPath}/plugins/bootstrap/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="${pageContext.request.contextPath}/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-	<style type="text/css">
-		#box {
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			overflow: hidden;
-		}
+<!-- 获取项目名称路径 -->
+<%
+	pageContext.setAttribute("PATH", request.getContextPath());
+%>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在施工地全程监控</title>
+	
+  <script type="text/javascript" src="${PATH}/plugins/static/js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="${PATH}/plugins/static/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="${PATH}/plugins/static/css/bootstrap.min.css"/>
 
-		#head {
-			height: 80px;
-			/*background-color: black;*/
-			border-bottom: 1px solid;
-		}
+  <link rel="stylesheet" href="${PATH}/plugins/static/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="${PATH}/plugins/static/css/custom.css">
 
-		#sidebar {
-			width: 180px;
-			position: relative;
-			background-color: #2C3E50;
-			left: 0;
-		}
+  <script type="text/javascript" src="${PATH}/plugins/static/js/bootstrap-treeview.js"></script>
+  <link rel="stylesheet" type="text/css" href="${PATH}/plugins/static/css/bootstrap-treeview.css"/>
 
-		#sidebar>ul {
-			padding: 0;
-			list-style-type: none;
-			text-align: center;
-			font-size: 18px;
-
-			color: white;
-			font-weight: bold;
-		}
-
-		#sidebar>ul>li {
-			line-height: 50px;
-			border-bottom: 1px solid;
-			cursor: pointer;
-		}
-
-		#sidebar>ul>li:hover {
-			background-color: white;
-			color: #2C3E50;
-			transition: 0.6s;
-		}
-
-		#main {
-			/*background-color: red;*/
-			padding: 0;
-			overflow: hidden;
-		}
-
-		#main>iframe {
-			width: 100%;
-			height: 100%;
-			border: none;
-
-		}
-
-		.glyphicon {
-			/*font-size: .9em;*/
-			/*margin-top: 10px;*/
-			margin-left: 15px;
-		}
-	</style>
-	<script type="text/javascript">
-		var isChrome = navigator.userAgent.toLowerCase().match(/chrome/) != null;
-		if (!isChrome) {
-			alert('为了您更好的体验，请使用Chrome浏览器浏览此页面！\n\n若您正在使用（360浏览器/QQ浏览器）请切换为极速模式！')
-		}
-		
-	</script>
+  <link rel="stylesheet" type="text/css" href="${PATH}/plugins/static/font-awesome-4.7.0/css/font-awesome.min.css"/>
+  <style media="screen">
+      #sidebar {
+          background-color: #2c3e50;
+      }
+  </style>
 </head>
-
 <body>
-	<div id="box" class="flex flex-v">
-		<div id="head">
-			<img src="${pageContext.request.contextPath}/plugins/img/logo.png" height="80%" style="margin:8px">单击这个logo收回菜单
-		</div>
-		<div class="flex-1 flex">
-			<div id="sidebar" data-toggle='show'>
-				<ul>
-					<!-- <li data-src='page1.html' class="bg-primary">新建工程<span class="glyphicon glyphicon-pencil" ></span></li> -->
-					<!-- <li data-src='page3.jsp'>新建工程<span class="glyphicon glyphicon-th-large"></span></li>
-					<li data-src='page2.jsp'>新建工程<span class="glyphicon glyphicon-th-large"></span></li>
-					<li data-src='page4.jsp'>客户信息<span class="glyphicon glyphicon-user"></span></li>
-					<li data-src='page5.jsp'>统计图表<span class="glyphicon glyphicon-signal"></span></li>
-					<li data-src='page6.jsp'>权限管理<span class="glyphicon glyphicon-cog"></span></li>
-					<li data-src='page7.jsp'>page7<span class="glyphicon glyphicon-cog"></span></li>
-					<li data-src='page9.jsp'>page9<span class="glyphicon glyphicon-cog"></span></li>
-					<li data-src='page0.jsp'>page0<span class="glyphicon glyphicon-cog"></span></li> -->
-					<!-- <li data-src='addStage.jsp'>addStage<span class="glyphicon glyphicon-cog"></span></li> -->
-					<!-- <li data-src='addStage.jsp'>阶段分类基础表<span class="glyphicon glyphicon-cog"></span></li> -->
-					<!-- <li data-src='stageprocess.jsp'>阶段流程基础表<span class="glyphicon glyphicon-cog"></span></li> -->
-					<li data-src='page1.jsp' class="bg-primary">新建工程<span class="glyphicon glyphicon-th-list"></span></li>
-					<li data-src='page8.jsp'>在施工地<span class="glyphicon glyphicon-cog"></span></li>
-                    <li data-src='page9.jsp'>查看详情<span class="glyphicon glyphicon-cog"></span></li>
-					<li data-src='projectGant.jsp'>查看详情2<span class="glyphicon glyphicon-cog"></span></li>
-					<li data-src='basestage.jsp'>阶段基础表<span class="glyphicon glyphicon-cog"></span></li>
-				</ul>
-			</div>
-			<div id="main" class="flex-1">
-				<iframe src="projectGant.jsp"></iframe>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript">
-		
-		$('#sidebar li').click(function() {
-			var src = $(this).attr('data-src');
-			$('#main iframe').attr('src', src);
-			$('#sidebar li').removeClass('bg-primary');
-			$(this).addClass('bg-primary')
-		})
-		$('#head img').click(function() {
-			var side = $('#sidebar');
-			var t = side.attr('data-toggle');
-			if (t == 'show') {
-				side.animate({
-					'left': -180,
-					'width': 0
-				}, 200, function() {
-					side.attr('data-toggle', 'hide')
-				});
-			} else {
-				side.animate({
-					'left': 0,
-					'width': 180
-				}, 200, function() {
-					side.attr('data-toggle', 'show')
-				});
-			}
-		})
-	</script>
+
+  <div class="page-wrapper toggled">
+    <nav id="sidebar" class="sidebar-wrapper">
+      <div class="sidebar-content mCustomScrollbar _mCS_1 mCS-autoHide desktop">
+        <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0" style="max-height: none;">
+          <div id="mCSB_1_container" class="mCSB_container" style="position: relative; left: 0px; top: 0px;" dir="ltr">
+            <a href="#" id="toggle-sidebar"> <i class="fa fa-bars"></i>
+            </a>
+            <div class="sidebar-brand">
+              <a href="#">欢迎您</a>
+            </div>
+            <!-- sidebar-header  -->
+            <div class="sidebar-search">
+              <div>
+                <div class="input-group">
+                  <input type="text" class="form-control search-menu" placeholder="Search for...">
+                  <span class="input-group-addon"> <i class="fa fa-search"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- sidebar-search  -->
+            <div class="sidebar-menu">
+              <ul id="tree"></ul>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    </nav>
+  <!-- sidebar-wrapper  -->
+  <main class="page-content">
+    <div class="breadcrumbs">
+      <ol class="breadcrumb" split="&gt;">
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            后台
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa '. $parents['picon'] .' " aria-hidden="true"></i>
+            在施工地清单表
+          </a>
+        </li>
+      </ol>
+    </div>
+    <div class="container-fluid">
+      <iframe src="basestage.jsp" name='main' frameborder="0"  width="100%" scrolling="no" marginheight="0" marginwidth="0" id="iframepage" onload="this.height=100%"></iframe>
+    </div>
+  </main>
+  <!-- page-content" -->
+</div>
+  <script type="text/javascript">
+    $(function () {
+      var data =
+      [
+              {
+                text: "基础数据",
+                icon: "fa fa-list-alt icon",
+                // selectedIcon: "glyphicon glyphicon-stop",
+                href: "#node-1",
+                // selectable: true,
+                id: '00',
+                selectable: false,
+                showTags:false,
+                tags: ['available'],
+                nodes:
+                [
+                  {
+                    icon: "fa fa-edit",
+                    text: "施工阶段基础表",
+                    id: '001',
+                    page: 'basestage.jsp',
+                    tags: [''],
+                  },
+                  {
+                    icon: "fa fa-edit",
+                    text: "施工进度模版清单",
+                    id: '002',
+                    page: 'page8.jsp',
+                    tags: [''],
+                  },
+                ]
+              },
+              {
+                text: "在施工地",
+                icon: "fa fa-list-alt icon",
+                // selectedIcon: "glyphicon glyphicon-stop",
+                href: "#node-1",
+                // selectable: true,
+                id: '01',
+                selectable: false,
+                showTags:false,
+                tags: ['available'],
+                nodes:
+                [
+                  {
+                    icon: "fa fa-edit",
+                    text: "在施工地清单表",
+                    id: '011',
+                    page: 'projectGant.jsp',
+                    tags: [''],
+                  },
+                ]
+              },
+      ]
+      // return data;
+
+      $('#tree').treeview({
+          data: data,         // data is not optional
+          levels: 1,
+          enableLinks: true,
+          showTags:false,
+          // showCheckbox: true,
+          state: {
+            checked: true,
+            disabled: true,
+            expanded: true,
+            selected: true
+          }
+          // multiSelect: true
+      });
+
+
+        $('#tree').on('nodeSelected', function(event, data) {
+          document.getElementById("iframepage").src=data.page;
+          if (data.id=="001"){
+            $(".breadcrumb").html("<i class='fa fa-home'></i>后台&gt;基础数据&gt;"+data.text)
+          }else if (data.id=="011"){
+            $(".breadcrumb").html("<i class='fa fa-home'></i>后台&gt;在施工地&gt;"+data.text)
+
+          }
+        });
+        // var obj = {};
+        // obj.text = "123";
+        // $("#btn").click(function (e) {
+        //     var arr = $('#tree').treeview('getSelected');
+        //     for (var key in arr) {
+        //         c.innerHTML = c.innerHTML + "," + arr[key].id;
+        //     }
+        // })
+    })
+
+    // function index1(value,row,index){
+    // // alert( "Data Loaded: " + index );
+    //   return index+1
+    // }
+  </script>
+
+  <!-- <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> -->
+    <!-- <div class="form-group"> -->
+        <!-- <label class="control-label" id="regis" for="LoginForm-UserName"></label> 显示部门名称  -->
+    <!-- </div> -->
+        <!-- <iframe src="/secofficeshow" name='main' id="iframepage" frameborder="0" width="100%" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()"></iframe> -->
+        <!-- <iframe src="/secofficeshow" name='main' id="iframepage" frameborder="0" width="100%" scrolling="no" marginheight="0" marginwidth="0" onload="changeFrameHeight()"></iframe> -->
+
+    <!-- <iframe src="/admin/01" name='main' frameborder="0"  width="100%" scrolling="no" marginheight="0" marginwidth="0" id="iframepage" onload="this.height=100"></iframe>  -->
+  <!-- </div>   -->
+
+
+  <script type="text/javascript">
+    function reinitIframe(){//http://caibaojian.com/frame-adjust-content-height.html
+      var iframe = document.getElementById("iframepage");
+      try{
+        var bHeight = iframe.contentWindow.document.body.scrollHeight;
+        var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+        var height = Math.max(bHeight, dHeight,800);
+        iframe.height = height;
+       // console.log(height);//这个显示老是在变化
+      }catch (ex){
+      }
+    }
+    window.setInterval("reinitIframe()", 200);
+  </script>
+  <script src="${PATH}/plugins/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="${PATH}/plugins/static/js/custom.js"></script>
+
 </body>
 </html>
