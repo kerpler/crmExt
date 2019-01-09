@@ -1,219 +1,75 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!-- 引入标签库 -->
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
-<!-- 后台主页面，其他为子页面-->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 获取项目名称路径 -->
-<%
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>全程监控</title>
+<% 
 	pageContext.setAttribute("PATH", request.getContextPath());
 %>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>在施工地全程监控</title>
-	
-  <script type="text/javascript" src="${PATH}/plugins/static/js/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" src="${PATH}/plugins/static/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="${PATH}/plugins/static/css/bootstrap.min.css"/>
 
-  <link rel="stylesheet" href="${PATH}/plugins/static/css/jquery.mCustomScrollbar.min.css">
-  <link rel="stylesheet" href="${PATH}/plugins/static/css/custom.css">
+<link rel="stylesheet" type="text/css" href="${PATH}/plugins/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="${PATH}/plugins/bootstrap/css/flex.css" />
+<link rel="stylesheet" type="text/css" href="${PATH}/plugins/bootstrap/css/less.css" />
+<link rel="stylesheet" type="text/css" href="${PATH}/plugins/static/css/bootstrap-treeview.css" />
+<link rel="stylesheet" type="text/css" href="${PATH}/plugins/wholeprocess/css/index.css" />
+<script type="text/javascript" charset="utf-8" src="${PATH}/plugins/bootstrap/js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="${PATH}/plugins/bootstrap/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="${PATH}/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="${PATH}/plugins/static/js/bootstrap-treeview.js"></script>
 
-  <script type="text/javascript" src="${PATH}/plugins/static/js/bootstrap-treeview.js"></script>
-  <link rel="stylesheet" type="text/css" href="${PATH}/plugins/static/css/bootstrap-treeview.css"/>
-
-  <link rel="stylesheet" type="text/css" href="${PATH}/plugins/static/font-awesome-4.7.0/css/font-awesome.min.css"/>
-  <style media="screen">
-      #sidebar {
-          background-color: #2c3e50;
-      }
-  </style>
 </head>
+
 <body>
-
-  <div class="page-wrapper toggled">
-    <nav id="sidebar" class="sidebar-wrapper">
-      <div class="sidebar-content mCustomScrollbar _mCS_1 mCS-autoHide desktop">
-        <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0" style="max-height: none;">
-          <div id="mCSB_1_container" class="mCSB_container" style="position: relative; left: 0px; top: 0px;" dir="ltr">
-            <a href="#" id="toggle-sidebar"> <i class="fa fa-bars"></i>
-            </a>
-            <div class="sidebar-brand">
-              <a href="#">欢迎您</a>
-            </div>
-            <!-- sidebar-header  -->
-            <div class="sidebar-search">
-              <div>
-                <div class="input-group">
-                  <input type="text" class="form-control search-menu" placeholder="Search for...">
-                  <span class="input-group-addon"> <i class="fa fa-search"></i>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <!-- sidebar-search  -->
-            <div class="sidebar-menu">
-              <ul id="tree"></ul>
-            </div>
-          </div>
-      </div>
-    </div>
-
-
-    </nav>
-  <!-- sidebar-wrapper  -->
-  <main class="page-content">
-    <div class="breadcrumbs">
-      <ol class="breadcrumb" split="&gt;">
-        <li>
-          <a href="javascript:void(0)">
-            <i class="fa fa-home" aria-hidden="true"></i>
-            后台
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="fa '. $parents['picon'] .' " aria-hidden="true"></i>
-            在施工地清单表
-          </a>
-        </li>
-      </ol>
-    </div>
-    <div class="container-fluid">
-      <iframe src="basestage.jsp" name='main' frameborder="0"  width="100%" scrolling="no" marginheight="0" marginwidth="0" id="iframepage" onload="this.height=100%"></iframe>
-    </div>
-  </main>
-  <!-- page-content" -->
-</div>
-  <script type="text/javascript">
-    $(function () {
-      var data =
-      [
-              {
-                text: "基础数据",
-                icon: "fa fa-list-alt icon",
-                // selectedIcon: "glyphicon glyphicon-stop",
-                href: "#node-1",
-                // selectable: true,
-                id: '00',
-                selectable: false,
-                showTags:false,
-                tags: ['available'],
-                nodes:
-                [
-                  {
-                    icon: "fa fa-edit",
-                    text: "施工阶段基础表",
-                    id: '001',
-                    page: 'basestage.jsp',
-                    tags: [''],
-                  },
-                  {
-                    icon: "fa fa-edit",
-                    text: "施工进度模版清单",
-                    id: '002',
-                    page: 'page8.jsp',
-                    tags: [''],
-                  },
-                ]
-              },
-              {
-                text: "在施工地",
-                icon: "fa fa-list-alt icon",
-                // selectedIcon: "glyphicon glyphicon-stop",
-                href: "#node-1",
-                // selectable: true,
-                id: '01',
-                selectable: false,
-                showTags:false,
-                tags: ['available'],
-                nodes:
-                [
-                  {
-                    icon: "fa fa-edit",
-                    text: "在施工地清单表",
-                    id: '011',
-                    page: 'projectGant.jsp',
-                    tags: [''],
-                  },
-                ]
-              },
-      ]
-      // return data;
-
-      $('#tree').treeview({
-          data: data,         // data is not optional
-          levels: 1,
-          enableLinks: true,
-          showTags:false,
-          // showCheckbox: true,
-          state: {
-            checked: true,
-            disabled: true,
-            expanded: true,
-            selected: true
-          }
-          // multiSelect: true
-      });
-
-
-        $('#tree').on('nodeSelected', function(event, data) {
-          document.getElementById("iframepage").src=data.page;
-          if (data.id=="001"){
-            $(".breadcrumb").html("<i class='fa fa-home'></i>后台&gt;基础数据&gt;"+data.text)
-          }else if (data.id=="011"){
-            $(".breadcrumb").html("<i class='fa fa-home'></i>后台&gt;在施工地&gt;"+data.text)
-
-          }
-        });
-        // var obj = {};
-        // obj.text = "123";
-        // $("#btn").click(function (e) {
-        //     var arr = $('#tree').treeview('getSelected');
-        //     for (var key in arr) {
-        //         c.innerHTML = c.innerHTML + "," + arr[key].id;
-        //     }
-        // })
-    })
-
-    // function index1(value,row,index){
-    // // alert( "Data Loaded: " + index );
-    //   return index+1
-    // }
-  </script>
-
-  <!-- <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> -->
-    <!-- <div class="form-group"> -->
-        <!-- <label class="control-label" id="regis" for="LoginForm-UserName"></label> 显示部门名称  -->
-    <!-- </div> -->
-        <!-- <iframe src="/secofficeshow" name='main' id="iframepage" frameborder="0" width="100%" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()"></iframe> -->
-        <!-- <iframe src="/secofficeshow" name='main' id="iframepage" frameborder="0" width="100%" scrolling="no" marginheight="0" marginwidth="0" onload="changeFrameHeight()"></iframe> -->
-
-    <!-- <iframe src="/admin/01" name='main' frameborder="0"  width="100%" scrolling="no" marginheight="0" marginwidth="0" id="iframepage" onload="this.height=100"></iframe>  -->
-  <!-- </div>   -->
-
-
-  <script type="text/javascript">
-    function reinitIframe(){//http://caibaojian.com/frame-adjust-content-height.html
-      var iframe = document.getElementById("iframepage");
-      try{
-        var bHeight = iframe.contentWindow.document.body.scrollHeight;
-        var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
-        var height = Math.max(bHeight, dHeight,800);
-        iframe.height = height;
-       // console.log(height);//这个显示老是在变化
-      }catch (ex){
-      }
-    }
-    window.setInterval("reinitIframe()", 200);
-  </script>
-  <script src="${PATH}/plugins/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
-  <script src="${PATH}/plugins/static/js/custom.js"></script>
-
+	<div id="box" class="flex flex-v">
+		<div class="flex-1 flex">
+			<div id="sidebar" data-toggle='show'>
+				<ul>
+					<li data-src='basestage.jsp'>阶段基础</li>
+					<li data-src='page8.jsp'>在施工地</li>
+					<li data-src='projectGant.jsp'>施工进度</li>
+					<li data-src='basestep.jsp'>工程项目</li>
+				</ul>
+			</div>
+			<div id="main" class="flex-1">
+				<span class="glyphicon glyphicon-th-list"></span>
+				<hr>
+				<iframe src="projectGant.jsp"></iframe>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		var isChrome = navigator.userAgent.toLowerCase().match(/chrome/) != null;
+		if (!isChrome) {
+			alert('为了您更好的体验，请使用Chrome浏览器浏览此页面！\n\n若您正在使用（360浏览器/QQ浏览器）请切换为极速模式！')
+		}
+		
+		$('#sidebar li').click(function() {
+			var src = $(this).attr('data-src');
+			$('#main iframe').attr('src', src);
+			$('#sidebar li').removeClass('bg-primary');
+			$(this).addClass('bg-primary')
+		})
+		$('#main span').click(function() {
+			var side = $('#sidebar');
+			var t = side.attr('data-toggle');
+			if (t == 'show') {
+				side.animate({
+					'left' : -180,
+					'width' : 0
+				}, 200, function() {
+					side.attr('data-toggle', 'hide')
+				});
+			} else {
+				side.animate({
+					'left' : 0,
+					'width' : 180
+				}, 200, function() {
+					side.attr('data-toggle', 'show')
+				});
+			}
+		})
+	</script>
 </body>
 </html>

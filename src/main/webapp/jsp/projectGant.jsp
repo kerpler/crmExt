@@ -1390,8 +1390,8 @@
   <div id="gantEditorTemplates" style="display:none;">
     <div class="__template__" type="GANTBUTTONS">
       <div class="ganttButtonBar noprint">
-        <h1 class="ganttTitle" title="gantt"><img src="${PATH}/plugins/static/css/gantt/res/MeritGantLogo.png" alt="gantt" align="absmiddle">
-        </h1>
+        <%-- <h1 class="ganttTitle" title="gantt"><img src="${PATH}/plugins/static/css/gantt/res/MeritGantLogo.png" alt="gantt" align="absmiddle">
+        </h1> --%>
       <div class="buttons">
 
 

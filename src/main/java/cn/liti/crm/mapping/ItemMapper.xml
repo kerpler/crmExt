@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.ItemMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.Item">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="CODE" jdbcType="DECIMAL" property="code" />
+    <result column="CODENAME" jdbcType="VARCHAR" property="codename" />
+    <result column="PERIOD" jdbcType="VARCHAR" property="period" />
+    <result column="SORT" jdbcType="VARCHAR" property="sort" />
+    <result column="SORTNAME" jdbcType="VARCHAR" property="sortname" />
+    <result column="ALLPERIOD" jdbcType="VARCHAR" property="allperiod" />
+    <result column="CREATEDBY" jdbcType="VARCHAR" property="createdby" />
+    <result column="CREATEDWHEN" jdbcType="DATE" property="createdwhen" />
+    <result column="VERSIONNO" jdbcType="DECIMAL" property="versionno" />
+    <result column="UPDATEDBY" jdbcType="VARCHAR" property="updatedby" />
+    <result column="UPDATEDWHEN" jdbcType="DATE" property="updatedwhen" />
+    <result column="DELETED" jdbcType="DECIMAL" property="deleted" />
+    <result column="NOTE" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CODE, CODENAME, PERIOD, SORT, SORTNAME, ALLPERIOD, CREATEDBY, CREATEDWHEN, VERSIONNO, 
+    UPDATEDBY, UPDATEDWHEN, DELETED, NOTE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CRM_EXT_ITEM
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="GetItem"  resultMap="BaseResultMap">
+    select  *  from CRM_EXT_ITEM
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CRM_EXT_ITEM
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.Item">
+    insert into CRM_EXT_ITEM (ID, CODE, CODENAME, 
+      PERIOD, SORT, SORTNAME, 
+      ALLPERIOD, CREATEDBY, CREATEDWHEN, 
+      VERSIONNO, UPDATEDBY, UPDATEDWHEN, 
+      DELETED, NOTE)
+    values (#{id,jdbcType=VARCHAR}, #{code,jdbcType=DECIMAL}, #{codename,jdbcType=VARCHAR}, 
+      #{period,jdbcType=VARCHAR}, #{sort,jdbcType=VARCHAR}, #{sortname,jdbcType=VARCHAR}, 
+      #{allperiod,jdbcType=VARCHAR}, #{createdby,jdbcType=VARCHAR}, #{createdwhen,jdbcType=DATE}, 
+      #{versionno,jdbcType=DECIMAL}, #{updatedby,jdbcType=VARCHAR}, #{updatedwhen,jdbcType=DATE}, 
+      #{deleted,jdbcType=DECIMAL}, #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.Item">
+    insert into CRM_EXT_ITEM
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="codename != null">
+        CODENAME,
+      </if>
+      <if test="period != null">
+        PERIOD,
+      </if>
+      <if test="sort != null">
+        SORT,
+      </if>
+      <if test="sortname != null">
+        SORTNAME,
+      </if>
+      <if test="allperiod != null">
+        ALLPERIOD,
+      </if>
+      <if test="createdby != null">
+        CREATEDBY,
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN,
+      </if>
+      <if test="versionno != null">
+        VERSIONNO,
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY,
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="note != null">
+        NOTE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=DECIMAL},
+      </if>
+      <if test="codename != null">
+        #{codename,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null">
+        #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="sortname != null">
+        #{sortname,jdbcType=VARCHAR},
+      </if>
+      <if test="allperiod != null">
+        #{allperiod,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdwhen != null">
+        #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liti.crm.model.auto.Item">
+    update CRM_EXT_ITEM
+    <set>
+      <if test="code != null">
+        CODE = #{code,jdbcType=DECIMAL},
+      </if>
+      <if test="codename != null">
+        CODENAME = #{codename,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null">
+        PERIOD = #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        SORT = #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="sortname != null">
+        SORTNAME = #{sortname,jdbcType=VARCHAR},
+      </if>
+      <if test="allperiod != null">
+        ALLPERIOD = #{allperiod,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN = #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        VERSIONNO = #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY = #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN = #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        DELETED = #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="note != null">
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liti.crm.model.auto.Item">
+    update CRM_EXT_ITEM
+    set CODE = #{code,jdbcType=DECIMAL},
+      CODENAME = #{codename,jdbcType=VARCHAR},
+      PERIOD = #{period,jdbcType=VARCHAR},
+      SORT = #{sort,jdbcType=VARCHAR},
+      SORTNAME = #{sortname,jdbcType=VARCHAR},
+      ALLPERIOD = #{allperiod,jdbcType=VARCHAR},
+      CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      CREATEDWHEN = #{createdwhen,jdbcType=DATE},
+      VERSIONNO = #{versionno,jdbcType=DECIMAL},
+      UPDATEDBY = #{updatedby,jdbcType=VARCHAR},
+      UPDATEDWHEN = #{updatedwhen,jdbcType=DATE},
+      DELETED = #{deleted,jdbcType=DECIMAL},
+      NOTE = #{note,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
