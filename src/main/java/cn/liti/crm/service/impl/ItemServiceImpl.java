@@ -20,5 +20,24 @@ public class ItemServiceImpl implements ItemService {
 		return item;
 	}
 	
+	@Override
+	public void AddItem(Item item) {
+		// TODO Auto-generated method stub
+		ItemMappar.insert(item);
+		System.out.println("插入Mapper");
+	}
+	
+	@Override
+	public Item EditItem(String id) {
+		// TODO Auto-generated method stub
+		return ItemMappar.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public void UpdateItem(Item item) {
+		// TODO Auto-generated method stub
+		ItemMappar.updateByPrimaryKeySelective(item);
+		System.out.println(ItemMappar.updateByPrimaryKeySelective(item));
+	}
 	
 }

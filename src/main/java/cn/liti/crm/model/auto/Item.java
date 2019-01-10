@@ -142,4 +142,25 @@ public class Item {
     public void setNote(String note) {
         this.note = note == null ? null : note.trim();
     }
+    
+    @Override
+    public String toString() {
+        return "Item [id=" 
+        		+ id + 
+        		", code=" 
+        		+ code + 
+        		", codename="
+        		+ codename + 
+        		", period="
+        		+ period + 
+        		", sort="
+        		+ sort + 
+        		", sortname="
+        		+ sortname + 
+        		", allperiod="
+        		+ allperiod + 
+        		", note="
+        		+ note + 
+        		"]";
+    }
 }
