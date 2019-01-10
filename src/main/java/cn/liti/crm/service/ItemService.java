@@ -10,4 +10,5 @@ public interface ItemService {
 	void AddItem(Item item); 
 	Item EditItem(String id);
 	void UpdateItem(Item item);
+	void DeleteItem(String id);
 }

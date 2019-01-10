@@ -40,4 +40,10 @@ public class ItemServiceImpl implements ItemService {
 		System.out.println(ItemMappar.updateByPrimaryKeySelective(item));
 	}
 	
+	@Override
+	public void DeleteItem(String id) {
+		// TODO Auto-generated method stub
+		ItemMappar.deleteByPrimaryKey(id);
+	}
+	
 }

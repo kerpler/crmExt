@@ -134,7 +134,6 @@ var ButtonInit = function () {
 			    });
 	        });
             
-            
     		/*$.ajax({
 		      type:"POST",
 		      url:"/crmExt/Item/EditItem",
@@ -149,16 +148,23 @@ var ButtonInit = function () {
     }
     
     oInit.delete = function() {
-		/*$("#btn_delete").click(function(){
-			$.ajax({
+		$("#btn_delete").click(function(){
+			
+			var row = $('#tb_item').bootstrapTable('getSelections');
+    		if (row.length != 1) {
+    			alert("请选择一行记录！")
+    		}
+    		var data = row[0]
+			
+    		$.ajax({
 		      type:"POST",
 		      url:"/crmExt/Item/DeleteItem",
-		      data: {data:data},
+		      data: {id:data.id},
 		      success:function(){
 		        location.reload();
 		      }
 		    });
-        });*/
+        });
     }
     
     oInit.save = function() {

@@ -42,4 +42,12 @@ public class ItemController {
 //		return itemService.EditItem(item.getId());
 		itemService.UpdateItem(item);
 	}
+	@RequestMapping(value="/DeleteItem",method=RequestMethod.POST)
+	@ResponseBody
+	public void DeleteItem(HttpServletRequest request, Model model, Item item) {
+//		itemService.AddItem(item);
+//		System.out.println(item.getId());
+//		return itemService.EditItem(item.getId());
+		itemService.DeleteItem(item.getId());
+	}
 }
