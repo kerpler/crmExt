@@ -21,12 +21,12 @@ var TableInit = function () {
     oTableInit.Init = function () {
         $('#tb_item').bootstrapTable({
             url: '/crmExt/Item/GetItem',         //请求后台的URL（*）
-            method: 'get',                      //请求方式（*）
+            method: 'post',                      //请求方式（*）
             toolbar: '#toolbar',                //工具按钮用哪个容器
             striped: true,                      //是否显示行间隔色
             cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
             pagination: true,                   //是否显示分页（*）
-            sortable: false,                     //是否启用排序
+            sortable: true,                     //是否启用排序
             sortOrder: "asc",                   //排序方式
             queryParams: oTableInit.queryParams,//传递参数（*）
             sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
@@ -88,8 +88,16 @@ var ButtonInit = function () {
     	oInit.add();
     	oInit.edit();
     	oInit.delete();
-    	
+    	oInit.query();
     }
+    
+    oInit.query = function () {
+    	$("#btn_query").click(function(){
+    		log("btn_query")
+    		$("#tb_item").bootstrapTable('refresh');
+    	});
+    }
+    
     
     oInit.add = function() {
     	 $('#btn_add').on("click", function () {
@@ -109,20 +117,21 @@ var ButtonInit = function () {
     		
     		if (row.length != 1) {
     			alert("请选择一行记录！")
-    		}
-    		var data = row[0]
+    			return false
+    		} 
+			var data = row[0]
 //    		var inputs = $("form").find('input')   		
-    		$("#txt_id").val(data.id)
-    		$("#txt_code").val(data.code)
-    		$("#txt_codename").val(data.codename)
-    		$("#txt_period").val(data.period)
-    		$("#txt_sort").val(data.sort)
-    		$("#txt_sortname").val(data.sortname)
-    		$("#txt_allperiod").val(data.allperiod)
-    		$("#txt_note").val(data.note)
-            $("#myModal").modal()
+			$("#txt_id").val(data.id)
+			$("#txt_code").val(data.code)
+			$("#txt_codename").val(data.codename)
+			$("#txt_period").val(data.period)
+			$("#txt_sort").val(data.sort)
+			$("#txt_sortname").val(data.sortname)
+			$("#txt_allperiod").val(data.allperiod)
+			$("#txt_note").val(data.note)
+			$("#myModal").modal()
     		
-    		$("#btn_submit").click(function(){
+            $("#btn_submit").click(function(){
 				var data = $('form').serializeArray();
 				$.ajax({
 			      type:"POST",
@@ -150,16 +159,21 @@ var ButtonInit = function () {
     oInit.delete = function() {
 		$("#btn_delete").click(function(){
 			
-			var row = $('#tb_item').bootstrapTable('getSelections');
-    		if (row.length != 1) {
-    			alert("请选择一行记录！")
+			var row = $('#tb_item').bootstrapTable('getSelections')
+    		if (row.length == 0) {
+    			alert("请选择要删除的记录！")
     		}
-    		var data = row[0]
-			
+			var ids = []
+			for (var i = 0; i < row.length; i++) {
+				ids.push(row[i].id) 
+			}	
+			log(ids)
+//			ids = JSON.stringify(ids)
     		$.ajax({
 		      type:"POST",
 		      url:"/crmExt/Item/DeleteItem",
-		      data: {id:data.id},
+//		      contentType:"application/json",  
+		      data: { ids:JSON.stringify(ids) },
 		      success:function(){
 		        location.reload();
 		      }

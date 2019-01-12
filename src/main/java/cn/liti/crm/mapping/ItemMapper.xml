@@ -30,10 +30,15 @@
   <select id="GetItem"  resultMap="BaseResultMap">
     select  *  from CRM_EXT_ITEM
   </select>
+  <select id="queryItem"  resultMap="BaseResultMap" parameterType="java.util.Map">
+    select  *  
+    from CRM_EXT_ITEM 
+    where allperiod = #{allperiod}
+  </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from CRM_EXT_ITEM
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id, jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="cn.liti.crm.model.auto.Item">
     insert into CRM_EXT_ITEM (ID, CODE, CODENAME, 

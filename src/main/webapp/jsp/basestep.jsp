@@ -18,8 +18,8 @@
     <script type="text/javascript" src="${PATH}/plugins/bootstrap/js/bootstrap-table.js"></script>
     <script type="text/javascript" src="${PATH}/plugins/bootstrap/js/bootstrap-table-zh-CN.js"></script>
     
-    <script type="text/javascript" src="${PATH}/plugins/wholeprocess/js/knockout-3.4.2.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<%--     <script type="text/javascript" src="${PATH}/plugins/wholeprocess/js/knockout-3.4.2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --%>
     
     
     <link rel="stylesheet" type="text/css" href="${PATH}/plugins/bootstrap/css/bootstrap.min.css"/>
