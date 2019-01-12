@@ -320,7 +320,7 @@
 				$('#table').bootstrapTable({
 					method: 'post',
 					url:'${pageContext.request.contextPath}/crmConstruction/findConstruction',
-					cache: false,
+					cache: true,
 					height: 712,
 					striped: true,
 					pagination: true,

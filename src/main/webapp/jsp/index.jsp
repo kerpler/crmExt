@@ -25,16 +25,14 @@
 		<div class="flex-1 flex">
 			<div id="sidebar" data-toggle='show'>
 				<ul>
-					<li data-src='basestage.jsp'>阶段基础</li>
-					<li data-src='page2.jsp'>在施工地</li>
-					<li data-src='projectGant.jsp'>施工进度</li>
 					<li data-src='basestep.jsp'>工程项目</li>
+					<li data-src='page2.jsp'>在施工地</li>
 				</ul>
 			</div>
 			<div id="main" class="flex-1">
 				<span class="glyphicon glyphicon-th-list"></span>
 				<hr>
-				<iframe src="projectGant.jsp"></iframe>
+				<iframe src="page2.jsp"></iframe>
 			</div>
 		</div>
 	</div>
