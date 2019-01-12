@@ -55,134 +55,73 @@
 		var constructiondata =[];
 		var datas = [];
 		window.onload=function (){
-			 $.ajax({
-	                url:"${pageContext.request.contextPath}/crmConstruction/findConstruction",//servlet文件的名称
-	                dataType:"json",
-	                type:"POST",
-	                async: false,
-	                success:function(data){
-	                constructiondata = data;
-	                /* alert(data); */
-	                console.log(data)
-	                console.log("constructiondata",constructiondata)
-	                for (var i = 0, len = constructiondata.length; i < len; i++) {
-	                    datas.push({
-	                        "id": (i + 1),
-	                        "a": "嘉利210" + i,
-	                        "b": constructiondata[i].customersname,
-	                        "c": constructiondata[i].customerstel,
-	                        "d": constructiondata[i].community,
-	                        "e": "150",
-	                        "f": parseInt(Math.random() * 100),
-	                        "g": parseInt(Math.random() * 100),
-	                        "h": parseInt(Math.random() * 100),
-	                        "i": parseInt(Math.random() * 100),
-	                        "j": parseInt(Math.random() * 100),
-	                        "k": "150",
-	                        "fk":constructiondata[i].customersno,
-	                    })
-	                    
-	                   };
-	                   console.log(datas);
+			
 	                   $(function() {
 	                       $('#table').bootstrapTable({
-	                           method: 'get',
+	                           method: 'post',
+	                           url:'${pageContext.request.contextPath}/crmConstruction/findConstruction',
 	                           cache: false,
+	                           toolbar: '#toolbar',                //工具按钮用哪个容器
+	                           striped: true,                      //是否显示行间隔色
 	                           height: 712,
-	                           striped: true,
 	                           pagination: true,
 	                           pageSize: 15,
 	                           pageNumber: 1,
 	                           pageList: [15, 50, 100, ],
 	                           paginationLoop: false, //设置为 true 启用分页条无限循环的功能。
-//	                         showPaginationSwitch:true,//是否显示 数据条数选择框
+	                           //showPaginationSwitch:true,//是否显示 数据条数选择框
 	                           uniqueId: "id",
 	                           sidePagination: 'client',
 	                           search: true,
-	                           showColumns: true,
+	                           //showColumns: true,
 	                           showRefresh: false,
 	                           showExport: false,
-	                           showToggle: true,
+	                           //showToggle: true,
 	                           exportTypes: ['csv', 'txt', 'xml'],
-	                           search: true,
 	                           clickToSelect: true,
+	                           strictSearch:true,
 	                           columns: [
 	                               {
-	                                   field: "id",
-	                                   title: "序号",
+                                       field: "customersname",
+                                       title: "业主",
+                                       align: "center",
+                                       valign: "middle",
+                                   },
+                                   {
+                                       field: "customerstel",
+                                       title: "电话",
+                                       align: "center",
+                                       valign: "middle",
+                                   },
+                                   {
+                                       field: "designername",
+                                       title: "设计师",
+                                       align: "center",
+                                       valign: "middle",
+                                   },
+	                               {
+	                                   field: "address",
+	                                   title: "地址",
 	                                   align: "center",
 	                                   valign: "middle",
-	                                   sortable: "true"
 	                               },
 	                               {
-	                                   field: "a",
-	                                   title: "工程名称",
-	                                   align: "center",
-	                                   valign: "middle",
-	                                   sortable: "true"
-	                               },
-	                               {
-	                                   field: "b",
-	                                   title: "客户姓名",
-	                                   align: "center",
-	                                   valign: "middle",
-	                                   sortable: "true"
-	                               },
-	                               {
-	                                   field: "c",
-	                                   title: "客户电话",
-	                                   align: "center",
-	                                   valign: "middle",
-	                                   sortable: "true"
-	                               },
-	                               {
-	                                   field: "d",
-	                                   title: "小区地址",
-	                                   align: "center",
-	                                   valign: "middle",
-	                                   sortable: "true"
-	                               },
-	                               {
-	                                   field: "e",
-	                                   title: "面积(㎡)",
-	                                   align: "center",
-	                                   valign: "middle",
-	                                   sortable: "true"
-	                               },
-	                               {
-	                                   field: "f",
-	                                   title: "工期(天)",
-	                                   align: "center",
-	                                   valign: "middle",
-	                                   sortable: "true"
-	                               },
-	                               {
-	                                   field: "g",
-	                                   title: "设计师",
-	                                   align: "center",
-	                                   valign: "middle",
-	                                   sortable: "true"
-	                               },
-	                               {
-	                                   field: "h",
-	                                   title: "设计师电话",
-	                                   align: "center",
-	                                   valign: "middle",
-	                                   sortable: "true"
-	                               },
-	                               {
-	                                   field: "i",
-	                                   title: "监理",
-	                                   align: "center",
-	                                   valign: "middle",
-	                                   sortable: "true"
-	                               },
-	                               {
-	                                   field: "j",
+	                                   field: "foremanfn",
 	                                   title: "工长",
 	                                   align: "center",
 	                                   valign: "middle",
-	                                   sortable: "true"
+	                               },
+	                               {
+	                                   field: "supervisionfn",
+	                                   title: "监理",
+	                                   align: "center",
+	                                   valign: "middle",
+	                               },
+	                               {
+	                                   field: "isma",
+	                                   title: "有无主材",
+	                                   align: "center",
+	                                   valign: "middle",
 	                               },
 	                               {
 	                                   field: "kf",
@@ -192,16 +131,12 @@
 	                                       return "<a href=page22.jsp>查看详情</a>";
 	                                   },
 	                                   valign: "middle",
-	                                   sortable: "true"
 	                               },
 	                           ],
-	                           data: datas,
-	                           
+	                         
 	                       });
 	                   });
 	                }
-	            });
-		}
 		</script>
 	</body>
 </html>

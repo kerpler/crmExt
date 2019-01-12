@@ -16,11 +16,11 @@ import cn.liti.crm.model.auto.InConstruction;
 import cn.liti.crm.service.InConstructionService;
 
 @Controller  
-@RequestMapping("/crmConstruction")  
+//@RequestMapping("/crmConstruction")  
 public class InconstructionController{
     @Autowired
     private InConstructionService inConstructionService;
-    @RequestMapping("/findConstruction")
+    //@RequestMapping("/findConstruction")
     @ResponseBody
     public List<InConstruction> findConstruction(HttpServletRequest request,Model model){
         

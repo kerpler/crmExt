@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/bootstrap/css/bootstrap-table.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/bootstrap/css/less.css" />
-		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="${pageContext.request.contextPath}/plugins/bootstrap/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<!--<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>-->
 		<!--<script src="http://www.jq22.com/jquery/1.7.2/jquery.min.js"></script>-->
 		<script src="${pageContext.request.contextPath}/plugins/bootstrap/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -288,9 +288,9 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
-		<script src="js/jquery.mousewheel.js" type="text/javascript" charset="utf-8"></script>
+		<script src="${pageContext.request.contextPath}/plugins/bootstrap/js/jquery.mousewheel.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			$('#modal').modal('show')
+			//$('#modal').modal('show')
 			var datas = [];
 			for(var i = 0; i < 300; i++) {
 				if(i % 2 == 0) {
@@ -318,7 +318,8 @@
 			}
 			$(function() {
 				$('#table').bootstrapTable({
-					method: 'get',
+					method: 'post',
+					url:'${pageContext.request.contextPath}/crmConstruction/findConstruction',
 					cache: false,
 					height: 712,
 					striped: true,
@@ -328,7 +329,7 @@
 					pageList: [15, 50, 100, ],
 					paginationLoop: false, //设置为 true 启用分页条无限循环的功能。
 					//showPaginationSwitch:true,//是否显示 数据条数选择框
-					uniqueId: "id",
+					uniqueId: "customersno",
 					sidePagination: 'client',
 					search: true,
 					showColumns: true,
@@ -345,40 +346,53 @@
 							sortable: "true"
 						},
 						{
-							field: "gc-name",
-							title: "工程名称",
-							align: "center",
-							valign: "middle",
+							field: "customersname",
+                            title: "业主",
+                            align: "center",
+                            valign: "middle",
 							sortable: "true"
 						},
 						{
-							field: "xq-name",
-							title: "小区名称",
-							align: "center",
-							valign: "middle",
+							field: "customerstel",
+                            title: "电话",
+                            align: "center",
+                            valign: "middle",
 							sortable: "true"
 						},
 						{
-							field: "type",
-							title: "开工状态",
-							align: "center",
-							valign: "middle",
+							field: "designername",
+                            title: "设计师",
+                            align: "center",
+                            valign: "middle",
 							sortable: "true"
 						},
 						{
-							field: "start-data",
-							title: "开工日期",
-							align: "center",
-							valign: "middle",
+							field: "address",
+                            title: "地址",
+                            align: "center",
+                            valign: "middle",
 							sortable: "true"
 						},
 						{
-							field: "expect-time",
-							title: "预计工期(天)",
-							align: "center",
-							valign: "middle",
+							field: "foremanfn",
+                            title: "工长",
+                            align: "center",
+                            valign: "middle",
 							sortable: "true"
 						},
+                        {
+                            field: "supervisionfn",
+                            title: "监理",
+                            align: "center",
+                            valign: "middle",
+                        },
+                        {
+                            field: "isma",
+                            title: "有无主材",
+                            align: "center",
+                            valign: "middle",
+                            sortable: "true"
+                        },
 						{
 							field: "jd",
 							title: "施工进度",
@@ -389,8 +403,8 @@
 									return ""
 								} else {
 									return '<div class="progress">' +
-										'<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: ' + value + '%;">' +
-										'' + value + '%' +
+										'<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: ' + "100" + '%;">' +
+										'' +"100"+ '%' +
 										'</div>' +
 										'</div>'
 								}
@@ -398,15 +412,24 @@
 							},
 							sortable: "true"
 						},
-						{
-							title: "操作",
+						/* {
+							title: "进度",
 							align: "center",
 							valign: "middle",
 							formatter: function(value, row, index) { //自定义显示可以写标签哦~
-								return ' <button data-toggle="modal" data-target="#modal" type="button" class="btn btn-primary btn-xs">查看详情</button>'
+								return ' <button data-toggle="modal" data-target="#modal" type="button" class="btn btn-primary btn-xs">查看进度</button>'
 							},
 							sortable: "true"
-						},
+						}, */
+						{
+                            field: "kf",
+                            title: "操作",
+                            align: "center",
+                            formatter: function(value, row, index) { //自定义显示可以写标签哦~
+                                return "<a href=projectGant.jsp>查看详情</a>";
+                            },
+                            valign: "middle",
+                        },
 					],
 					data: datas,
 				});
@@ -477,7 +500,7 @@
 				}
 			})
 
-			$('#modal').mousewheel(function(event, delta) {
+			/* $('#modal').mousewheel(function(event, delta) {
 				var dir = delta > 0 ? 'Up' : 'Down';
 				var w1 = $('#scroll-tb').height();
 				var w2 = $('#scroll-tb>#block').height();
@@ -504,7 +527,7 @@
 				$('#tab-c,#tab-d').css('top', -(boxH * w3 * (k - g) / k / w3));
 				return false;
 
-			});
+			}); */
 			$('#tab-c tr').hover(function(){
 				var c_tr=$(this).attr('class').slice($(this).attr('class').indexOf('tr'));
 				$('.'+c_tr+'').addClass('bg-primary');

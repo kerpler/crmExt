@@ -26,7 +26,7 @@
 			<div id="sidebar" data-toggle='show'>
 				<ul>
 					<li data-src='basestage.jsp'>阶段基础</li>
-					<li data-src='page8.jsp'>在施工地</li>
+					<li data-src='page2.jsp'>在施工地</li>
 					<li data-src='projectGant.jsp'>施工进度</li>
 					<li data-src='basestep.jsp'>工程项目</li>
 				</ul>
