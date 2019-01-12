@@ -1,9 +1,12 @@
 package cn.liti.crm.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.alibaba.fastjson.JSONArray;
 
 import cn.liti.crm.dao.auto.ItemMapper;
 import cn.liti.crm.model.auto.Item;
@@ -24,7 +27,6 @@ public class ItemServiceImpl implements ItemService {
 	public void AddItem(Item item) {
 		// TODO Auto-generated method stub
 		ItemMappar.insert(item);
-		System.out.println("插入Mapper");
 	}
 	
 	@Override
@@ -41,9 +43,21 @@ public class ItemServiceImpl implements ItemService {
 	}
 	
 	@Override
-	public void DeleteItem(String id) {
+	public void DeleteItem(JSONArray id) {
 		// TODO Auto-generated method stub
-		ItemMappar.deleteByPrimaryKey(id);
+		for (int i = 0; i < id.size(); i++) {
+			String ids = (String) id.get(i);
+			System.out.println(ids);
+			ItemMappar.deleteByPrimaryKey(ids);
+		}
+	}
+
+	@Override
+	public List<Item> QueryItem(Map map) {
+		// TODO Auto-generated method stub
+//		System.out.println("Impl:"+map);
+		List<Item> item = ItemMappar.queryItem(map);
+		return item;
 	}
 	
 }
