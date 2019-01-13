@@ -177,10 +177,12 @@
 				background-color: #BDC3C7;
 				cursor: pointer;
 			}
+			
 			.bg-primary{
 				background-color: #D9EDF7;
 				color: #333333;
 			}
+			
 		</style>
 	</head>
 
@@ -319,18 +321,14 @@
 			$(function() {
 				$('#table').bootstrapTable({
 					method: 'post',
-					url:'${pageContext.request.contextPath}/crmConstruction/findConstruction',
+					url:'${pageContext.request.contextPath}/crmConstruction/findPageCon',
 					cache: true,
-					height: 712,
+					height: 710,
 					striped: true,
 					pagination: true,
-					pageSize: 15,
-					pageNumber: 1,
-					pageList: [15, 50, 100, ],
 					paginationLoop: false, //设置为 true 启用分页条无限循环的功能。
 					//showPaginationSwitch:true,//是否显示 数据条数选择框
 					uniqueId: "customersno",
-					sidePagination: 'client',
 					search: true,
 					showColumns: true,
 					showRefresh: false,
@@ -338,6 +336,35 @@
 					exportTypes: ['csv', 'txt', 'xml'],
 					search: true,
 					clickToSelect: true,
+					pageSize: 15,
+					pageNumber: 1,
+ 					pageList: [10, 20, 50, 100, ], 
+					//contentType: "application/x-www-form-urlencoded",
+					sidePagination: 'server',
+					//传递参数（*）
+					queryParamsType : "",
+					queryParams: function (params) {
+							        var params = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+// 									            limit : this.limit, // 页面大小
+// 								    	        offset : this.offset, // 页码
+								    	        pageNumber : this.pageNumber,
+								    	        pageSize : this.pageSize,
+							       	}
+								    return params
+								 },
+ 					responseHandler: function (res) {
+				 				       if (res) {
+				 			                return {
+				 			                    "rows" : res.list,
+				 			                    "total" : res.total
+				 			                }
+				 			            } else {
+				 			                return {
+				 			                    "rows" : [],
+				 			                    "total" : 0
+				 			                }
+				 			            }
+					 			     }, 
 					columns: [{
 							field: "id",
 							title: "序号",
@@ -434,7 +461,25 @@
 					data: datas,
 				});
 			});
+			
+			/*var queryParams = function (params) {
+		        var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+		            limit : this.limit, // 页面大小
+	    	        offset : this.offset, // 页码
+	    	        pageNumber : this.pageNumber,
+	    	        pageSize : this.pageSize,
 
+		        };
+		        return temp;
+		    };
+		     var responseHandler = function(res){
+		        //在ajax获取到数据，渲染表格之前，修改数据源
+		        var nres = [];
+		        nres.push({total:res.total,rows:res.rows});
+		        return nres[0];
+		    } */
+			
+		    
 			$('#scroll-lr>#block').on({
 				"mousedown": function(e) {
 					var left = parseInt($(this).css("left"));
