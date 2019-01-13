@@ -1,89 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.liti.crm.dao.auto.ConstructionMapper">
-  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.Construction">
-    <result column="ID" jdbcType="DECIMAL" property="id" />
-    <result column="CUSTOMERSNO" jdbcType="VARCHAR" property="customersno" />
-    <result column="CUSTOMERSNAME" jdbcType="VARCHAR" property="customersname" />
-    <result column="FOREMANFN" jdbcType="VARCHAR" property="foremanfn" />
-    <result column="SUPERVISIONFN" jdbcType="VARCHAR" property="supervisionfn" />
-    <result column="ISMA" jdbcType="CHAR" property="isma" />
-    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
-    <result column="CUSTOMERSTEL" jdbcType="VARCHAR" property="customerstel" />
-    <result column="DESIGNERNAME" jdbcType="VARCHAR" property="designername" />
-  </resultMap>
-  <select id="findConstruction" parameterType="cn.liti.crm.model.auto.Construction" resultMap="BaseResultMap">
-    select * from crm_ext_construction_view 
-  </select>
-  <insert id="insert" parameterType="cn.liti.crm.model.auto.Construction">
-    insert into CRM_EXT_CONSTRUCTION_VIEW (ID, CUSTOMERSNO, CUSTOMERSNAME, 
-      FOREMANFN, SUPERVISIONFN, ISMA, 
-      ADDRESS, CUSTOMERSTEL, DESIGNERNAME
-      )
-    values (#{id,jdbcType=DECIMAL}, #{customersno,jdbcType=VARCHAR}, #{customersname,jdbcType=VARCHAR}, 
-      #{foremanfn,jdbcType=VARCHAR}, #{supervisionfn,jdbcType=VARCHAR}, #{isma,jdbcType=CHAR}, 
-      #{address,jdbcType=VARCHAR}, #{customerstel,jdbcType=VARCHAR}, #{designername,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.Construction">
-    insert into CRM_EXT_CONSTRUCTION_VIEW
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        ID,
-      </if>
-      <if test="customersno != null">
-        CUSTOMERSNO,
-      </if>
-      <if test="customersname != null">
-        CUSTOMERSNAME,
-      </if>
-      <if test="foremanfn != null">
-        FOREMANFN,
-      </if>
-      <if test="supervisionfn != null">
-        SUPERVISIONFN,
-      </if>
-      <if test="isma != null">
-        ISMA,
-      </if>
-      <if test="address != null">
-        ADDRESS,
-      </if>
-      <if test="customerstel != null">
-        CUSTOMERSTEL,
-      </if>
-      <if test="designername != null">
-        DESIGNERNAME,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=DECIMAL},
-      </if>
-      <if test="customersno != null">
-        #{customersno,jdbcType=VARCHAR},
-      </if>
-      <if test="customersname != null">
-        #{customersname,jdbcType=VARCHAR},
-      </if>
-      <if test="foremanfn != null">
-        #{foremanfn,jdbcType=VARCHAR},
-      </if>
-      <if test="supervisionfn != null">
-        #{supervisionfn,jdbcType=VARCHAR},
-      </if>
-      <if test="isma != null">
-        #{isma,jdbcType=CHAR},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="customerstel != null">
-        #{customerstel,jdbcType=VARCHAR},
-      </if>
-      <if test="designername != null">
-        #{designername,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
+	<resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.Construction">
+		<result column="ID" jdbcType="DECIMAL" property="id" />
+		<result column="CUSTOMERSNO" jdbcType="VARCHAR" property="customersno" />
+		<result column="CUSTOMERSNAME" jdbcType="VARCHAR" property="customersname" />
+		<result column="FOREMANFN" jdbcType="VARCHAR" property="foremanfn" />
+		<result column="SUPERVISIONFN" jdbcType="VARCHAR" property="supervisionfn" />
+		<result column="ISMA" jdbcType="CHAR" property="isma" />
+		<result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+		<result column="CUSTOMERSTEL" jdbcType="VARCHAR" property="customerstel" />
+		<result column="DESIGNERNAME" jdbcType="VARCHAR" property="designername" />
+	</resultMap>
+	<select id="findConstruction" parameterType="cn.liti.crm.model.auto.Construction"
+		resultMap="BaseResultMap">
+		select * from crm_ext_construction_view
+	</select>
+
+	<insert id="insert" parameterType="cn.liti.crm.model.auto.Construction">
+		insert into CRM_EXT_CONSTRUCTION_VIEW (ID, CUSTOMERSNO, CUSTOMERSNAME,
+		FOREMANFN, SUPERVISIONFN, ISMA,
+		ADDRESS, CUSTOMERSTEL, DESIGNERNAME
+		)
+		values (#{id,jdbcType=DECIMAL}, #{customersno,jdbcType=VARCHAR},
+		#{customersname,jdbcType=VARCHAR},
+		#{foremanfn,jdbcType=VARCHAR}, #{supervisionfn,jdbcType=VARCHAR}, #{isma,jdbcType=CHAR},
+		#{address,jdbcType=VARCHAR}, #{customerstel,jdbcType=VARCHAR},
+		#{designername,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="cn.liti.crm.model.auto.Construction">
+		insert into CRM_EXT_CONSTRUCTION_VIEW
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="customersno != null">
+				CUSTOMERSNO,
+			</if>
+			<if test="customersname != null">
+				CUSTOMERSNAME,
+			</if>
+			<if test="foremanfn != null">
+				FOREMANFN,
+			</if>
+			<if test="supervisionfn != null">
+				SUPERVISIONFN,
+			</if>
+			<if test="isma != null">
+				ISMA,
+			</if>
+			<if test="address != null">
+				ADDRESS,
+			</if>
+			<if test="customerstel != null">
+				CUSTOMERSTEL,
+			</if>
+			<if test="designername != null">
+				DESIGNERNAME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="customersno != null">
+				#{customersno,jdbcType=VARCHAR},
+			</if>
+			<if test="customersname != null">
+				#{customersname,jdbcType=VARCHAR},
+			</if>
+			<if test="foremanfn != null">
+				#{foremanfn,jdbcType=VARCHAR},
+			</if>
+			<if test="supervisionfn != null">
+				#{supervisionfn,jdbcType=VARCHAR},
+			</if>
+			<if test="isma != null">
+				#{isma,jdbcType=CHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="customerstel != null">
+				#{customerstel,jdbcType=VARCHAR},
+			</if>
+			<if test="designername != null">
+				#{designername,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
 </mapper>

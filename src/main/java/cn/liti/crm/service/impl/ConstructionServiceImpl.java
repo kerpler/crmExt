@@ -1,6 +1,7 @@
 package cn.liti.crm.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,5 @@ public class ConstructionServiceImpl implements ConstructionService {
     @Override
     public List<Construction> findConstruction() {
         return   ConstructionMapper.findConstruction();
-      
     }
-
 }
