@@ -11,9 +11,10 @@
 		<result column="ADDRESS" jdbcType="VARCHAR" property="address" />
 		<result column="CUSTOMERSTEL" jdbcType="VARCHAR" property="customerstel" />
 		<result column="DESIGNERNAME" jdbcType="VARCHAR" property="designername" />
+		<result column="WORKDAY" jdbcType="VARCHAR" property="workday" />
+		<result column="STARTDAY" jdbcType="DATE" property="startday" />
 	</resultMap>
-	<select id="findConstruction" parameterType="cn.liti.crm.model.auto.Construction"
-		resultMap="BaseResultMap">
+	<select id="findConstruction" parameterType="cn.liti.crm.model.auto.Construction" resultMap="BaseResultMap">
 		select * from crm_ext_construction_view
 	</select>
 

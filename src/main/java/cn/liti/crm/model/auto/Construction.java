@@ -1,9 +1,11 @@
 package cn.liti.crm.model.auto;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 
 public class Construction {
-    private BigDecimal id;
+
+	private BigDecimal id;
 
     private String customersno;
 
@@ -20,6 +22,26 @@ public class Construction {
     private String customerstel;
 
     private String designername;
+ 
+    private Date startday;
+    
+    private String workday;
+    
+    public Date getStartday() {
+		return startday;
+	}
+
+	public void setStartday(Date startday) {
+		this.startday = startday;
+	}
+
+	public String getWorkday() {
+		return workday;
+	}
+
+	public void setWorkday(String workday) {
+		this.workday = workday;
+	}
 
     public BigDecimal getId() {
         return id;
@@ -92,4 +114,14 @@ public class Construction {
     public void setDesignername(String designername) {
         this.designername = designername == null ? null : designername.trim();
     }
+    
+    @Override
+   	public String toString() {
+   		return "Construction [id=" + id + ", customersno=" + customersno
+   				+ ", customersname=" + customersname + ", foremanfn="
+   				+ foremanfn + ", supervisionfn=" + supervisionfn + ", isma="
+   				+ isma + ", address=" + address + ", customerstel="
+   				+ customerstel + ", designername=" + designername
+   				+ ", startday=" + startday + ", workday=" + workday + "]";
+   	}
 }

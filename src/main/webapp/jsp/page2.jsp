@@ -292,32 +292,10 @@
 		</div>
 		<script src="${pageContext.request.contextPath}/plugins/bootstrap/js/jquery.mousewheel.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			//$('#modal').modal('show')
-			var datas = [];
-			for(var i = 0; i < 300; i++) {
-				if(i % 2 == 0) {
-					datas.push({
-						"id": (i + 1),
-						"gc-name": "嘉利210" + i,
-						"xq-name": "天津市嘉利中心210" + i,
-						"type": "已开工",
-						"start-data": "2018年5月1日",
-						"expect-time": "150",
-						"jd": parseInt(Math.random() * 100)
-					})
-				} else {
-					datas.push({
-						"id": (i + 1),
-						"gc-name": "嘉利210" + i,
-						"xq-name": "天津市嘉利中心210" + i,
-						"type": "待开工",
-						"start-data": "",
-						"expect-time": "",
-						"jd": ""
-					})
-				}
-
+			var log = function() {
+				console.log.apply(console, arguments)
 			}
+			//$('#modal').modal('show')
 			$(function() {
 				$('#table').bootstrapTable({
 					method: 'post',
@@ -328,7 +306,7 @@
 					pagination: true,
 					paginationLoop: false, //设置为 true 启用分页条无限循环的功能。
 					//showPaginationSwitch:true,//是否显示 数据条数选择框
-					uniqueId: "customersno",
+					uniqueId: "id",
 					search: true,
 					showColumns: true,
 					showRefresh: false,
@@ -373,6 +351,13 @@
 							sortable: "true"
 						},
 						{
+							field: "customersno",
+							title: "客户编号",
+							align: "center",
+							valign: "middle",
+							sortable: "true"
+						},
+						{
 							field: "customersname",
                             title: "业主",
                             align: "center",
@@ -387,15 +372,15 @@
 							sortable: "true"
 						},
 						{
-							field: "designername",
-                            title: "设计师",
+							field: "address",
+                            title: "地址",
                             align: "center",
                             valign: "middle",
 							sortable: "true"
 						},
 						{
-							field: "address",
-                            title: "地址",
+							field: "designername",
+                            title: "设计师",
                             align: "center",
                             valign: "middle",
 							sortable: "true"
@@ -414,8 +399,29 @@
                             valign: "middle",
                         },
                         {
+                            field: "startday",
+                            title: "开工时间",
+                            align: "center",
+                            valign: "middle",
+                            sortable: "true"
+                        },
+                        {
+                            field: "workday",
+                            title: "工期",
+                            align: "center",
+                            valign: "middle",
+                            sortable: "true"
+                        },
+                        {
                             field: "isma",
                             title: "有无主材",
+                            align: "center",
+                            valign: "middle",
+                            sortable: "true"
+                        },
+                        {
+                            field: "",
+                            title: "状态",
                             align: "center",
                             valign: "middle",
                             sortable: "true"
@@ -439,26 +445,17 @@
 							},
 							sortable: "true"
 						},
-						/* {
-							title: "进度",
-							align: "center",
-							valign: "middle",
-							formatter: function(value, row, index) { //自定义显示可以写标签哦~
-								return ' <button data-toggle="modal" data-target="#modal" type="button" class="btn btn-primary btn-xs">查看进度</button>'
-							},
-							sortable: "true"
-						}, */
 						{
-                            field: "kf",
+                            field: "operation",
                             title: "操作",
                             align: "center",
-                            formatter: function(value, row, index) { //自定义显示可以写标签哦~
-                                return "<a href=projectGant.jsp>查看详情</a>";
-                            },
                             valign: "middle",
+                            events: operateEvents,
+                            formatter: operateFormatter,
+                            
                         },
 					],
-					data: datas,
+// 					data: datas,
 				});
 			});
 			
@@ -590,6 +587,24 @@
 			},function(){
 				$('*').removeClass('bg-primary')
 			})
+			
+			window.operateEvents = {
+				"click .btn-look" : function(e, value, row, index){
+					$.ajax({
+					      type:"POST",
+					      url:"/crmExt/Plan/PlanDetail",
+					      data: { customersno: row.customersno },
+					      success:function(){
+					        location.reload();
+					      }
+					});
+				}				
+			}
+			var operateFormatter = function (value, row, index) { //自定义显示可以写标签哦~
+            	return [
+            	        '<button class="btn-look btn btn-primary btn-sm active" type="button" singleSelected=true>查看详情</button>',
+            		   ].join('');
+            }
 		</script>
 	</body>
 </html>

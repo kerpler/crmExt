@@ -22,6 +22,9 @@
 
 <body>
 	<div id="box" class="flex flex-v">
+		<div id="head">
+			<span class="glyphicon glyphicon-th-list"></span>
+		</div>
 		<div class="flex-1 flex">
 			<div id="sidebar" data-toggle='show'>
 				<ul>
@@ -30,8 +33,6 @@
 				</ul>
 			</div>
 			<div id="main" class="flex-1">
-				<span class="glyphicon glyphicon-th-list"></span>
-				<hr>
 				<iframe src="page2.jsp"></iframe>
 			</div>
 		</div>
@@ -49,7 +50,7 @@
 			$('#sidebar li').removeClass('bg-primary');
 			$(this).addClass('bg-primary')
 		})
-		$('#main span').click(function() {
+		$('#head span').click(function() {
 			var side = $('#sidebar');
 			var t = side.attr('data-toggle');
 			if (t == 'show') {
@@ -65,7 +66,7 @@
 					'width' : 180
 				}, 200, function() {
 					side.attr('data-toggle', 'show')
-				});
+				})
 			}
 		})
 	</script>

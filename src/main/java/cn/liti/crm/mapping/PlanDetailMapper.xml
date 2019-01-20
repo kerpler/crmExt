@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.PlanDetailMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.PlanDetail">
+    <id column="PDETAILID" jdbcType="VARCHAR" property="pdetailid" />
+    <result column="PLANID" jdbcType="VARCHAR" property="planid" />
+    <result column="ITEMID" jdbcType="VARCHAR" property="itemid" />
+    <result column="ITEMPERIOD" jdbcType="VARCHAR" property="itemperiod" />
+    <result column="ITEMOPEN" jdbcType="DATE" property="itemopen" />
+    <result column="ITEMEND" jdbcType="DATE" property="itemend" />
+    <result column="ITEMSTATE" jdbcType="VARCHAR" property="itemstate" />
+    <result column="CREATEDWHEN" jdbcType="DATE" property="createdwhen" />
+    <result column="VERSIONNO" jdbcType="DECIMAL" property="versionno" />
+    <result column="UPDATEDBY" jdbcType="VARCHAR" property="updatedby" />
+    <result column="UPDATEDWHEN" jdbcType="DATE" property="updatedwhen" />
+    <result column="DELETED" jdbcType="DECIMAL" property="deleted" />
+    <result column="CREATEDBY" jdbcType="VARCHAR" property="createdby" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PDETAILID, PLANID, ITEMID, ITEMPERIOD, ITEMOPEN, ITEMEND, ITEMSTATE, CREATEDWHEN, 
+    VERSIONNO, UPDATEDBY, UPDATEDWHEN, DELETED, CREATEDBY
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CRM_EXT_PLANDETAIL
+    where PDETAILID = #{pdetailid,jdbcType=VARCHAR}
+  </select>
+  <select id="FindDetail" resultMap="BaseResultMap">
+    select * from crm_ext_plandetail
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CRM_EXT_PLANDETAIL
+    where PDETAILID = #{pdetailid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.PlanDetail">
+    insert into CRM_EXT_PLANDETAIL (PDETAILID, PLANID, ITEMID, 
+      ITEMPERIOD, ITEMOPEN, ITEMEND, 
+      ITEMSTATE, CREATEDWHEN, VERSIONNO, 
+      UPDATEDBY, UPDATEDWHEN, DELETED, 
+      CREATEDBY)
+    values (#{pdetailid,jdbcType=VARCHAR}, #{planid,jdbcType=VARCHAR}, #{itemid,jdbcType=VARCHAR}, 
+      #{itemperiod,jdbcType=VARCHAR}, #{itemopen,jdbcType=DATE}, #{itemend,jdbcType=DATE}, 
+      #{itemstate,jdbcType=VARCHAR}, #{createdwhen,jdbcType=DATE}, #{versionno,jdbcType=DECIMAL}, 
+      #{updatedby,jdbcType=VARCHAR}, #{updatedwhen,jdbcType=DATE}, #{deleted,jdbcType=DECIMAL}, 
+      #{createdby,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.PlanDetail">
+    insert into CRM_EXT_PLANDETAIL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pdetailid != null">
+        PDETAILID,
+      </if>
+      <if test="planid != null">
+        PLANID,
+      </if>
+      <if test="itemid != null">
+        ITEMID,
+      </if>
+      <if test="itemperiod != null">
+        ITEMPERIOD,
+      </if>
+      <if test="itemopen != null">
+        ITEMOPEN,
+      </if>
+      <if test="itemend != null">
+        ITEMEND,
+      </if>
+      <if test="itemstate != null">
+        ITEMSTATE,
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN,
+      </if>
+      <if test="versionno != null">
+        VERSIONNO,
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY,
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="createdby != null">
+        CREATEDBY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pdetailid != null">
+        #{pdetailid,jdbcType=VARCHAR},
+      </if>
+      <if test="planid != null">
+        #{planid,jdbcType=VARCHAR},
+      </if>
+      <if test="itemid != null">
+        #{itemid,jdbcType=VARCHAR},
+      </if>
+      <if test="itemperiod != null">
+        #{itemperiod,jdbcType=VARCHAR},
+      </if>
+      <if test="itemopen != null">
+        #{itemopen,jdbcType=DATE},
+      </if>
+      <if test="itemend != null">
+        #{itemend,jdbcType=DATE},
+      </if>
+      <if test="itemstate != null">
+        #{itemstate,jdbcType=VARCHAR},
+      </if>
+      <if test="createdwhen != null">
+        #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liti.crm.model.auto.PlanDetail">
+    update CRM_EXT_PLANDETAIL
+    <set>
+      <if test="planid != null">
+        PLANID = #{planid,jdbcType=VARCHAR},
+      </if>
+      <if test="itemid != null">
+        ITEMID = #{itemid,jdbcType=VARCHAR},
+      </if>
+      <if test="itemperiod != null">
+        ITEMPERIOD = #{itemperiod,jdbcType=VARCHAR},
+      </if>
+      <if test="itemopen != null">
+        ITEMOPEN = #{itemopen,jdbcType=DATE},
+      </if>
+      <if test="itemend != null">
+        ITEMEND = #{itemend,jdbcType=DATE},
+      </if>
+      <if test="itemstate != null">
+        ITEMSTATE = #{itemstate,jdbcType=VARCHAR},
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN = #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        VERSIONNO = #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY = #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN = #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        DELETED = #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PDETAILID = #{pdetailid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liti.crm.model.auto.PlanDetail">
+    update CRM_EXT_PLANDETAIL
+    set PLANID = #{planid,jdbcType=VARCHAR},
+      ITEMID = #{itemid,jdbcType=VARCHAR},
+      ITEMPERIOD = #{itemperiod,jdbcType=VARCHAR},
+      ITEMOPEN = #{itemopen,jdbcType=DATE},
+      ITEMEND = #{itemend,jdbcType=DATE},
+      ITEMSTATE = #{itemstate,jdbcType=VARCHAR},
+      CREATEDWHEN = #{createdwhen,jdbcType=DATE},
+      VERSIONNO = #{versionno,jdbcType=DECIMAL},
+      UPDATEDBY = #{updatedby,jdbcType=VARCHAR},
+      UPDATEDWHEN = #{updatedwhen,jdbcType=DATE},
+      DELETED = #{deleted,jdbcType=DECIMAL},
+      CREATEDBY = #{createdby,jdbcType=VARCHAR}
+    where PDETAILID = #{pdetailid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

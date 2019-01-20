@@ -7,6 +7,11 @@
 	overflow: hidden;
 }
 
+#head {
+	width: 180px;
+	height: 20px;
+}
+
 #sidebar {
 	width: 180px;
 	position: relative;

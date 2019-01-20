@@ -16,10 +16,10 @@ Date.$VERSION = 1.02;
 Date.LZ = function(x) {return(x<0||x>9?"":"0")+x};
 // Full month names. Change this for local month names
 // Date.monthNames = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
-Date.monthNames = new Array('一月','二月','三月','四月','五月','J六月','七月','八月','九月','十月','十一月','十二月');
+Date.monthNames = new Array('01','02','03','04','05','06','07','08','09','10','11','12');
 // Month abbreviations. Change this for local month names
 // Date.monthAbbreviations = new Array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
-Date.monthAbbreviations = new Array('一月','二月','三月','四月','五月','J六月','七月','八月','九月','十月','十一月','十二月');
+Date.monthAbbreviations = new Array('01','02','03','04','05','06','07','08','09','10','11','12');
 // Full day names. Change this for local month names
 // Date.dayNames = new Array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
 Date.dayNames = new Array('日','一','二','三','四','五','六');
@@ -34,7 +34,7 @@ Date.preferAmericanFormat = true;
 Date.firstDayOfWeek = 0;
 
 //default 
-Date.defaultFormat="dd/MM/yyyy";
+Date.defaultFormat="yyyy-MM-dd";
 
 // If the getFullYear() method is not defined, create it
 if (!Date.prototype.getFullYear) { 
