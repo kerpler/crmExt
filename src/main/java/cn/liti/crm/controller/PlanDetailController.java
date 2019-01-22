@@ -1,7 +1,6 @@
 package cn.liti.crm.controller;
 
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
+
 import cn.liti.crm.model.auto.PlanDetail;
+import cn.liti.crm.model.auto.PlanDetailView;
 import cn.liti.crm.service.PlanDetailService;
 
 @Controller  
@@ -33,8 +34,9 @@ public class PlanDetailController {
 	
 	@RequestMapping("/PlanDetail")
     @ResponseBody
-	public void PlanDetail(HttpServletRequest request, Model model) {
-		String customersno = request.getParameter("customersno");
+	public List<PlanDetailView> PlanDetail(HttpServletRequest request, Model model) {
+		String cno = request.getParameter("customersno");
+		List<PlanDetailView> pdvlist = pdService.FindCno(cno);
+		return pdvlist;
 	}
-
 }

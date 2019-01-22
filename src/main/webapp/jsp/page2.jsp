@@ -590,14 +590,8 @@
 			
 			window.operateEvents = {
 				"click .btn-look" : function(e, value, row, index){
-					$.ajax({
-					      type:"POST",
-					      url:"/crmExt/Plan/PlanDetail",
-					      data: { customersno: row.customersno },
-					      success:function(){
-					        location.reload();
-					      }
-					});
+					var cno = row.customersno
+					window.location.href = 'progant.jsp?customersno='+ cno;
 				}				
 			}
 			var operateFormatter = function (value, row, index) { //自定义显示可以写标签哦~

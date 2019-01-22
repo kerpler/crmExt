@@ -97,6 +97,7 @@ body {
 		var log = function() {
 			console.log.apply(console, arguments)
 		}
+		
 		var data = {}
 		var ge;
 		$(function() {
@@ -318,17 +319,73 @@ body {
 					ret = localStorage.getObject("teamworkGantDemo");
 				}
 			}
-			var data;
+			/* var data;
 			$.ajax({
 			      type:"POST",
-			      url:"/crmExt/Plan/FindDetail",
-//			      data: {cno:""},
+			      url:"/crmExt/Plan/PlanDetail",
+			      data: {cno:""},
 				  async:false,
 			      success:function(res){
 			      	data = res;
 			      }
 			});
-			log("data:", data)
+			log("data:", data) */
+
+			var parseUrl = function (url){
+			    if(url.indexOf("?") == -1) {
+			        return {};
+			    }
+			    var query = url.split("?")[1];
+			    var queryArr = query.split("&");
+			    var obj = {};
+			    queryArr.forEach(function(item){
+			        var key = item.split("=")[0];
+			        var value = item.split("=")[1];
+			        obj[key] = decodeURIComponent(value);
+			    });
+			    return obj;
+			}
+			
+			var urlMsg = parseUrl(window.location.search);
+			var cno = urlMsg.customersno;
+			var data;
+			$.ajax({
+			      type:"POST",
+			      url:"/crmExt/Plan/PlanDetail",
+			      data: { customersno: cno },
+			      async:false,
+			      success:function(res){
+			    	  data = res
+			    	  log('data',data)
+			      }
+			});
+			for (var i=0; i < data.length; i++) {
+				var task = {}
+				task.id = (-1)*(i+1);
+				task["name"] = data[i].stepname; 
+				task["progress"] = 0;
+				task["progressByWorklog"] = false; 
+				task["relevance"] = 0; 
+				task["type"] = "";
+				task["typeId"] = ""; 
+				task["description"] = data[i].note; 
+				task["code"] = data[i].tabname;
+				task["level"] = 0;
+				task["status"] = "STATUS_ACTIVE"; 
+				task["depends"] = ""
+				task["end"] =  data[i].ends
+				task["start"] = data[i].starts
+				task["duration"] = 1 
+				task["canWrite"] = true
+				task["startIsMilestone"] = false 
+				task["endIsMilestone"] = false 
+				task["collapsed"] = false 
+				task["assigs"] = [] 
+			    task["hasChild"] = false
+			    ret.tasks.push(task)
+			}
+			  log('ret', ret)
+			
 			
 			//if not found create a new example task
 			if (!ret || !ret.tasks || ret.tasks.length == 0) {
@@ -336,7 +393,7 @@ body {
 				ret = {
 					"tasks" : [ {
 						"id" : -1,
-						"name" : data[0].planid,
+						"name" : 'haha',
 						"progress" : 80,
 						"progressByWorklog" : false,
 						"relevance" : 0,
@@ -416,17 +473,17 @@ body {
 				
 				//actualize data
 				var offset = new Date().getTime() - ret.tasks[0].start;
-				log("timeNow: ", new Date().getTime())
 				
 				for (var i = 0; i < ret.tasks.length; i++) {
-					ret.tasks[i].id = -1 * (i + 1)
-					ret.tasks[i].level = 0
-					ret.tasks[i].code = data[i].itemid
-					ret.tasks[i].name = data[i].planid
-					ret.tasks[i].start = data[i].itemopen
-				    ret.tasks[i].startIsMilestone =  true
-					ret.tasks[i].end = data[i].itemend
-				    ret.tasks[i].endIsMilestone =  false
+// 					ret.tasks[i].id = -1 * (i + 1)
+// 					ret.tasks[i].level = 0
+// 					ret.tasks[i].code = data[i].tabname
+// 					ret.tasks[i].name = data[i].stepname
+// 					ret.tasks[i].start = data[i].starts
+// 				    ret.tasks[i].startIsMilestone =  true
+// 					ret.tasks[i].end = data[i].ends
+// 				    ret.tasks[i].endIsMilestone =  false
+// 				    ret.tasks[i].description = data[i].note
 				    
 					//ret.tasks[i].start = ret.tasks[i].start + offset;
 				}
@@ -647,10 +704,10 @@ body {
 						class="button textual requireWrite" title="edit resources">
 						<span class="teamworkIcon">M</span>
 					</button>
-					<button onclick="importgants();"
+					<!-- <button onclick="importgants();"
 						class="button textual requireWrite" title="导入进度数据">
 						<span class="teamworkIcon">f</span>
-					</button>
+					</button> -->
 					&nbsp; &nbsp; &nbsp; &nbsp;
 					<button onclick="saveGanttOnServer();"
 						class="button first big requireWrite" title="Save">Save</button>
@@ -674,7 +731,7 @@ body {
 					<tr style="height: 40px">
 						<th class="gdfColHeader" style="width: 35px; border-right: none"></th>
 						<th class="gdfColHeader" style="width: 25px;"></th>
-						<th class="gdfColHeader gdfResizable" style="width: 100px;">编号</th>
+						<th class="gdfColHeader gdfResizable" style="width: 100px;">分类</th>
 						<th class="gdfColHeader gdfResizable" style="width: 300px;">名称</th>
 						<th class="gdfColHeader" align="center" style="width: 20px;"
 							title="Start date is a milestone."><span
@@ -685,11 +742,11 @@ body {
 							style="font-size: 8px;">^</span></th>
 						<th class="gdfColHeader gdfResizable" style="width: 80px;">结束</th>
 						<th class="gdfColHeader gdfResizable" style="width: 50px;">天数</th>
-						<th class="gdfColHeader gdfResizable" style="width: 20px;">完成度%</th>
+						<th class="gdfColHeader gdfResizable" style="width: 100px;">完成度%</th>
 						<th class="gdfColHeader gdfResizable requireCanSeeDep"
 							style="width: 50px;">depe.</th>
 						<th class="gdfColHeader gdfResizable"
-							style="width: 1000px; text-align: left; padding-left: 10px;">责任人</th>
+							style="width: 1000px; text-align: left; padding-left: 10px;">备注</th>
 					</tr>
 				</thead>
 			</table>
@@ -770,7 +827,7 @@ body {
 					class="taskData table" border="0">
 					<tr>
 						<td width="200" style="height: 80px" valign="top"><label
-							for="code">编号</label><br> <input type="text" name="code"
+							for="code">分类</label><br> <input type="text" name="code"
 							id="code" value="" size=15 class="formElements"
 							autocomplete='off' maxlength=255 style='width: 100%' oldvalue="1">
 						</td>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.PlanDetailViewMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.PlanDetailView">
+    <result column="TAB" jdbcType="CHAR" property="tab" />
+    <result column="TABNAME" jdbcType="CHAR" property="tabname" />
+    <result column="STEPNAME" jdbcType="VARCHAR" property="stepname" />
+    <result column="CUSTOMERSNO" jdbcType="VARCHAR" property="customersno" />
+    <result column="STARTS" jdbcType="DATE" property="starts" />
+    <result column="ENDS" jdbcType="DATE" property="ends" />
+    <result column="NOTE" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <select id="selectcno" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from crm_ext_plandetail_view
+    where  customersno = #{customersno, jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.PlanDetailView">
+    insert into CRM_EXT_PLANDETAIL_VIEW (TAB, TABNAME, STEPNAME, 
+      CUSTOMERSNO, STARTS, ENDS, 
+      NOTE)
+    values (#{tab,jdbcType=CHAR}, #{tabname,jdbcType=CHAR}, #{stepname,jdbcType=VARCHAR}, 
+      #{customersno,jdbcType=VARCHAR}, #{starts,jdbcType=DATE}, #{ends,jdbcType=DATE}, 
+      #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.PlanDetailView">
+    insert into CRM_EXT_PLANDETAIL_VIEW
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tab != null">
+        TAB,
+      </if>
+      <if test="tabname != null">
+        TABNAME,
+      </if>
+      <if test="stepname != null">
+        STEPNAME,
+      </if>
+      <if test="customersno != null">
+        CUSTOMERSNO,
+      </if>
+      <if test="starts != null">
+        STARTS,
+      </if>
+      <if test="ends != null">
+        ENDS,
+      </if>
+      <if test="note != null">
+        NOTE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tab != null">
+        #{tab,jdbcType=CHAR},
+      </if>
+      <if test="tabname != null">
+        #{tabname,jdbcType=CHAR},
+      </if>
+      <if test="stepname != null">
+        #{stepname,jdbcType=VARCHAR},
+      </if>
+      <if test="customersno != null">
+        #{customersno,jdbcType=VARCHAR},
+      </if>
+      <if test="starts != null">
+        #{starts,jdbcType=DATE},
+      </if>
+      <if test="ends != null">
+        #{ends,jdbcType=DATE},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
