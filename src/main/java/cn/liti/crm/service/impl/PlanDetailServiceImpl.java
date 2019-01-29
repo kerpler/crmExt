@@ -29,7 +29,6 @@ public class PlanDetailServiceImpl implements PlanDetailService {
 	public List<PlanDetailView> FindCno(String cno) {
 		// TODO Auto-generated method stub
 		List<PlanDetailView> pdvlist = pdvMappar.selectcno(cno);
-		System.out.println(pdvlist);
 		return pdvlist;
 	}
 	

@@ -82,7 +82,6 @@ GanttMaster.prototype.init = function (place) {
 
   //create editor
   this.editor = new GridEditor(this);
-  log("gridEditer:", this.editor)
   place.append(this.editor.gridified);
 
   //create gantt

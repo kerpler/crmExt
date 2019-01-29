@@ -37,9 +37,9 @@
             <div class="panel-body">
                 <form id="formSearch" class="form-horizontal">
                     <div class="form-group" style="margin-top:15px">
-                        <label class="control-label col-sm-1" for="txt_search_allperiod">整体工期</label>
+                        <label class="control-label col-sm-1" for="txt_search_period">整体工期</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="txt_search_allperiod">
+                            <input type="text" class="form-control" id="txt_search_period">
                         </div>
                         <div class="col-sm-4" style="text-align:left;">
                             <button type="button" style="margin-left:50px" id="btn_query" class="btn btn-primary">查询</button>
@@ -69,40 +69,28 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">操作</h4>
                     </div>
-                    <form method="post"> 
+                    <form method="post" id="form-modal">  
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>工程ID</label>
-                            <input type="text" name="id" class="form-control" id="txt_id" placeholder="工程ID" />
-                        </div>
-                        <div class="form-group">
-                            <label>工程标识</label>
-                            <input type="text" name="code" class="form-control" id="txt_code" placeholder="工程标识" />
-                        </div>
-                        <div class="form-group">
-                            <label>工程名称</label>
-                            <input type="text" name="codename" class="form-control" id="txt_codename" placeholder="工程名称" />
-                        </div>
-                        <div class="form-group">
-                            <label>工程周期</label>
-                            <input type="text" name="period" class="form-control" id="txt_period" placeholder="工程周期" />
-                        </div>
-                        <div class="form-group">
-                            <label>分类标识</label>
-                            <input type="text" name="sort" class="form-control" id="txt_sort" placeholder="分类标识" />
-                        </div>
-                        <div class="form-group">
-                            <label>分类名称</label>
-                            <input type="text" name="sortname" class="form-control" id="txt_sortname" placeholder="分类名称"  />
+                            <label>标识</label>
+                            <input type="text" name="planid" class="form-control" id="txt_planid" placeholder="标识" />
                         </div>
                         <div class="form-group">
                             <label>整体工期</label>
-                            <input type="text" name="allperiod" class="form-control" id="txt_allperiod" placeholder="整体工期"  />
+                            <input type="text" name="period" class="form-control" id="txt_period" placeholder="整体工期" />
                         </div>
                         <div class="form-group">
-                            <label>备注</label>
-                            <input type="text" name="note" class="form-control" id="txt_note" placeholder="备注"  />
+                            <label>水电工期</label>
+                            <input type="text" name="water" class="form-control" id="txt_water" placeholder="水电工期" />
+                        </div>
+                        <div class="form-group">
+                            <label>地采暖工期</label>
+                            <input type="text" name="floor" class="form-control" id="txt_floor" placeholder="地采暖"  />
+                        </div>
+                        <div class="form-group">
+                            <label>中期工期</label>
+                            <input type="text" name="middle" class="form-control" id="txt_middle" placeholder="中期工期"  />
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -143,7 +143,7 @@ ret=
     ],
       "roles":       [
       {"id": "tmp_1", "name": "Project Manager"},
-    ], "canWrite":    true, "canDelete":true, "canWriteOnParent": true, canAdd:true}
+    ], "canWrite":    false, "canDelete":false, "canWriteOnParent": false, canAdd:false}
 
 
 var urlMsg = parseUrl(window.location.search);
@@ -171,11 +171,17 @@ for (var i=0; i < data.length; i++) {
 	task["description"] = data[i].note; 
 	task["code"] = data[i].tabname;
 	task["level"] = 0;
-	task["status"] = "STATUS_ACTIVE"; 
+	if (data[i].tab == '1'){
+		task["status"] = "STATUS_ACTIVE"; 
+	} else if (data[i].tab == '2' && data[i].note.indexOf('不合格') != -1) {
+		task["status"] = "STATUS_FAILED"; 
+	} else {
+		task["status"] = "STATUS_DONE"; 
+	}
 	task["depends"] = ""
 	task["end"] =  data[i].ends
 	task["start"] = data[i].starts
-	task["duration"] = 1 
+	task["duration"] = (data[i].ends - data[i].starts) / ( 1000 * 60 * 60 * 24 )
 	task["canWrite"] = true
 	task["startIsMilestone"] = false 
 	task["endIsMilestone"] = false 
@@ -517,7 +523,7 @@ function showBaselineInfo (event,element){
       <button onclick="$('#workSpace').trigger('moveUpCurrentTask.gantt');return false;" class="button textual icon requireCanWrite requireCanMoveUpDown" title="move up"><span class="teamworkIcon">k</span></button>
       <button onclick="$('#workSpace').trigger('moveDownCurrentTask.gantt');return false;" class="button textual icon requireCanWrite requireCanMoveUpDown" title="move down"><span class="teamworkIcon">j</span></button>
       <span class="ganttButtonSeparator requireCanWrite requireCanDelete"></span>
-      <button onclick="$('#workSpace').trigger('deleteFocused.gantt');return false;" class="button textual icon delete requireCanWrite" title="Elimina"><span class="teamworkIcon">&cent;</span></button>
+      <button onclick="$('#workSpace').trigger('deleteFocused.gantt');return false;" class="button textual icon delete requireCanWrite" title="Elimina" style="display:none;"><span class="teamworkIcon">&cent;</span></button>
       <span class="ganttButtonSeparator"></span>
       <button onclick="$('#workSpace').trigger('expandAll.gantt');return false;" class="button textual icon " title="EXPAND_ALL"><span class="teamworkIcon">6</span></button>
       <button onclick="$('#workSpace').trigger('collapseAll.gantt'); return false;" class="button textual icon " title="COLLAPSE_ALL"><span class="teamworkIcon">5</span></button>
@@ -538,7 +544,7 @@ function showBaselineInfo (event,element){
       <button onclick="ge.element.toggleClass('colorByStatus' );return false;" class="button textual icon" style="display:none;"><span class="teamworkIcon">&sect;</span></button>
     <button onclick="editResources();" class="button textual requireWrite" title="edit resources" style="display:none;"><span class="teamworkIcon">M</span></button>
       &nbsp; &nbsp; &nbsp; &nbsp;
-    <button onclick="saveGanttOnServer();" class="button first big requireWrite" title="Save">Save</button>
+    <button onclick="saveGanttOnServer();" class="button first big requireWrite" title="Save" style="display:none;">Save</button>
     <button onclick='newProject();' class='button requireWrite newproject' style="display:none;"><em>clear project</em></button>
     <button class="button login" title="login/enroll" onclick="loginEnroll($(this));" style="display:none;">login/enroll</button>
     <button class="button opt collab" title="Start with Twproject" onclick="collaborate($(this));" style="display:none;"><em>collaborate</em></button>
@@ -551,16 +557,16 @@ function showBaselineInfo (event,element){
     <tr style="height:40px">
       <th class="gdfColHeader" style="width:35px; border-right: none"></th>
       <th class="gdfColHeader" style="width:25px;"></th>
-      <th class="gdfColHeader gdfResizable" style="width:100px;">类别</th>
+      <th class="gdfColHeader gdfResizable" style="width:150px;">类别</th>
       <th class="gdfColHeader gdfResizable" style="width:150px;">阶段</th>
-      <th class="gdfColHeader"  align="center" style="width:17px;" title="Start date is a milestone."><span class="teamworkIcon" style="font-size: 8px;">^</span></th>
-      <th class="gdfColHeader gdfResizable" style="width:80px;">开始时间</th>
-      <th class="gdfColHeader"  align="center" style="width:17px;" title="End date is a milestone."><span class="teamworkIcon" style="font-size: 8px;">^</span></th>
-      <th class="gdfColHeader gdfResizable" style="width:80px;">结束时间</th>
+      <th class="gdfColHeader"  align="center" style="width:17px;display:none" title="Start date is a milestone."><span class="teamworkIcon" style="font-size: 8px;">^</span></th>
+      <th class="gdfColHeader gdfResizable" style="width:120px;">开始时间</th>
+      <th class="gdfColHeader"  align="center" style="width:17px;display:none" title="End date is a milestone."><span class="teamworkIcon" style="font-size: 8px;">^</span></th>
+      <th class="gdfColHeader gdfResizable" style="width:120px;">结束时间</th>
       <th class="gdfColHeader gdfResizable" style="width:80px;">持续时间</th>
-      <th class="gdfColHeader gdfResizable" style="width:80px;">完成度%</th>
-      <th class="gdfColHeader gdfResizable requireCanSeeDep" style="width:50px;">依赖</th>
-      <th class="gdfColHeader gdfResizable" style="width:300px; text-align: left; padding-left: 10px;">描述</th>
+      <th class="gdfColHeader gdfResizable" style="width:80px;display:none">完成度%</th>
+      <th class="gdfColHeader gdfResizable requireCanSeeDep" style="width:50px;display:none">依赖</th>
+      <th class="gdfColHeader gdfResizable" style="width:1000px; text-align: left; padding-left: 10px;">描述</th>
     </tr>
     </thead>
   </table>
@@ -569,20 +575,16 @@ function showBaselineInfo (event,element){
 
 <div class="__template__" type="TASKROW"><!--
   <tr id="tid_(#=obj.id#)" taskId="(#=obj.id#)" class="taskEditRow (#=obj.isParent()?'isParent':''#) (#=obj.collapsed?'collapsed':''#)" level="(#=level#)">
-    <th class="gdfCell edit" align="right" style="cursor:pointer;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span> <span class="teamworkIcon" style="font-size:12px;" >e</span></th>
-    <td class="gdfCell noClip" align="center"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
+    <th class="gdfCell" align="right" style="cursor:pointer;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span> <span class="teamworkIcon" style="font-size:12px;display:none" >e</span></th>
+    <td class="gdfCell noClip" align="center"><div class="taskStatus" status="(#=obj.status#)" ></div></td>
     <td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="code/short name"></td>
     <td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
       <div class="exp-controller" align="center"></div>
       <input type="text" name="name" value="(#=obj.name#)" placeholder="name">
     </td>
-    <td class="gdfCell" align="center"><input type="checkbox" name="startIsMilestone"></td>
     <td class="gdfCell"><input type="text" name="start"  value="" class="date"></td>
-    <td class="gdfCell" align="center"><input type="checkbox" name="endIsMilestone"></td>
     <td class="gdfCell"><input type="text" name="end" value="" class="date"></td>
     <td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)"></td>
-    <td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#)></td>
-    <td class="gdfCell requireCanSeeDep"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
     <td class="gdfCell"><input type="text" name="description" autocomplete="off" value="(#=obj.description#)")></td>
   </tr>
   --></div>
@@ -591,10 +593,6 @@ function showBaselineInfo (event,element){
   <tr class="taskEditRow emptyRow" >
     <th class="gdfCell" align="right"></th>
     <td class="gdfCell noClip" align="center"></td>
-    <td class="gdfCell"></td>
-    <td class="gdfCell"></td>
-    <td class="gdfCell"></td>
-    <td class="gdfCell"></td>
     <td class="gdfCell"></td>
     <td class="gdfCell"></td>
     <td class="gdfCell"></td>

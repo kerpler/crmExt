@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liti.crm.dao.auto.PlanMapper">
+  <resultMap id="BaseResultMap" type="cn.liti.crm.model.auto.Plan">
+    <id column="PLANID" jdbcType="VARCHAR" property="planid" />
+    <result column="PERIOD" jdbcType="DECIMAL" property="period" />
+    <result column="CREATEDWHEN" jdbcType="DATE" property="createdwhen" />
+    <result column="VERSIONNO" jdbcType="DECIMAL" property="versionno" />
+    <result column="UPDATEDBY" jdbcType="VARCHAR" property="updatedby" />
+    <result column="UPDATEDWHEN" jdbcType="DATE" property="updatedwhen" />
+    <result column="DELETED" jdbcType="DECIMAL" property="deleted" />
+    <result column="CREATEDBY" jdbcType="VARCHAR" property="createdby" />
+    <result column="WATER" jdbcType="DECIMAL" property="water" />
+    <result column="FLOOR" jdbcType="DECIMAL" property="floor" />
+    <result column="MIDDLE" jdbcType="DECIMAL" property="middle" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PLANID, PERIOD, CREATEDWHEN, VERSIONNO, UPDATEDBY, UPDATEDWHEN, DELETED, CREATEDBY, 
+    WATER, FLOOR, MIDDLE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CRM_EXT_PLAN
+    where PLANID = #{planid,jdbcType=VARCHAR}
+  </select>
+  <select id="GetItem"  resultMap="BaseResultMap">
+    select  *  from CRM_EXT_PLAN order by to_number(planid)
+  </select>
+  <select id="queryItem"  resultMap="BaseResultMap" parameterType="java.util.Map">
+    select  *  
+    from CRM_EXT_PLAN
+    where period = #{period}
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CRM_EXT_PLAN
+    where PLANID = #{planid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.liti.crm.model.auto.Plan">
+    insert into CRM_EXT_PLAN (PLANID, PERIOD, CREATEDWHEN, 
+      VERSIONNO, UPDATEDBY, UPDATEDWHEN, 
+      DELETED, CREATEDBY, WATER, 
+      FLOOR, MIDDLE)
+    values (#{planid,jdbcType=VARCHAR}, #{period,jdbcType=DECIMAL}, #{createdwhen,jdbcType=DATE}, 
+      #{versionno,jdbcType=DECIMAL}, #{updatedby,jdbcType=VARCHAR}, #{updatedwhen,jdbcType=DATE}, 
+      #{deleted,jdbcType=DECIMAL}, #{createdby,jdbcType=VARCHAR}, #{water,jdbcType=DECIMAL}, 
+      #{floor,jdbcType=DECIMAL}, #{middle,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liti.crm.model.auto.Plan">
+    insert into CRM_EXT_PLAN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="planid != null">
+        PLANID,
+      </if>
+      <if test="period != null">
+        PERIOD,
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN,
+      </if>
+      <if test="versionno != null">
+        VERSIONNO,
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY,
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="createdby != null">
+        CREATEDBY,
+      </if>
+      <if test="water != null">
+        WATER,
+      </if>
+      <if test="floor != null">
+        FLOOR,
+      </if>
+      <if test="middle != null">
+        MIDDLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="planid != null">
+        #{planid,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null">
+        #{period,jdbcType=DECIMAL},
+      </if>
+      <if test="createdwhen != null">
+        #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="water != null">
+        #{water,jdbcType=DECIMAL},
+      </if>
+      <if test="floor != null">
+        #{floor,jdbcType=DECIMAL},
+      </if>
+      <if test="middle != null">
+        #{middle,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liti.crm.model.auto.Plan">
+    update CRM_EXT_PLAN
+    <set>
+      <if test="period != null">
+        PERIOD = #{period,jdbcType=DECIMAL},
+      </if>
+      <if test="createdwhen != null">
+        CREATEDWHEN = #{createdwhen,jdbcType=DATE},
+      </if>
+      <if test="versionno != null">
+        VERSIONNO = #{versionno,jdbcType=DECIMAL},
+      </if>
+      <if test="updatedby != null">
+        UPDATEDBY = #{updatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedwhen != null">
+        UPDATEDWHEN = #{updatedwhen,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        DELETED = #{deleted,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="water != null">
+        WATER = #{water,jdbcType=DECIMAL},
+      </if>
+      <if test="floor != null">
+        FLOOR = #{floor,jdbcType=DECIMAL},
+      </if>
+      <if test="middle != null">
+        MIDDLE = #{middle,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where PLANID = #{planid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liti.crm.model.auto.Plan">
+    update CRM_EXT_PLAN
+    set PERIOD = #{period,jdbcType=DECIMAL},
+      CREATEDWHEN = #{createdwhen,jdbcType=DATE},
+      VERSIONNO = #{versionno,jdbcType=DECIMAL},
+      UPDATEDBY = #{updatedby,jdbcType=VARCHAR},
+      UPDATEDWHEN = #{updatedwhen,jdbcType=DATE},
+      DELETED = #{deleted,jdbcType=DECIMAL},
+      CREATEDBY = #{createdby,jdbcType=VARCHAR},
+      WATER = #{water,jdbcType=DECIMAL},
+      FLOOR = #{floor,jdbcType=DECIMAL},
+      MIDDLE = #{middle,jdbcType=DECIMAL}
+    where PLANID = #{planid,jdbcType=VARCHAR}
+  </update>
+</mapper>

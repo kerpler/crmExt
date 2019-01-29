@@ -12,4 +12,7 @@ public interface ConstructionMapper {
 
     List<Construction> findConstruction();
     
+    List<Construction> findCons(Map<String, String> map);
+    
+    
 }

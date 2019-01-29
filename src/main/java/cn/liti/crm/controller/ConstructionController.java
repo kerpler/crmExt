@@ -36,7 +36,7 @@ public class ConstructionController{
     	// 前台传递页数，和条数，确定查询数据
     	PageHelper.startPage((int) map.get("pageNumber"), (int) map.get("pageSize"));
     	// 查询数据
-    	List<Construction> con = constructionService.findConstruction();
+    	List<Construction> con = constructionService.findcon(map);
     	// 分页，限制前后连续5页
     	PageInfo pageInfo = new PageInfo(con,5);
     	return pageInfo;

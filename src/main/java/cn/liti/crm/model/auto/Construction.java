@@ -27,7 +27,27 @@ public class Construction {
     
     private String workday;
     
-    public Date getStartday() {
+    private Integer process;
+    
+    private String status;
+    
+    public Integer getProcess() {
+		return process;
+	}
+
+	public void setProcess(Integer process) {
+		this.process = process;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Date getStartday() {
 		return startday;
 	}
 

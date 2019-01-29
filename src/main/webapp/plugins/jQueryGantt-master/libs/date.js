@@ -614,13 +614,13 @@ Date.prototype.distanceInWorkingDays= function (toDate){
   var nd=new Date(Math.max(this,toDate));
   nd.setHours(12, 0,0, 0);
   while (pos < nd) {
-    days = days + (isHoliday(pos) ? 0 : 1);
+    days = days +  1//(isHoliday(pos) ? 0 : 1);
     pos.setDate(pos.getDate() + 1);
   }
   days=days*(this>toDate?-1:1);
 
   //console.debug("distanceInWorkingDays",this,toDate,days);
-  return days;
+  return days - 1;
 };
 
 Date.prototype.setFirstDayOfThisWeek= function (firstDayOfWeek){

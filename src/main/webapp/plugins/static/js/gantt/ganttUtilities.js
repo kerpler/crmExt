@@ -412,10 +412,10 @@ function computeEndByDuration(start, duration) {
   var d = new Date(start);
   //console.debug("computeEndByDuration start ",d,duration)
   var q = duration - 1;
-  while (q > 0) {
+  while (q >= 0) {
     d.setDate(d.getDate() + 1);
-    if (!isHoliday(d))
-      q--;
+//	if (!isHoliday(d))
+	    q--;
   }
   d.setHours(23, 59, 59, 999);
   return d.getTime();

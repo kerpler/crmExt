@@ -331,145 +331,79 @@ body {
 			});
 			log("data:", data) */
 
-			var parseUrl = function (url){
-			    if(url.indexOf("?") == -1) {
-			        return {};
-			    }
-			    var query = url.split("?")[1];
-			    var queryArr = query.split("&");
-			    var obj = {};
-			    queryArr.forEach(function(item){
-			        var key = item.split("=")[0];
-			        var value = item.split("=")[1];
-			        obj[key] = decodeURIComponent(value);
-			    });
-			    return obj;
-			}
-			
-			var urlMsg = parseUrl(window.location.search);
-			var cno = urlMsg.customersno;
-			var data;
-			$.ajax({
-			      type:"POST",
-			      url:"/crmExt/Plan/PlanDetail",
-			      data: { customersno: cno },
-			      async:false,
-			      success:function(res){
-			    	  data = res
-			    	  log('data',data)
-			      }
-			});
-			for (var i=0; i < data.length; i++) {
-				var task = {}
-				task.id = (-1)*(i+1);
-				task["name"] = data[i].stepname; 
-				task["progress"] = 0;
-				task["progressByWorklog"] = false; 
-				task["relevance"] = 0; 
-				task["type"] = "";
-				task["typeId"] = ""; 
-				task["description"] = data[i].note; 
-				task["code"] = data[i].tabname;
-				task["level"] = 0;
-				task["status"] = "STATUS_ACTIVE"; 
-				task["depends"] = ""
-				task["end"] =  data[i].ends
-				task["start"] = data[i].starts
-				task["duration"] = 1 
-				task["canWrite"] = true
-				task["startIsMilestone"] = false 
-				task["endIsMilestone"] = false 
-				task["collapsed"] = false 
-				task["assigs"] = [] 
-			    task["hasChild"] = false
-			    ret.tasks.push(task)
-			}
-			  log('ret', ret)
 			
 			
 			//if not found create a new example task
 			if (!ret || !ret.tasks || ret.tasks.length == 0) {
+				ret= 
+				{	"tasks": [
+				    ], 
+				    "selectedRow": 2, 
+				    "deletedTaskIds": [],
+				    
+				    "resources": [
+				      {"id": "tmp_1", "name": "Resource 1"},
+				    ],
+				      "roles":       [
+				      {"id": "tmp_1", "name": "Project Manager"},
+				    ], "canWrite":    true, "canDelete":true, "canWriteOnParent": true, canAdd:true}
 
-				ret = {
-					"tasks" : [ {
-						"id" : -1,
-						"name" : 'haha',
-						"progress" : 80,
-						"progressByWorklog" : false,
-						"relevance" : 0,
-						"type" : "",
-						"typeId" : "",
-						"description" : "客户编号+监理+工地地址",
-						"code" : "MA-01",
-						"level" : 0,
-						"status" : "STATUS_ACTIVE",
-						"depends" : "",
-						"canWrite" : true,
-						"start" : 1396994400000,
-						"duration" : 20,
-						"end" : 1399586399999,
-						"startIsMilestone" : false,
-						"endIsMilestone" : false,
-						"collapsed" : false,
-						"hasChild" : true,
-						"assigs" : [],
-					}, {
-						"id" : -2,
-						"name" : "主材",
-						"progress" : 0,
-						"progressByWorklog" : false,
-						"relevance" : 0,
-						"type" : "",
-						"typeId" : "",
-						"description" : "",
-						"code" : "",
-						"level" : 0,
-						"status" : "STATUS_ACTIVE",
-						"depends" : "",
-						"canWrite" : true,
-						"start" : 1396994400000,
-						"duration" : 10,
-						"end" : 1398203999999,
-						"startIsMilestone" : false,
-						"endIsMilestone" : false,
-						"collapsed" : false,
-						"assigs" : [],
-						"hasChild" : true,
-						"progress" : 20,
-						"assigs" : [],
-					}, {
-						"id" : -3,
-						"name" : "其他",
-						"progress" : 0,
-						"progressByWorklog" : false,
-						"relevance" : 0,
-						"type" : "",
-						"typeId" : "",
-						"description" : "",
-						"code" : "",
-						"level" : 0,
-						"status" : "STATUS_ACTIVE",
-						"depends" : "",
-						"canWrite" : true,
-						"start" : 1396994400000,
-						"duration" : 2,
-						"end" : 1397167199999,
-						"startIsMilestone" : false,
-						"endIsMilestone" : false,
-						"collapsed" : false,
-						"assigs" : [],
-						"hasChild" : false,
-						"progress" : 20,
-						"assigs" : [],
-					}, ],
-					"selectedRow" : 2,
-					"deletedTaskIds" : [],
-					"resources" : [],
-					"roles" : [],
-					"canWrite" : true,
-					"canWriteOnParent" : true,
-					"zoom" : "w3"
+				var parseUrl = function (url){
+				    if(url.indexOf("?") == -1) {
+				        return {};
+				    }
+				    var query = url.split("?")[1];
+				    var queryArr = query.split("&");
+				    var obj = {};
+				    queryArr.forEach(function(item){
+				        var key = item.split("=")[0];
+				        var value = item.split("=")[1];
+				        obj[key] = decodeURIComponent(value);
+				    });
+				    return obj;
 				}
+				
+				var urlMsg = parseUrl(window.location.search);
+				var cno = urlMsg.customersno;
+				var data;
+				$.ajax({
+				      type:"POST",
+				      url:"/crmExt/Plan/PlanDetail",
+				      data: { customersno: cno },
+				      async:false,
+				      success:function(res){
+				    	  data = res
+				    	  log('data',data)
+				      }
+				});
+				for (var i=0; i < data.length; i++) {
+					var task = {}
+					task.id = (-1)*(i+1);
+					task["name"] = data[i].stepname; 
+					task["progress"] = 0 //10;
+					task["progressByWorklog"] = false; 
+					task["relevance"] = 0; 
+					task["type"] = "";
+					task["typeId"] = ""; 
+					task["description"] = data[i].note; 
+					task["code"] = data[i].tabname;
+					task["level"] = 0;
+					task["status"] = "STATUS_ACTIVE"; 
+					task["depends"] = ""
+					task["end"] =  data[i].ends
+					task["start"] = data[i].starts
+					task["duration"] = (data[i].ends - data[i].starts) / ( 1000 * 60 * 60 * 24 )
+					task["canWrite"] = true
+					task["startIsMilestone"] = false 
+					task["endIsMilestone"] = false 
+					task["collapsed"] = false 
+					task["assigs"] = [] 
+				    task["hasChild"] = false
+				    ret.tasks.push(task)
+				}
+				  log('ret', ret)
+				
+				
 				
 				//actualize data
 				var offset = new Date().getTime() - ret.tasks[0].start;
@@ -731,8 +665,8 @@ body {
 					<tr style="height: 40px">
 						<th class="gdfColHeader" style="width: 35px; border-right: none"></th>
 						<th class="gdfColHeader" style="width: 25px;"></th>
-						<th class="gdfColHeader gdfResizable" style="width: 100px;">分类</th>
-						<th class="gdfColHeader gdfResizable" style="width: 300px;">名称</th>
+						<th class="gdfColHeader gdfResizable" style="width: 150px;">分类</th>
+						<th class="gdfColHeader gdfResizable" style="width: 150px;">名称</th>
 						<th class="gdfColHeader" align="center" style="width: 20px;"
 							title="Start date is a milestone."><span
 							class="teamworkIcon" style="font-size: 8px;">^</span></th>
@@ -741,12 +675,12 @@ body {
 							title="End date is a milestone."><span class="teamworkIcon"
 							style="font-size: 8px;">^</span></th>
 						<th class="gdfColHeader gdfResizable" style="width: 80px;">结束</th>
-						<th class="gdfColHeader gdfResizable" style="width: 50px;">天数</th>
-						<th class="gdfColHeader gdfResizable" style="width: 100px;">完成度%</th>
+						<th class="gdfColHeader gdfResizable" style="width: 80px;">天数</th>
+						<th class="gdfColHeader gdfResizable" style="width: 80px;">完成度%</th>
 						<th class="gdfColHeader gdfResizable requireCanSeeDep"
-							style="width: 50px;">depe.</th>
+							style="width: 50px;">依赖</th>
 						<th class="gdfColHeader gdfResizable"
-							style="width: 1000px; text-align: left; padding-left: 10px;">备注</th>
+							style="width: 200px; text-align: left; padding-left: 10px;">备注</th>
 					</tr>
 				</thead>
 			</table>
@@ -769,7 +703,7 @@ body {
       <td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)"></td>
       <td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#)></td>
       <td class="gdfCell requireCanSeeDep"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
-      <td class="gdfCell taskAssigs">(#=obj.getAssigsString()#)</td>
+	  <td class="gdfCell"><input type="text" name="description" autocomplete="off" value="(#=obj.description#)")></td>
       </tr>
     -->
 		</div>
@@ -894,7 +828,7 @@ body {
 						</td>
 					</tr>
 					<tr>
-						<td colspan="4"><label for="description">描述</label><br>
+						<td colspan="4"><label for="description">备注</label><br>
 							<textarea rows="3" cols="30" id="description" name="description"
 								class="formElements" style="width: 100%"></textarea></td>
 					</tr>

@@ -17,4 +17,9 @@ public class ConstructionServiceImpl implements ConstructionService {
     public List<Construction> findConstruction() {
         return   ConstructionMapper.findConstruction();
     }
+	@Override
+	public List<Construction> findcon(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return   ConstructionMapper.findCons(map);
+	}
 }

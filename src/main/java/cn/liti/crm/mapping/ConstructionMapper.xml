@@ -13,9 +13,56 @@
 		<result column="DESIGNERNAME" jdbcType="VARCHAR" property="designername" />
 		<result column="WORKDAY" jdbcType="VARCHAR" property="workday" />
 		<result column="STARTDAY" jdbcType="DATE" property="startday" />
+		<result column="PROCESS" jdbcType="DECIMAL" property="process" />
+		<result column="STATUS" jdbcType="VARCHAR" property="status" />
 	</resultMap>
 	<select id="findConstruction" parameterType="cn.liti.crm.model.auto.Construction" resultMap="BaseResultMap">
 		select * from crm_ext_construction_view
+	</select>
+	
+	<select id="findCons" parameterType="map" resultMap="BaseResultMap">
+		select * from crm_ext_construction_view 
+		<where>
+		<if test="customersno!=null">
+            and customersno LIKE '%'  || #{customersno} || '%'
+        </if>
+        <if test="customersname!=null">
+            and customersname LIKE '%' || #{customersname} || '%'
+        </if>
+        <if test="foremanfn!=null">
+            and foremanfn LIKE '%' || #{foremanfn} || '%'
+        </if>
+        <if test="supervisionfn!=null">
+            and supervisionfn LIKE '%'|| #{supervisionfn}|| '%'
+        </if>
+        <if test="address!=null">
+            and address LIKE '%' ||#{address}|| '%'
+        </if>
+        <if test="customerstel!=null">
+            and customerstel LIKE '%' ||#{customerstel}|| '%'
+        </if>
+        <if test="designername!=null">
+            and designername LIKE '%' ||#{designername}|| '%'
+        </if>
+        <if test="workday!=null and workday != ''">
+            and workday = #{workday}
+        </if>
+        <if test="isma!=null and isma !=''">
+            and isma = #{isma} 
+        </if>
+        <if test="status!=null and status != ''">
+            and status = #{status} 
+        </if>
+        <if test="process!=null and process != ''">
+            and process = #{process}  
+        </if>
+        <if test="startdayopen!=null and startdayopen != ''">
+            and startday &gt;= to_date(#{startdayopen}, 'yyyy-mm-dd') 
+        </if>
+        <if test="startdayend!=null and startdayend != ''">
+            and startday &lt;= to_date(#{startdayend}, 'yyyy-mm-dd')
+        </if>
+		</where>
 	</select>
 
 	<insert id="insert" parameterType="cn.liti.crm.model.auto.Construction">
