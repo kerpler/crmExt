@@ -26,7 +26,7 @@
 			<span class="glyphicon glyphicon-th-list"></span>
 		</div>
 		<div class="flex-1 flex">
-			<div id="sidebar" data-toggle='show'>
+			<div id="sidebar" data-toggle='hide' style="left:-180px; width:0px">
 				<ul>
 					<li data-src='basestep.jsp'>工程项目</li>
 					<li data-src='page2.jsp'>在施工地</li>
@@ -50,23 +50,24 @@
 			$('#sidebar li').removeClass('bg-primary');
 			$(this).addClass('bg-primary')
 		})
+				
 		$('#head span').click(function() {
 			var side = $('#sidebar');
 			var t = side.attr('data-toggle');
-			if (t == 'show') {
+			if (t == 'hide') {
+				side.animate({
+					'left' : 0,
+					'width' : 180
+				}, 200, function() {
+					side.attr('data-toggle', 'show')
+				})				
+			} else {
 				side.animate({
 					'left' : -180,
 					'width' : 0
 				}, 200, function() {
 					side.attr('data-toggle', 'hide')
 				});
-			} else {
-				side.animate({
-					'left' : 0,
-					'width' : 180
-				}, 200, function() {
-					side.attr('data-toggle', 'show')
-				})
 			}
 		})
 	</script>
